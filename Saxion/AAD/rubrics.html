@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Rubric AAD project (concept)</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&amp;family=Fira+Sans:wght@100;400&amp;display=swap"
+		rel="stylesheet">
+</head>
+
+<body>
+	<style>
+		body {
+			font-family: "Fira Sans", sans-serif;
+		}
+
+		h1 {
+			font-family: 'Amatic SC', cursive;
+			font-size: 46px;
+			text-align: center;
+		}
+
+		td,
+		th {
+			text-align: left;
+			vertical-align: top;
+			padding: 10px;
+		}
+
+		thead th {
+			text-align: center;
+		}
+
+		tr:nth-child(even) {
+			background-color: #f2f2f2;
+		}
+
+		th {
+			background-color: Silver;
+		}
+
+		td.selected {
+			background-color: LightBlue;
+			font-weight: bold;
+		}
+	</style>
+	<h1>Advanced Application Development Project</h1>
+	<table>
+		<thead>
+			<tr>
+				<th></th>
+				<th>No points
+				</th>
+				<th>Insufficient
+				</th>
+				<th>Sufficient
+				</th>
+				<th>Good
+				</th>
+				<th>Excellent
+				</th>
+			</tr>
+		</thead>
+		<tbody id="rubricTable">
+			<tr>
+				<th>Requirements (10)</th>
+				<td points="0">No requirements or too poor</td>
+				<td points="3"><em>(below sufficient)</em></td>
+				<td points="6">There is a requirements document that contains the most important requirements. The
+					requirements have been documented according to the standards.</td>
+				<td points="8"><em>(between sufficient and excellent)</em></td>
+				<td points="10">There is a thourough, wel-written requirements document. It is clear what the cause and
+					purpose of the application is. </p>
+					<p>There is a stakeholder analysis. </p>
+					<p>The requirements are complete and
+						contain both functional and nonfunctional requirements, it is clear what the sources of the
+						requirements are. The requirements have been documented according to the standards. </p>
+					<p>Several different types of
+						diagrams, which are legible and useful, clarify the interactions with the system.</p>
+				</td>
+			</tr>
+			<tr>
+				<th>Basic UX design (15)</th>
+				<td points="0">No UX design or too poor</td>
+				<td points="4"><em>(below sufficient)</em></td>
+				<td points="8">There is a design document that contains wireframes of the most important components. It
+					explains the flow of the application and how each component works. The document contains the
+					reasoning behind the most important design choices.</td>
+				<td points="12"><em>(between sufficient and excellent)</em></td>
+				<td points="15">There is a thourough, well-written UX design document. </p>
+					<p>The document explains what the
+						application is for. </p>
+					<p>The document contains wireframes of the entire application that clarify in
+						detail how each component works and the reasoning behind it. The flow of the application - how
+						each
+						component connects with other components - is clearly described in the document. </p>
+					<p>The reasoning
+						behind design choices is explained in detail. There is a link to the requirements and test
+						cases.</p>
+				</td>
+			</tr>
+			<tr>
+				<th>Architectural choices (20)</th>
+				<td points="0">No technical design or too poor</td>
+				<td points="5"><em>(below sufficient)</em></td>
+				<td points="11">There is a technical design document that documents the most important components and
+					important relevant choices concerning those components.</td>
+				<td points="16"><em>(between sufficient and excellent)</em></td>
+				<td points="20">There is a thourough, well-written technical design document. <p>The document explains
+						the
+						technical setup of the application and why this setup was chosen. </p>
+					<p></p>It describes any third party
+					components and possible alternatives that were considered, and why this one was chosen. </p>
+					<p>It describes
+						all technical components and subcomponents in detail, and relevant choices concerning those
+						components. </p>
+					<p>Several different types of diagrams, which are legible and useful, clarify complex parts of the
+						application. There is no unnecessary detail. Where applicable there is a link with the
+						requirements.</p>
+				</td>
+			</tr>
+			<tr>
+				<th>Full stack system and tests (30)</th>
+				<td points="0">No code was found or very poor</td>
+				<td points="9"><em>(below sufficient)</em></td>
+				<td points="17">There is a clean, working codebase that has been separated into logical units. There are
+					mechanisms that ensure stability. There are tests that cover important parts of the application.
+				</td>
+				<td points="24"><em>(between sufficient and excellent)</em></td>
+				<td points="30">There is a clean, tidy and well-written codebase which covers all functionality. It is
+					easy to navigate the code.
+					<p>The code has been separated in logical units that have clear and limited
+						responsibilities. Interaction with other parts of the application have been logically isolated.
+					</p>
+					<p>The
+						code is formatted according to the standards of the language used. All framework guidelines have
+						been followed. </p>
+					<p>There is no code that is commented out. There are no console log statements. </p>
+					<p>Parts
+						that need comment, have been commented.</p>
+					<p>There are mechanisms that ensure stability: errors are
+						anticipated and recovered from, the user is informed in a userfriendly way about fatal errors.
+					</p>
+					<p>All
+						important code is covered by well-written tests, and there is proof that the test succeed.</p>
+				</td>
+			</tr>
+			<tr>
+				<th>Deployable, transferable and maintainable project (15)</th>
+				<td points="0">Nothing found about maintainability or very poor.</td>
+				<td points="4"><em>(below sufficient)</em></td>
+				<td points="8">There is a description about how to start developing with the application. There is a
+					description of how to deploy the application in a production environment. Both have been proven to
+					work.</td>
+				<td points="12"><em>(between sufficient and excellent)</em></td>
+				<td points="15">There is a thourough, well-written document about development and deployment of the
+					application. <p>The document describes the prerequisites for developing the application and how to
+						install the development environment, or there is a script to automate this.</p>
+					<p>The document describes
+						the CI/CD parts of the application, which ensure stability and quality of the codebase.</p>
+					<p>There is a
+						description of how to deploy the software in a production environment. </p>
+					<p>The development and
+						deployment environments have been fully automated. </p>
+					<p>All instructions have been proven to work using
+						manual or automated reports.</p>
+				</td>
+			</tr>
+			<tr>
+				<th>Project management (10)</th>
+				<td points="0">No proof of project management found or very poor.</td>
+				<td points="3"><em>(below sufficient)</em></td>
+				<td points="6">There is project documentation that gives an image of how the project went, how code was
+					managed, what problems arised and how they were dealt with. </td>
+				<td points="8"><em>(between sufficient and excellent)</em></td>
+				<td points="10">There is a thourough, well-written document that describes the project management during
+					the development phase, which gives an honest and complete image of how the project went over time
+					using reports and charts.
+					<p>The startup phase, project phase, and the finishing phase are described.
+						The project phase has reports of the important meetings. </p>
+					<p>All problems are described and how they
+						were dealt with.</p>
+					<p>It is clear how the code was managed and how code quality was ensured. All project
+						and process agreements that were made during the project are described.</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<blockquote><strong>Total score: <span id="score">0</span></strong></blockquote>
+	<script>
+		const tbody = document.getElementById("rubricTable");
+		const trows = tbody.getElementsByTagName("tr");
+		const score = document.getElementById("score");
+		for (let i = 0; i < trows.length; i++) {
+			const trow = trows[i];
+			const cells = trow.getElementsByTagName("td");
+			for (let j = 0; j < cells.length; j++) {
+				const cell = cells[j];
+				cell.addEventListener('click', (ev) => {
+					for (let k = 0; k < cells.length; k++) {
+						const otherCell = cells[k];
+						otherCell.classList.remove("selected");
+					}
+					cell.classList.add("selected");
+
+					// calculate score
+					const selectedCells = document.getElementsByClassName("selected");
+					let totalPoints = 0;
+					for (let k = 0; k < selectedCells.length; k++) {
+						const selectedCell = selectedCells[k];
+						const cellPoints = Number(selectedCell.getAttribute("points"));
+						totalPoints += cellPoints;
+					}
+					score.innerText = totalPoints;
+				});
+			}
+		}
+	</script>
+</body>
