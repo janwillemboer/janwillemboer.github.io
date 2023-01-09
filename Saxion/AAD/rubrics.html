@@ -188,16 +188,41 @@
 			</tr>
 		</tbody>
 	</table>
-	<blockquote><strong>Total score: <span id="score">0</span></strong></blockquote>
+	<p>Total score: <strong></strong><span id="score">0</span></strong></p>
+	<p>Code: <span id="code"></span></p>
+
 	<script>
 		const tbody = document.getElementById("rubricTable");
 		const trows = tbody.getElementsByTagName("tr");
 		const score = document.getElementById("score");
+		const code = document.getElementById("code");
+
+		let pointList;
+		try {
+			const params = new URLSearchParams(document.location.search);
+			const pointsFromUrl = atob(params.get("code"));
+			pointList = pointsFromUrl.split(";");
+			code.innerText = params.get("code");
+		} catch (err) {
+			console.log(err);
+		}
+
 		for (let i = 0; i < trows.length; i++) {
 			const trow = trows[i];
 			const cells = trow.getElementsByTagName("td");
+			
+			let selectedPointsFromUrl;
+			if (pointList) {
+				selectedPointsFromUrl = Number(pointList[i]);
+			}
+
 			for (let j = 0; j < cells.length; j++) {
 				const cell = cells[j];
+				const cellPoints = Number(cell.getAttribute("points"));
+				if (cellPoints === selectedPointsFromUrl) {
+					cell.classList.add("selected");
+				}
+
 				cell.addEventListener('click', (ev) => {
 					for (let k = 0; k < cells.length; k++) {
 						const otherCell = cells[k];
@@ -208,14 +233,19 @@
 					// calculate score
 					const selectedCells = document.getElementsByClassName("selected");
 					let totalPoints = 0;
+					let codedPoints = "";
 					for (let k = 0; k < selectedCells.length; k++) {
 						const selectedCell = selectedCells[k];
-						const cellPoints = Number(selectedCell.getAttribute("points"));
-						totalPoints += cellPoints;
+						const selectedCellPoints = Number(selectedCell.getAttribute("points"));
+						totalPoints += selectedCellPoints;
+						codedPoints += selectedCellPoints + ";";
 					}
+
 					score.innerText = totalPoints;
+					code.innerText = btoa(codedPoints);
 				});
 			}
 		}
+
 	</script>
 </body>
