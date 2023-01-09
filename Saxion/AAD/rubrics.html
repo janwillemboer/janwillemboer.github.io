@@ -189,7 +189,7 @@
 		</tbody>
 	</table>
 	<p>Total score: <strong></strong><span id="score">0</span></strong></p>
-	<p>Code: <span id="code"></span></p>
+	<p>Permalink naar ingevulde rubric: <a href="#" id="code">link</a></p>
 
 	<script>
 		const tbody = document.getElementById("rubricTable");
@@ -199,26 +199,33 @@
 
 		function calculateScore() {
 			// calculate score
-			const selectedCells = document.getElementsByClassName("selected");
 			let totalPoints = 0;
 			let codedPoints = "";
-			for (let k = 0; k < selectedCells.length; k++) {
-				const selectedCell = selectedCells[k];
-				const selectedCellPoints = Number(selectedCell.getAttribute("points"));
-				totalPoints += selectedCellPoints;
-				codedPoints += selectedCellPoints + ";";
+			
+			for (let i = 0; i < trows.length; i++) {
+				const trow = trows[i];
+				const selectedCell = trow.getElementsByClassName("selected")[0];
+				if (selectedCell) {
+					const selectedCellPoints = Number(selectedCell.getAttribute("points"));
+					totalPoints += selectedCellPoints;
+					codedPoints += selectedCellPoints + ";";
+				} else {
+					codedPoints += ";";
+				}
 			}
 
 			score.innerText = totalPoints;
-			code.innerText = btoa(codedPoints);
+			code.setAttribute("href", document.location.href.split("?")[0] + "?code=" + btoa(codedPoints));
 		}
 
 		let pointList;
 		try {
 			const params = new URLSearchParams(document.location.search);
-			const pointsFromUrl = atob(params.get("code"));
-			pointList = pointsFromUrl.split(";");
-			code.innerText = params.get("code");
+			const codeFromParam = params.get("code");
+			if (codeFromParam) {
+				const pointsFromUrl = atob(codeFromParam);
+				pointList = pointsFromUrl.split(";");
+			}
 		} catch (err) {
 			console.log(err);
 		}
@@ -229,7 +236,9 @@
 
 			let selectedPointsFromUrl;
 			if (pointList) {
-				selectedPointsFromUrl = Number(pointList[i]);
+				if (pointList[i] || pointList[i] === "0") {
+					selectedPointsFromUrl = Number(pointList[i]);
+				}
 			}
 
 			for (let j = 0; j < cells.length; j++) {
