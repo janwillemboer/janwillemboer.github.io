@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TPACK vragenlijst</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&amp;family=Fira+Sans:wght@200;300&amp;display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <style>
+        body {
+            font-family: "Fira Sans", sans-serif;
+            font-weight: 200;
+        }
+
+        h1 {
+            font-family: 'Amatic SC', cursive;
+            font-size: 46px;
+            text-align: center;
+        }
+
+        td,
+        th {
+            text-align: left;
+            vertical-align: top;
+            padding: 10px;
+        }
+
+        thead th {
+            text-align: center;
+			width: 100px;
+        }
+		thead th:first-child {
+			width: 20em;
+		}
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+		tbody th {
+			font-weight: normal;
+		}
+        thead th, tbody th:last-child {
+            background-color: Silver;
+			font-weight: bold;
+        }
+        td {
+            border: 1px solid transparent;
+			text-align: center;
+        }
+		td:before {
+			content: '▢';
+		}
+
+        td.selected {
+            background-color: LightBlue;
+            border: 1px solid navy;
+        }
+		td.selected:before {
+			content: '✓';
+		}
+        em {
+            font-size: small;
+        }
+    </style>
+    <h1>TPACK vragenlijst</h1>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Volledig oneens
+                </th>
+                <th>Oneens
+                </th>
+                <th>Mwah / ach
+                </th>
+                <th>Eens
+                </th>
+                <th>Helemaal eens
+                </th>
+            </tr>
+        </thead>
+        <tbody id="rubricTable">
+			<tr><th colspan="6">Techniek</th></tr>
+            <tr>
+                <th>
+                    Ik kan mijn eigen ICT-problemen oplossen 
+                </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ik leer gemakkelijk nieuwe dingen over ICT
+                </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ik blijf op de hoogte van belangrijke ICT-ontwikkelingen
+                </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ik probeer regelmatig dingen uit met ICT
+                </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ik ken veel verschillende ICT-toepassingen
+                </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ik beschik over de technische vaardigheden die ik nodig heb om ICT te gebruiken
+                </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>Ik heb voldoende mogelijkheden om verschillende ICT-toepassingen te gebruiken
+                </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+			
+			
+			
+			<tr><th colspan="6">Pedagogiek</th></tr>
+            <tr>
+                <th>
+                    Ik weet hoe ik de leerprestaties van leerlingen kan beoordelen
+                </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ik kan mijn onderwijs aanpassen aan de beginsituatie van de leerlingen					
+                </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ik kan mijn didactiek aanpassen aan de diversiteit onder leerlingen					
+                </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ik kan de leerprestaties van leerlingen op verschillende manieren beoordelen					
+                </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ik kan verschillende didactische werkvormen gebruiken in mijn lessen					
+                </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ik ben bekend met de gangbare inzichten en misconcepties van leerlingen					
+                </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>Ik weet hoe ik klassenmanagement (plannen, organiseren, coördineren, leiding geven) vorm kan geven					
+                </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+			
+			
+			
+			
+			
+					<tr><th colspan="6">Content</th></tr>
+            <tr>
+                <th>
+                    Ik heb voldoende kennis van mijn vakgebied					
+               </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ik kan een wetenschappelijke manier van denken toepassen						
+             </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ik beschik over verschillende manieren om mijn eigen kennis van mijn vakgebied te ontwikkelen							
+            </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+    
+	
+	
+	
+	
+	
+	
+			
+					<tr><th colspan="6">PC</th></tr>
+            <tr>
+                <th>
+                    Ik kan voor mijn vakgebied geschikte didactische werkvormen kiezen								
+                  </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ik ben bekend met de gangbare inzichten en misconcepties van leerlingen bij mijn vakgebied								
+                  </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+  
+  
+  
+  
+  
+  
+  
+			<tr><th colspan="6">TC</th></tr>
+            <tr>
+                <th>
+                    Ik ben op de hoogte van ICT-toepassingen die ik kan gebruiken om leerlingen inzicht te geven in mijn vakgebied					
+                  </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ik ben op de hoogte van ICT-toepassingen om mijn vakgebied (experimenten) te ondersteunen					
+                  </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ik ben in staat ICT-toepassingen te kiezen die de inhoud op mijn vakgebied ondersteunen								
+                  </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ik weet hoe ik ICT-toepassingen kan gebruiken om concepten op mijn vakgebied op een andere manier te presenteren aan mijn leerlingen									
+                  </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                  Ik weet hoe ik ICT-toepassingen kan gebruiken om mijn vakgebied experimenten uit te voeren								
+                  </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ik weet hoe ik met behulp van ICT-toepassingen gegevens kan verzamelen bij een experiment							
+                  </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+
+
+			
+			
+			
+			
+  
+			<tr><th colspan="6">TP</th></tr>
+            <tr>
+                <th>
+                    Ik ben in staat ICT-toepassingen te kiezen die didactische werkvormen voor een les versterken					
+                  </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ik ben in staat ICT-toepassingen te kiezen die het leerproces van de leerlingen versterken										
+                 </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Door mijn vooropleiding of nascholing denk ik kritisch na over de manier waarop ICT mijn didactische aanpak in de klas kan beïnvloeden										
+                  </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ik denk kritisch na over de manier waarop ik ICT-toepassingen in mijn eigen klas kan gebruiken													
+                  </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                  Ik kan het ICT-gebruik, waarover ik leerde tijdens mijn vooropleiding of nascholing, afstemmen op verschillende leeractiviteiten												
+                 </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+
+
+
+
+
+  
+			<tr><th colspan="6">TPC</th></tr>
+            <tr>
+                <th>
+                    Ik kan lessen geven waarbij ICT, vakinhoud en didactiek op een goede manier zijn geïntegreerd					
+                </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Ik kan op mijn vakgebied lessen geven waarbij ICT, vakinhoud en didactiek op een juiste manier zijn geïntegreerd									
+              </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Ik kan ICT-toepassingen kiezen die versterken wat en hoe ik onderwijs geef									
+                </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Ik kan ICT-toepassingen kiezen voor mijn vakgebied die versterken wat en hoe ik onderwijs geef											
+                </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                  Ik ben in staat om strategieën die ik heb geleerd in de vooropleiding of nascholing, te gebruiken in mijn lessen om vakinhoud, ICT en didactiek combineren											
+               </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+            <tr>
+                <th>
+                   Ik ben in staat om strategieën die ik heb geleerd in de vooropleiding of nascholing, te gebruiken in mijn lessen om vakinhoud, ICT en didactiek combineren											
+              </th>
+                <td points="0">
+                </td>
+                <td points="1">
+                </td>
+                <td points="2">
+                </td>
+                <td points="3">
+                </td>
+                <td points="4">
+                </td>
+            </tr>
+
+
+			
+
+
+			
+  
+		</tbody>
+    </table>
+    <p style="display: none">Total score: <strong></strong><span id="score">0</span></strong></p>
+    <p>De ingevulde lijst kun je bewaren en delen door deze link te kopiëren: <a href="#" id="code">link</a></p>
+
+	<p>De TPACK-NL vragenlijst meet de zelf ingeschatte kennis van leraren op het gebied van ict-integratie in het onderwijs. Deze nederlandse versie is door de OU aangepast. Online versie door Jan Willem Boer. Beschikbaar onder de <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/deed.nl">CC BY NC SA licentie</a>.</p>
+	
+    <script>
+        const tbody = document.getElementById("rubricTable");
+        const trows = tbody.getElementsByTagName("tr");
+        const score = document.getElementById("score");
+        const code = document.getElementById("code");
+
+        function calculateScore() {
+            // calculate score
+            let totalPoints = 0;
+            let codedPoints = "";
+
+            for (let i = 0; i < trows.length; i++) {
+                const trow = trows[i];
+                const selectedCell = trow.getElementsByClassName("selected")[0];
+                if (selectedCell) {
+                    const selectedCellPoints = Number(selectedCell.getAttribute("points"));
+                    totalPoints += selectedCellPoints;
+                    codedPoints += selectedCellPoints + ";";
+                } else {
+                    codedPoints += ";";
+                }
+            }
+
+            score.innerText = totalPoints;
+            code.setAttribute("href", document.location.href.split("?")[0] + "?code=" + btoa(codedPoints));
+        }
+
+        let pointList;
+        try {
+            const params = new URLSearchParams(document.location.search);
+            const codeFromParam = params.get("code");
+            if (codeFromParam) {
+                const pointsFromUrl = atob(codeFromParam);
+                pointList = pointsFromUrl.split(";");
+            }
+        } catch (err) {
+            console.log(err);
+        }
+
+        for (let i = 0; i < trows.length; i++) {
+            const trow = trows[i];
+            const cells = trow.getElementsByTagName("td");
+
+            let selectedPointsFromUrl;
+            if (pointList) {
+                if (pointList[i] || pointList[i] === "0") {
+                    selectedPointsFromUrl = Number(pointList[i]);
+                }
+            }
+
+            for (let j = 0; j < cells.length; j++) {
+                const cell = cells[j];
+                const cellPoints = Number(cell.getAttribute("points"));
+                if (cellPoints === selectedPointsFromUrl) {
+                    cell.classList.add("selected");
+                }
+
+                cell.addEventListener('click', (ev) => {
+                    for (let k = 0; k < cells.length; k++) {
+                        const otherCell = cells[k];
+                        otherCell.classList.remove("selected");
+                    }
+                    cell.classList.add("selected");
+
+                    calculateScore();
+                });
+            }
+        }
+
+        calculateScore();
+
+    </script>
+</body>
