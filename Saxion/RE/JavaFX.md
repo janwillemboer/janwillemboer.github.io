@@ -109,7 +109,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 ``` 
-
+*Note: you may also need to handle an exception thrown by the fxmlLoader.Load() method.*
 Now instead of changing some lame text on a label, the application will load our new component when the user clicks the button.
 
 ![](javafx/9-hack.jpg)
@@ -122,6 +122,14 @@ Start the application to test your sensational new screen:
 </video>
 
 ## Add functionality
+
+It is important that your application is runnable on any machine, so files refered to can **NOT** use absolute paths. So this tutorial will show easy file reference based on resource folder.
+
+Save the images of a [cat](https://service.archief.nl/gaf/api/file/v1/img/2779f6af-a4c4-4774-aab3-f3f615696905?h=300) and a [dog](https://service.archief.nl/gaf/api/file/v1/img/80c487af-3093-4b9d-a25f-676f46e322d8?h=300) into the resourcse directory. Suggested to save as cat.jpg and dog.jpg respectably.
+
+![](c0-AddImages.png)
+
+*Note: you could also create an alternative folder called images outside the resources folder and set the module settings to identify that folder as a resource folder.*
 
 We want our new screen to actually do something whenever the buttons are pressed. If the left button is pressed, we want to show a picture of a cat from 1947 and if the right button is pressed a dog from 1965. Because why not.
 
@@ -152,13 +160,13 @@ In the method we can add a picture to the `Pane`, like this:
 
 ```java
 // 1947 cat from the dutch national archive
-String url = "https://service.archief.nl/gaf/api/file/v1/img/2779f6af-a4c4-4774-aab3-f3f615696905?h=300";
+String path = "/cat.jpg";
 
 // remove previous pictures (if any)
 panePicture.getChildren().clear();
 
 // add the picture from the url
-panePicture.getChildren().add(new ImageView(url));
+panePicture.getChildren().add(new ImageView(path));
 ```
 
 The `MyOwnComponent` class should now look like this:
@@ -169,17 +177,55 @@ Now we should connect the Previous button to the method we just created. Open th
 
 ![](javafx/13-prev-button.jpg)
 
-Run the application. When you now click the "Previous" button, after a few seconds (the archief.nl website is not that fast) the picture of the ancient cat appears: 
+Run the application. When you now click the "Previous" button, the picture of the ancient cat appears: 
 
 ![](javafx/14-cat.jpg)
+
+# Distributing the project
+
+To ensure anybody is able to run your project we will distribute the project as a .jar file. This can be done in 3 steps:
+
+## Step 1
+
+Create a Runner class:
+
+- In your src create a class called Runner
+- Add a main (Runnable) method 
+- Call the HelloApplication main method from the main method of the runner class
+
+![](javafx/c1-Runner.png)
+
+## Step 2
+
+Add .jar artifact to your project structure.
+
+- Open your project structure *(Crtl + Alt + Shift + S)*    
+
+![](javafx/c2-ProjectStructure.png)
+
+- Under project Settings, go to artifacts, Add (+), JAR and the From modules with dependencies
+
+![](javafx/c3-AddArtifact.JAR.png)
+
+- Set the main class to be the Runner class
+
+![](javafx/c4-ArtifactMainRunner.png)
+
+## Step 3
+
+Build artifacts
+
+- Build - Artifacts
+
+![](javafx/c5-BuildArtifact)
+
+- A .jar file should be generated in the directory /out/artifacts/MyJavaFxApplication, test if you can run this .jar file
 
 # Do it yourself
 
 ## Assignment 1: the "Next" button
-You can now go ahead and implement the "Next" button yourself, using the URL to the 1965 dog. 
-[https://service.archief.nl/gaf/api/file/v1/img/80c487af-3093-4b9d-a25f-676f46e322d8?h=300](https://service.archief.nl/gaf/api/file/v1/img/80c487af-3093-4b9d-a25f-676f46e322d8?h=300)
-
-![](https://service.archief.nl/gaf/api/file/v1/img/80c487af-3093-4b9d-a25f-676f46e322d8?h=300)
+You can now go ahead and implement the "Next" button yourself, to show the dog. 
+[dog](https://service.archief.nl/gaf/api/file/v1/img/80c487af-3093-4b9d-a25f-676f46e322d8?h=300)
 
 
 ## Assignment 2: getting and setting text in controls
