@@ -444,7 +444,8 @@ stage.show();
 <span class="hljs-keyword">import</span> javafx.scene.Scene;
 <span class="hljs-keyword">import</span> javafx.stage.Stage;
 </div></code></pre>
-<p>Now instead of changing some lame text on a label, the application will load our new component when the user clicks the button.</p>
+<p><em>Note: you may also need to handle an exception thrown by the fxmlLoader.Load() method.</em>
+Now instead of changing some lame text on a label, the application will load our new component when the user clicks the button.</p>
 <p><img src="javafx/9-hack.jpg" alt=""></p>
 <p>Start the application to test your sensational new screen:</p>
 <video controls width="800">
@@ -453,6 +454,8 @@ stage.show();
 </video>
 <h2 id="add-functionality">Add functionality</h2>
 <p>We want our new screen to actually do something whenever the buttons are pressed. If the left button is pressed, we want to show a picture of a cat from 1947 and if the right button is pressed a dog from 1965. Because why not.</p>
+<p>Save the images of a <a href="https://service.archief.nl/gaf/api/file/v1/img/2779f6af-a4c4-4774-aab3-f3f615696905?h=300">cat</a> and a <a href="https://service.archief.nl/gaf/api/file/v1/img/80c487af-3093-4b9d-a25f-676f46e322d8?h=300">dog</a> (click on the words to download the images) into the resources directory. Rename the files to <code>cat.jpg</code> and <code>dog.jpg</code>.</p>
+<p><img src="javafx/c0-AddImages.png" alt=""></p>
 <p>The functionality of a screen is programmed into the Controller class, in our case the <code>MyOwnComponent</code> class.</p>
 <p>First, we need to make sure we can add an image to the <code>Pane</code> we added in the first row. For this, the <code>Pane</code> should have a name, so we can reference it from code. Open the <code>my-own-component.fxml</code> file in the Scene Builder, click on the <code>Pane</code> in the tree on the left, or on the <code>Pane</code> itself. On the right, in &quot;Code&quot; on the <code>fx:id</code> property, give the panel the id <code>panePicture</code>.</p>
 <p><img src="javafx/11-pnl-id.jpg" alt=""></p>
@@ -469,25 +472,57 @@ The <code>Pane</code> class should be imported from the <code>javafx.scene.layou
 </div></code></pre>
 <p>In the method we can add a picture to the <code>Pane</code>, like this:</p>
 <pre class="hljs"><code><div><span class="hljs-comment">// 1947 cat from the dutch national archive</span>
-String url = <span class="hljs-string">"https://service.archief.nl/gaf/api/file/v1/img/2779f6af-a4c4-4774-aab3-f3f615696905?h=300"</span>;
+String path = <span class="hljs-string">"/cat.jpg"</span>;
 
 <span class="hljs-comment">// remove previous pictures (if any)</span>
 panePicture.getChildren().clear();
 
 <span class="hljs-comment">// add the picture from the url</span>
-panePicture.getChildren().add(<span class="hljs-keyword">new</span> ImageView(url));
+panePicture.getChildren().add(<span class="hljs-keyword">new</span> ImageView(path));
 </div></code></pre>
 <p>The <code>MyOwnComponent</code> class should now look like this:</p>
 <p><img src="javafx/12-own-component.jpg" alt=""></p>
 <p>Now we should connect the Previous button to the method we just created. Open the Scene Builder again, select the button and in &quot;Code&quot;, find the &quot;On Action&quot; property. In its dropdown you can select the method we created:</p>
 <p><img src="javafx/13-prev-button.jpg" alt=""></p>
-<p>Run the application. When you now click the &quot;Previous&quot; button, after a few seconds (the archief.nl website is not that fast) the picture of the ancient cat appears:</p>
+<p>Run the application. When you now click the &quot;Previous&quot; button, the picture of the ancient cat appears:</p>
 <p><img src="javafx/14-cat.jpg" alt=""></p>
+<h1 id="distributing-the-project">Distributing the project</h1>
+<p>To ensure anybody is able to run your project we will distribute the project as a jar-file. (Note that this is mandatory for your submission).</p>
+<p>We have to create a separate runner class that starts our application. Right-click the package name in the <code>java</code> directory and select New &gt; Java Class. Give it the name &quot;Runner&quot;.</p>
+<p>Add a main method to this class, and call the HelloApplication main method from this new method:</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{
+    HelloApplication.main(args);
+}
+</div></code></pre>
+<p>It should look like this.</p>
+<p><img src="javafx/c1-runner.jpg" alt=""></p>
+<p>Open your project structure by clicking the gear icon on the top-right corner of IntelliJ and selecting &quot;Project Structure&quot;, or by pressing Ctrl+Alt+Shift+S.</p>
+<p><img src="javafx/c2-project-structure.jpg" alt=""></p>
+<p>Under Project Settings, go to artifacts. Press the plus sign on top, select &quot;JAR&quot;,  and select &quot;from modules with dependencies&quot;.</p>
+<p><img src="javafx/c3-add-artifact-jar1.jpg" alt=""></p>
+<p>Set the main class to be the Runner class, leave the rest to the default settings.</p>
+<p><img src="javafx/c4-artifact-main-runner.png" alt=""></p>
+<p>Press OK, and again OK to close the project settings.</p>
+<p>You can now create a jar which you can share with the world (your family members for example), with which they can run your application.</p>
+<p>From the &quot;Build&quot; menu, select &quot;Build artifacts&quot;.</p>
+<p><img src="javafx/c4-build-artifacts.jpg" alt=""></p>
+<p>A small window appears in the center of your screen. Just press &quot;Enter&quot; to confirm, or click the &quot;Build&quot; action.</p>
+<p><img src="javafx/c5-build-artifact2.jpg" alt=""></p>
+<p>A .jar file should be generated in the directory /out/artifacts/MyJavaFxApplication.</p>
+<p>If you change the application, the jar won't be changed automatically. You have to Build the jar again to create a new one.</p>
+<p>You can test the jar as follows:</p>
+<ul>
+<li>Open a commandprompt by running cmd.exe</li>
+<li>Go to the directory where the jar was created</li>
+<li>use the command <code>java -jar MyJavaApplication.jar</code> to start the application.</li>
+<li>your application will now appear.</li>
+</ul>
+<p><img src="javafx/c6-run-jar.jpg" alt=""></p>
+<p>(Note that the warning can be ignored)</p>
 <h1 id="do-it-yourself">Do it yourself</h1>
 <h2 id="assignment-1-the-%22next%22-button">Assignment 1: the &quot;Next&quot; button</h2>
-<p>You can now go ahead and implement the &quot;Next&quot; button yourself, using the URL to the 1965 dog.
-<a href="https://service.archief.nl/gaf/api/file/v1/img/80c487af-3093-4b9d-a25f-676f46e322d8?h=300">https://service.archief.nl/gaf/api/file/v1/img/80c487af-3093-4b9d-a25f-676f46e322d8?h=300</a></p>
-<p><img src="https://service.archief.nl/gaf/api/file/v1/img/80c487af-3093-4b9d-a25f-676f46e322d8?h=300" alt=""></p>
+<p>You can now go ahead and implement the &quot;Next&quot; button yourself, to show the
+<a href="https://service.archief.nl/gaf/api/file/v1/img/80c487af-3093-4b9d-a25f-676f46e322d8?h=300">dog</a>.</p>
 <h2 id="assignment-2-getting-and-setting-text-in-controls">Assignment 2: getting and setting text in controls</h2>
 <ul>
 <li>Add a new screen with its own <code>fxml</code> and controller class.</li>
@@ -499,7 +534,7 @@ panePicture.getChildren().add(<span class="hljs-keyword">new</span> ImageView(ur
 </ul>
 <h2 id="assignment-3-show-a-random-image-based-on-a-query">Assignment 3: Show a random image, based on a query</h2>
 <p>Create a screen in which the user can enter a text. When a button is pressed, the application shows a random picture based on the text. You can use the Unsplash API for this by using this url: <a href="https://source.unsplash.com/random/300x200/?dog">https://source.unsplash.com/random/300x200/?dog</a><br>
-Everything after the question mark is the search query. In this example it will show a random image of a dog.</p>
+Everything after the question mark is the search query. In this example it will show a random image of a dog. You can copy the code for showing the image of the cat, and use the unsplash url instead of the /cat.jpg path.</p>
 <h1 id="closing-remarks">Closing remarks</h1>
 <p>When you completed this tutorial, you know some of the very basics of JavaFX. But it's a large framework, capable of doing many nice things. There are lots of tutorials and references online, for example <a href="https://www.youtube.com/playlist?list=PL6gx4Cwl9DGBzfXLWLSYVy8EbTdpGbUIG">this playlist on YouTube</a>.</p>
 <h1 id="attribution">Attribution</h1>
