@@ -123,15 +123,11 @@ Start the application to test your sensational new screen:
 
 ## Add functionality
 
-It is important that your application is runnable on any machine, so files refered to can **NOT** use absolute paths. So this tutorial will show easy file reference based on resource folder.
-
-Save the images of a [cat](https://service.archief.nl/gaf/api/file/v1/img/2779f6af-a4c4-4774-aab3-f3f615696905?h=300) and a [dog](https://service.archief.nl/gaf/api/file/v1/img/80c487af-3093-4b9d-a25f-676f46e322d8?h=300) into the resourcse directory. Suggested to save as cat.jpg and dog.jpg respectably.
-
-![](c0-AddImages.png)
-
-*Note: you could also create an alternative folder called images outside the resources folder and set the module settings to identify that folder as a resource folder.*
-
 We want our new screen to actually do something whenever the buttons are pressed. If the left button is pressed, we want to show a picture of a cat from 1947 and if the right button is pressed a dog from 1965. Because why not.
+
+Save the images of a [cat](https://service.archief.nl/gaf/api/file/v1/img/2779f6af-a4c4-4774-aab3-f3f615696905?h=300) and a [dog](https://service.archief.nl/gaf/api/file/v1/img/80c487af-3093-4b9d-a25f-676f46e322d8?h=300) (click on the words to download the images) into the resources directory. Rename the files to `cat.jpg` and `dog.jpg`.
+
+![](javafx/c0-AddImages.png)
 
 The functionality of a screen is programmed into the Controller class, in our case the `MyOwnComponent` class. 
 
@@ -183,49 +179,67 @@ Run the application. When you now click the "Previous" button, the picture of th
 
 # Distributing the project
 
-To ensure anybody is able to run your project we will distribute the project as a .jar file. This can be done in 3 steps:
+To ensure anybody is able to run your project we will distribute the project as a jar-file. (Note that this is mandatory for your submission).
 
-## Step 1
+We have to create a separate runner class that starts our application. Right-click the package name in the `java` directory and select New &gt; Java Class. Give it the name "Runner". 
 
-Create a Runner class:
+Add a main method to this class, and call the HelloApplication main method from this new method:
 
-- In your src create a class called Runner
-- Add a main (Runnable) method 
-- Call the HelloApplication main method from the main method of the runner class
+```java
+public static void main(String[] args) {
+    HelloApplication.main(args);
+}
+```
 
-![](javafx/c1-Runner.png)
+It should look like this.
 
-## Step 2
+![](javafx/c1-runner.jpg)
 
-Add .jar artifact to your project structure.
+Open your project structure by clicking the gear icon on the top-right corner of IntelliJ and selecting "Project Structure", or by pressing Ctrl+Alt+Shift+S.
 
-- Open your project structure *(Crtl + Alt + Shift + S)*    
+![](javafx/c2-project-structure.jpg)
 
-![](javafx/c2-ProjectStructure.png)
+Under Project Settings, go to artifacts. Press the plus sign on top, select "JAR",  and select "from modules with dependencies".
 
-- Under project Settings, go to artifacts, Add (+), JAR and the From modules with dependencies
+![](javafx/c3-add-artifact-jar1.jpg)
 
-![](javafx/c3-AddArtifact.JAR.png)
 
-- Set the main class to be the Runner class
+Set the main class to be the Runner class, leave the rest to the default settings.
 
-![](javafx/c4-ArtifactMainRunner.png)
+![](javafx/c4-artifact-main-runner.png)
 
-## Step 3
+Press OK, and again OK to close the project settings.
 
-Build artifacts
+You can now create a jar which you can share with the world (your family members for example), with which they can run your application.
 
-- Build - Artifacts
+From the "Build" menu, select "Build artifacts".
 
-![](javafx/c5-BuildArtifact)
+![](javafx/c4-build-artifacts.jpg)
 
-- A .jar file should be generated in the directory /out/artifacts/MyJavaFxApplication, test if you can run this .jar file
+A small window appears in the center of your screen. Just press "Enter" to confirm, or click the "Build" action. 
+
+![](javafx/c5-build-artifact2.jpg)
+
+A .jar file should be generated in the directory /out/artifacts/MyJavaFxApplication. 
+
+If you change the application, the jar won't be changed automatically. You have to Build the jar again to create a new one.
+
+You can test the jar as follows:
+
+- Open a commandprompt by running cmd.exe
+- Go to the directory where the jar was created
+- use the command `java -jar MyJavaApplication.jar` to start the application.
+- your application will now appear.
+
+![](javafx/c6-run-jar.jpg)
+
+(Note that the warning can be ignored)
 
 # Do it yourself
 
 ## Assignment 1: the "Next" button
-You can now go ahead and implement the "Next" button yourself, to show the dog. 
-[dog](https://service.archief.nl/gaf/api/file/v1/img/80c487af-3093-4b9d-a25f-676f46e322d8?h=300)
+You can now go ahead and implement the "Next" button yourself, to show the 
+[dog](https://service.archief.nl/gaf/api/file/v1/img/80c487af-3093-4b9d-a25f-676f46e322d8?h=300).
 
 
 ## Assignment 2: getting and setting text in controls
@@ -241,7 +255,7 @@ You can now go ahead and implement the "Next" button yourself, to show the dog.
 ## Assignment 3: Show a random image, based on a query
 
 Create a screen in which the user can enter a text. When a button is pressed, the application shows a random picture based on the text. You can use the Unsplash API for this by using this url: [https://source.unsplash.com/random/300x200/?dog](https://source.unsplash.com/random/300x200/?dog)  
-Everything after the question mark is the search query. In this example it will show a random image of a dog.
+Everything after the question mark is the search query. In this example it will show a random image of a dog. You can copy the code for showing the image of the cat, and use the unsplash url instead of the /cat.jpg path.
 
 # Closing remarks
 
