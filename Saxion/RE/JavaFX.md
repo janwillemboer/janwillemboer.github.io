@@ -15,7 +15,7 @@ In IntelliJ, create a new project. On the New Project wizard, choose "JavaFX". O
 - Build system: leave at Maven
 - Group: `nl.saxion.re`, or your own package
 - Artifact: will be the name of your project
-- JDK: leave at the most recent version
+- JDK: use java 17
 
 ![](javafx/1-newproject.jpg)
 
