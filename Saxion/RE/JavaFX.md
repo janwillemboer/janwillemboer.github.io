@@ -109,7 +109,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 ``` 
-*Note: you may also need to handle an exception thrown by the fxmlLoader.Load() method.*
+
+*Note: you must handle exceptions thrown by the fxmlLoader.Load() method. Add the following code to the method signature: `throws IOException`.*
+
 Now instead of changing some lame text on a label, the application will load our new component when the user clicks the button.
 
 ![](javafx/9-hack.jpg)

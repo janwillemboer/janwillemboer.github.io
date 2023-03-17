@@ -380,7 +380,7 @@ change css for img, add: 	border: 1px solid Silver;
 <li>Build system: leave at Maven</li>
 <li>Group: <code>nl.saxion.re</code>, or your own package</li>
 <li>Artifact: will be the name of your project</li>
-<li>JDK: leave at the most recent version</li>
+<li>JDK: use java 17</li>
 </ul>
 <p><img src="javafx/1-newproject.jpg" alt=""></p>
 <p>Press &quot;Next&quot;. Select the ControlsFX additional library.</p>
@@ -444,8 +444,8 @@ stage.show();
 <span class="hljs-keyword">import</span> javafx.scene.Scene;
 <span class="hljs-keyword">import</span> javafx.stage.Stage;
 </div></code></pre>
-<p><em>Note: you may also need to handle an exception thrown by the fxmlLoader.Load() method.</em>
-Now instead of changing some lame text on a label, the application will load our new component when the user clicks the button.</p>
+<p><em>Note: you must handle exceptions thrown by the fxmlLoader.Load() method. Add the following code to the method signature: <code>throws IOException</code>.</em></p>
+<p>Now instead of changing some lame text on a label, the application will load our new component when the user clicks the button.</p>
 <p><img src="javafx/9-hack.jpg" alt=""></p>
 <p>Start the application to test your sensational new screen:</p>
 <video controls width="800">
