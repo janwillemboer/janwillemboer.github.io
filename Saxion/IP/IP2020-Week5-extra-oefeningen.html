@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>IP2020 - Week 5 extra oefeningen (Lists 1 en Loops 2)</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-light">
+        <h1 id="ip2020---week-5-extra-oefeningen-lists-1-en-loops-2">IP2020 - Week 5 extra oefeningen (Lists 1 en Loops 2)</h1>
+<p>Voor het doen van extra oefeningen gebruik je het Sandbox project, dat je
+van Blackboard kunt downloaden bij Week 1.1. Dit is een leeg project waar je
+zelf code in kunt schrijven voor de SaxionApp.</p>
+<h2 id="spiekbrief-lists-1">Spiekbrief Lists 1</h2>
+<pre><code class="language-java"><div><span class="hljs-comment">// lijst maken </span>
+<span class="hljs-comment">// ArrayList</span>
+<span class="hljs-comment">//      type tussen &lt; en &gt;</span>
+<span class="hljs-comment">//             variabelenaam</span>
+<span class="hljs-comment">//                   isgelijkteken</span>
+<span class="hljs-comment">//                         new ArrayList&lt;&gt;()</span>
+<span class="hljs-comment">//                                    puntkomma</span>
+ArrayList&lt;String&gt; namen = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+<span class="hljs-comment">// let op dat je dat voor ints e.d. net iets anders doet,</span>
+<span class="hljs-comment">// omdat die niet als type tussen de &lt; en &gt; mogen staan.</span>
+<span class="hljs-comment">// int wordt Integer</span>
+<span class="hljs-comment">// char wordt Character</span>
+<span class="hljs-comment">// double wordt Double</span>
+<span class="hljs-comment">// boolean wordt Boolean</span>
+ArrayList&lt;Integer&gt; nummers = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+<span class="hljs-comment">// iets toevoegen aan een lijst: .add()</span>
+namen.add(<span class="hljs-string">"Kees"</span>);
+nummers.add(<span class="hljs-number">10</span>);
+
+<span class="hljs-comment">// de grootte van de lijst opvragen:</span>
+<span class="hljs-keyword">int</span> grootte = namen.size();
+
+<span class="hljs-comment">// het eerste en tweede element van een lijst opvragen</span>
+<span class="hljs-comment">// Let op, de index begint bij 0 te tellen</span>
+String naam = namen.get(<span class="hljs-number">0</span>);
+String andereNaam = namen.get(<span class="hljs-number">1</span>);
+
+<span class="hljs-comment">// checken of een lijst een element bevat</span>
+<span class="hljs-keyword">if</span> (namen.contains(<span class="hljs-string">"Kees"</span>)) {
+    SaxionApp.printLine(<span class="hljs-string">"Kees staat op de lijst"</span>);
+}
+</div></code></pre>
+<h2 id="spiekbrief-loops-2">Spiekbrief Loops 2</h2>
+<pre><code class="language-java"><div>ArrayList&lt;String&gt; namen = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+<span class="hljs-comment">// iets doen met elk element van een ArrayList:</span>
+<span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (index &lt; namen.size()) {
+    String naam = namen.get(index);
+    SaxionApp.printLine(naam);
+    index++;
+}
+
+<span class="hljs-comment">// datzelfde met de enhanced for loop</span>
+<span class="hljs-comment">// for</span>
+<span class="hljs-comment">//   tussen haakjes:</span>
+<span class="hljs-comment">//     variabele om elk</span>
+<span class="hljs-comment">//     element in te ontvangen</span>
+<span class="hljs-comment">//             dubbele punt</span>
+<span class="hljs-comment">//                 de lijst</span>
+<span class="hljs-comment">// loop body tussen accolades</span>
+<span class="hljs-keyword">for</span> (String naam : namen) {
+    SaxionApp.printLine(naam);
+}
+</div></code></pre>
+<h2 id="spiekbrief-csv-reader">Spiekbrief CSV-reader</h2>
+<pre><code class="language-java"><div>CsvReader csv = <span class="hljs-keyword">new</span> CsvReader(<span class="hljs-string">"Exercise8/een-of-ander-bestand.csv"</span>);
+csv.setSeparator(<span class="hljs-string">','</span>); <span class="hljs-comment">// als komma's ipv puntkomma's worden gebruikt</span>
+csv.skipRow(); <span class="hljs-comment">// als het bestand kolomtitels heeft</span>
+<span class="hljs-comment">// dit loopje bekijkt elke rij</span>
+<span class="hljs-keyword">while</span>(csv.loadRow()) {
+    <span class="hljs-comment">// haal de kolommen van deze rij op met de get... methoden. </span>
+    <span class="hljs-keyword">int</span> eersteKolom = csv.getInt(<span class="hljs-number">0</span>);
+    String tweedeKolom = csv.getString(<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">double</span> derdeKolom = csv.getDouble(<span class="hljs-number">2</span>);    
+}
+</div></code></pre>
+<h2 id="extra-oefeningen-lists-1-en-loops-2">Extra oefeningen Lists 1 en Loops 2</h2>
+<ol>
+<li>Laat de gebruiker een paar getallen ingeven, totdat de gebruiker het getal 0 invult. Maak twee verschillende lijsten met deze getallen: een lijst met de getallen onder nul, en een lijst met de getallen boven nul. Druk beide lijsten af.</li>
+<li>Laat de gebruiker een lijst met woorden vullen, totdat de gebruiker het woord leeglaat. Toon daarna elk woord op het scherm, behalve de woorden waar de letter &quot;z&quot; in voorkomt.</li>
+<li>Laat de computer een lijst van 5 willekeurige getallen  tussen 1 en 10 maken. Er mogen niet twee dezelfde getallen op de lijst staan. Druk de lijst af op het scherm.</li>
+<li>Neem de lijst van de vorige opdracht, maar druk ze nu niet af op het scherm. Je programma moet de gebruiker vragen de getallen allemaal te raden in maximaal 10 pogingen. Als de gebruiker een getal raadt, dan moet de computer die van de lijst verwijderen. Als de gebruiker de getallen allemaal raadt, heeft hij gewonnen. Als hij ze binnen 10 pogingen nog niet heeft geraden, heeft hij verloren.</li>
+<li>Laat de gebruiker een lijst met woorden vullen, totdat de gebruiker het woord leeglaat. Maak een methode die een ArrayList<String> als parameter heeft, en die een nieuwe ArrayList<String> als returnwaarde heeft. Noem de methode &quot;filter&quot;. Zorg ervoor dat de methode de lijst filtert zodat alleen woorden met een &quot;e&quot; erin overblijven, en geef dat als returnwaarde terug. Test of de methode werkt.</li>
+<li>Laat de gebruiker een paar waarden invoeren tussen de 1 en 100. Teken nu met de SaxionApp deze waarden als een grafiek op het scherm. Tip: gebruik de index * 10 als de x-as en gebruik de waarde als de y-as.</li>
+<li>Laat de gebruiker een paar waarden invoeren tussen de 1 en 100. Maak een programma dat de lijst daarna sorteert en op het scherm toont. Je moet dit sorteren niet zelf gaan maken (mag wel, maar dat is best lastig). Zoek op het internet naar een makkelijke manier om de lijst te sorteren.</li>
+</ol>
+
+    </body>
+    </html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>IP2020 - Week 2 extra oefeningen (Methoden 2 en If statements 1)</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-light">
+        <h1 id="ip2020---week-2-extra-oefeningen-methoden-2-en-if-statements-1">IP2020 - Week 2 extra oefeningen (Methoden 2 en If statements 1)</h1>
+<p>Voor het doen van extra oefeningen gebruik je het Sandbox project, dat je
+van Blackboard kunt downloaden bij Week 1.1. Dit is een leeg project waar je
+zelf code in kunt schrijven voor de SaxionApp.</p>
+<h2 id="methoden-met-returnwaarden-spiekbrief">Methoden met returnwaarden spiekbrief</h2>
+<pre><code class="language-java"><div><span class="hljs-keyword">int</span> willekeurigeWaarde;
+
+<span class="hljs-comment">// variabele waar je de returnwaarde in wilt "ontvangen"</span>
+<span class="hljs-comment">//             isgelijkteken</span>
+<span class="hljs-comment">//                   methodeaanroep zoals gebruikelijk</span>
+willekeurigeWaarde = SaxionApp.getRandomValueBetween(<span class="hljs-number">1</span>, <span class="hljs-number">21</span>);
+String ingetiepteTekst = SaxionApp.readString();
+<span class="hljs-keyword">int</span> ingetieptGetal = SaxionApp.readInt();
+</div></code></pre>
+<h2 id="extra-oefeningen-methoden-met-returnwaarden">Extra oefeningen methoden met returnwaarden</h2>
+<ol>
+<li>Maak een programma dat aan de gebruiker vraagt om twee getallen in te voeren, die je opslaat in twee verschillende variabelen. Tip: je moet hiervoor twee keer <code>SaxionApp.readInt()</code> aanroepen. Laat daarna aan de gebruiker alle berekeningen met deze getallen zien:
+<ul>
+<li>tel ze bij elkaar op</li>
+<li>trek ze van elkaar af</li>
+<li>vermenigvuldig ze met elkaar</li>
+<li>reken de restwaarde uit van de deling</li>
+</ul>
+</li>
+<li>Vraag aan de gebruiker om een woord van 8 letters met <code>SaxionApp.readString()</code> en sla dit woord op in een variabele. Toon het woord in een tekstuele banner op het scherm, zoiets als dit:</li>
+</ol>
+<pre><code><code><div>############
+# Koelkast #
+############
+</div></code></code></pre>
+<ol start="3">
+<li>Vraag aan de gebruiker om de straal van een cirkel in te voeren. Zorg er nu voor dat het programma met een nette melding afdrukt wat de omtrek en de oppervlakte van een cirkel met de opgegeven straal is. De berekening voor de omtrek is 2 keer pi keer de straal. De berekening voor de oppervlakte is pi keer straal keer straal. Gebruik voor pi de waarde 3.14159.</li>
+<li>Vraag aan de gebruiker om een woord dat niet te lang is. Toon het woord in een banner door gebruik te maken van <code>SaxionApp.drawText()</code> en er met <code>SaxionApp.drawLine()</code> lijnen omheen te tekenen.</li>
+<li>Zoek in de <a href="https://saxionapp.hboictlab.nl/nl/saxion/app/SaxionApp.html">documentatie van de SaxionApp</a> op hoe je de breedte en hoogte van het SaxionApp schermpje kunt opvragen. Maak een programma dat precies in het midden van het schermpje een cirkel tekent.</li>
+<li>Vraag aan de gebruiker hoe hoog en breed het scherm moet zijn. Gebruik <code>SaxionApp.resize()</code> om het scherm aan te passen. Teken daarna precies in het midden van het schermpje een cirkel.</li>
+<li>Vraag aan de gebruiker hoe hoog en breed het scherm moet zijn en pas het scherm aan. Teken daarna met twee lijnen een kruis op het scherm die het scherm precies in vieren deelt.</li>
+<li>Vraag aan de gebruiker hoe hoog en breed het scherm moet zijn en pas het scherm aan. Verdeel het scherm daarna met horizontale en verticale lijnen in een raster van 10 bij 10 gelijke rechthoekjes (of vierkanten als het scherm vierkant is).</li>
+</ol>
+<h1 id="if-statements-spiekbrief">If statements spiekbrief</h1>
+<pre><code class="language-java"><div><span class="hljs-keyword">int</span> leeftijd = <span class="hljs-number">10</span>;
+
+<span class="hljs-comment">// if</span>
+<span class="hljs-comment">//  conditie tussen ()</span>
+<span class="hljs-comment">//   vergelijk twee waarden in de conditie</span>
+<span class="hljs-comment">//                 uit te voeren code tussen { }</span>
+<span class="hljs-keyword">if</span> (leeftijd &lt; <span class="hljs-number">18</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"Je mag nog niet stemmen!"</span>);
+}
+
+<span class="hljs-comment">// ifs mogen ook in elkaar "genest" worden:</span>
+<span class="hljs-keyword">if</span> (leeftijd &lt; <span class="hljs-number">18</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"Geen 18, geen druppel!"</span>);
+
+    <span class="hljs-keyword">if</span> (leeftijd &lt; <span class="hljs-number">12</span>) {
+        SaxionApp.printLine(<span class="hljs-string">"En geef die fles onmiddellijk hier!!"</span>);
+    }
+}
+
+<span class="hljs-comment">// getallen vergelijken</span>
+<span class="hljs-comment">// &lt; kleiner dan</span>
+<span class="hljs-comment">// &gt; groter dan</span>
+<span class="hljs-comment">// &lt;= kleiner dan of gelijk aan</span>
+<span class="hljs-comment">// &gt;= groter dan of gelijk aan</span>
+<span class="hljs-comment">// == gelijk </span>
+<span class="hljs-comment">// != niet gelijk </span>
+
+<span class="hljs-comment">// Strings vergelijk je met equals of equalsIgnoreCase:</span>
+String geslacht = <span class="hljs-string">"mannelijk"</span>;
+<span class="hljs-keyword">if</span> (geslacht.equals(<span class="hljs-string">"vrouwelijk"</span>)) {
+    SaxionApp.printLine(<span class="hljs-string">"Dag mevrouw"</span>);
+}
+
+<span class="hljs-comment">// code die uitgevoerd moet worden in de andere gevallen</span>
+<span class="hljs-comment">// zet je in een else if of else block:</span>
+String aanhef;
+<span class="hljs-keyword">if</span> (geslacht.equalsIgnoreCase(<span class="hljs-string">"vrouwelijk"</span>)) {
+    aanhef = <span class="hljs-string">"Dag mevrouw"</span>;
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (geslacht.equalsIgnoreCase(<span class="hljs-string">"mannelijk"</span>)) {
+    aanhef = <span class="hljs-string">"Dag meneer"</span>;
+} <span class="hljs-keyword">else</span> {
+    aanhef = <span class="hljs-string">"Dag mens"</span>;
+}
+
+<span class="hljs-comment">// een switch-statement laat je verschillende gevallen vergelijken</span>
+<span class="hljs-keyword">int</span> getal = <span class="hljs-number">5</span>;
+<span class="hljs-comment">// switch</span>
+<span class="hljs-comment">//   tussen haakjes de te vergelijken waarde</span>
+<span class="hljs-comment">//        accolades</span>
+<span class="hljs-keyword">switch</span> (getal) {
+    <span class="hljs-comment">// case </span>
+    <span class="hljs-comment">//   waarmee je de waarde vergelijkt</span>
+    <span class="hljs-comment">//    dubbele punt</span>
+    <span class="hljs-comment">//        en dan zonder accolades de uit te voeren code,</span>
+    <span class="hljs-comment">//        die je afsluit met break;</span>
+    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+        SaxionApp.printLine(<span class="hljs-string">"De waarde is 1"</span>);
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+        SaxionApp.printLine(<span class="hljs-string">"De waarde is 2"</span>);
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">default</span>: <span class="hljs-comment">// voor alle andere gevallen:</span>
+        SaxionApp.printLine(<span class="hljs-string">"Ik weet het ook niet meer"</span>);
+        <span class="hljs-keyword">break</span>;
+}
+</div></code></pre>
+<h2 id="extra-oefeningen-if-statements">Extra oefeningen if-statements</h2>
+<ol>
+<li>Laat het programma een willekeurig getal kiezen uit de reeks 1, 2 of 3. Laat de gebruiker het getal raden. Geef aan of hij het goed of fout heeft geraden.</li>
+<li>Laat de gebruiker een maand invoeren. Het programma laat zien welk maandnummer deze maand heeft. Het programma geeft een vriendelijke foutmelding als het de maand niet herkent.</li>
+<li>Vraag de gebruiker om een getal tussen 1 en 10. Check met het programma of het getal inderdaad binnen die reeks valt. Als dat niet zo is, straf de gebruiker dan op vreselijke wijze.</li>
+<li>Doe opnieuw de opdracht 2 van &quot;methoden met returnwaarden&quot; hierboven. Check nu of de tekst inderdaad 8 tekens lang is. Voor het bepalen van de lengte van een <code>String</code> gebruik je de methode <code>.length()</code>.</li>
+<li>Vraag de gebruiker om zijn naam, leeftijd en geslacht. Bepaal op basis van leeftijd en geslacht wat de beste manier is om deze persoon aan te spreken, en begroet deze persoon op deze manier.</li>
+<li>Kies twee willekeurige getallen. Vraag aan de gebruiker om deze op te tellen. Laat de gebruiker weten of het antwoord klopt.</li>
+<li>Vraag de gebruiker om een woord in te voeren. Check of dit woord de letters &quot;ch&quot; bevat en toon aan de gebruiker of dat wel of niet zo is. Met <code>String.contains()</code> kun je checken of een string een andere string bevat.</li>
+<li>Maak een programma dat je huisgenoten of familie kan identificeren aan de hand van een paar vragen waar de gebruiker &quot;ja&quot; of &quot;nee&quot; op moet antwoorden. Bijvoorbeeld:</li>
+</ol>
+<pre><code><code><div>Ben je volwassen? nee
+Ben je een meisje? ja
+Houd je van spelletjes met grof geweld? ja
+&gt; Dan ben je Truusje!
+</div></code></code></pre>
+<ol start="7">
+<li>Vraag de gebruiker om een x en een y coördinaat. Als de coördinaten buiten het scherm van de SaxionApp vallen, geef dan een foutmelding. Als ze wel kloppen, teken dan een cirkel op die coördinaten.</li>
+<li>Maak een paar verschillende tekeningen met de SaxionApp, bijvoorbeeld een huisje,een smiley en een boom. Vraag aan de gebruiker welke van deze tekingen hij op het scherm wil zien, en toon dan de juiste tekening. Als hij een foute keuze maakt, toon dan een drol op het scherm (of iets dergelijks).</li>
+</ol>
+
+    </body>
+    </html>

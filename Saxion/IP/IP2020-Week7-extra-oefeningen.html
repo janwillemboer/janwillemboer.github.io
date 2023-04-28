@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>IP 2020 - Extra oefeningen week 7 (Loops 3 en Lists 2)</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-light">
+        <h1 id="ip-2020---extra-oefeningen-week-7-loops-3-en-lists-2">IP 2020 - Extra oefeningen week 7 (Loops 3 en Lists 2)</h1>
+<p>Voor het doen van extra oefeningen gebruik je het Sandbox project, dat je
+van Blackboard kunt downloaden bij Week 1.1. Dit is een leeg project waar je
+zelf code in kunt schrijven voor de SaxionApp.</p>
+<h2 id="spiekbrief-loops-3-de-gewone-for-loop">Spiekbrief Loops 3 (de gewone for-loop)</h2>
+<pre><code class="language-java"><div><span class="hljs-comment">// Een for-loop gebruik je als je een teller nodig hebt. </span>
+<span class="hljs-comment">// for, haakje openen</span>
+<span class="hljs-comment">// |  initialisatie van de teller (in dit geval: "i")</span>
+<span class="hljs-comment">// |    |  puntkomma</span>
+<span class="hljs-comment">// |    |       conditie om de lus te herhalen</span>
+<span class="hljs-comment">// |    |        |   puntkomma</span>
+<span class="hljs-comment">// |    |        |      ophogen van de teller, haakje sluiten</span>
+<span class="hljs-comment">// |    |        |       |    body van de loop tussen { }</span>
+<span class="hljs-comment">// |    |        |       |     |</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+    SaxionApp.printLine(<span class="hljs-string">"De teller is nu: "</span> + i);
+}
+
+<span class="hljs-comment">// dit is exact hetzelfde als een lus die je eerder hebt geleerd:</span>
+<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">10</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"De teller is nu: "</span> + i);
+    i++;
+}
+
+<span class="hljs-comment">// for loops mogen uiteraard ook "genest" worden. </span>
+<span class="hljs-comment">// dit doe je bijvoorbeeld als je een kolommen en rijen nodig hebt.</span>
+<span class="hljs-comment">// Voorbeeld van een geneste for-loop met kolommen en rijen:</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> rij = <span class="hljs-number">0</span>; rij &lt; <span class="hljs-number">10</span>; rij++) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> kolom = <span class="hljs-number">0</span>; kolom &lt; <span class="hljs-number">20</span>; kolom++) {
+        SaxionApp.print(<span class="hljs-string">" x"</span>);
+    }
+    SaxionApp.printLine();
+}
+
+<span class="hljs-comment">// for loops kunnen ook de andere kant op tellen</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">10</span>; i &gt; <span class="hljs-number">0</span>; i--) {
+    SaxionApp.printLine(<span class="hljs-string">"De terugtellende teller is nu: "</span> + i);
+}
+
+<span class="hljs-comment">// for loops kunnen ook grotere stappen nemen. Hier een for-loop die elke keer de teller met 2 ophoogt:</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i = i + <span class="hljs-number">2</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"De teller is nu: "</span> + i);
+}
+
+</div></code></pre>
+<h2 id="extra-oefeningen-loops-3">Extra oefeningen Loops 3</h2>
+<ol>
+<li>Laat het programma twee random getallen kiezen onder de 20. Druk beide getallen op het scherm af. Bepaal welk cijfer het laagste en het hoogste cijfer is. Maak een for loop die van het laagste cijfer naar het hoogste cijfer telt en alle cijfers op het scherm laat zien. Extra check: zitten allebei de getallen in de opsomming?</li>
+<li>Hetzelfde als oefening 1, maar laat het programma nu terugtellen van de hoogste tot de laagste.</li>
+<li>Hetzelfde als oefening 1, maar laat het programma nu de teller elke keer met 3 ophogen.</li>
+<li>Laat de gebruiker een paar woorden ingeven, en sla de woorden in een ArrayList op. Gebruik nu een for loop om door de woorden heen te lussen. Vraag bij elk woord aan de gebruiker of hij het woord wil wijzigen. Als hij geen nieuw woord intikt (maar gelijk enter drukt), ga dan gewoon verder. Als hij wel een nieuw woord intikt, vervang dan het huidige woord door het nieuw ingegeven woord. Druk aan het eind de definitieve woordenlijst af.</li>
+<li>Druk een matrix af van drie bij drie door gebruik te maken van geneste for-lussen, van <code>print</code> en <code>printLine</code>. Druk in elke cel de x en y waarde van die cel af (bijvoorbeeld x:y). Het resultaat moet er zo uitzien:</li>
+</ol>
+<pre><code><code><div>0:0  1:0  2:0
+0:1  1:1  2:1
+0:2  1:2  2:2
+</div></code></code></pre>
+<ol start="6">
+<li>Druk nog een keer een matrix van drie bij drie af door gebruik te maken van geneste for-lussen, maar druk deze keer in elke cel het celnummer af van 1 t/m 9. Hint: voor het celnummer gebruik je geen apart for-lus.</li>
+</ol>
+<pre><code><code><div>1  2  3
+4  5  6
+7  8  9
+</div></code></code></pre>
+<ol start="7">
+<li>Voor deze opdracht heb je alleen de volgende commando's tot je beschikking: <code>SaxionApp.print(&quot;#&quot;)</code>, <code>SaxionApp.print(&quot;=&quot;)</code>, <code>SaxionApp.printLine(&quot;&quot;)</code>. Je mag elk statement maar 1x gebruiken! Je mag ze wel in een for-loop zetten. Druk binnen deze beperkingen het volgende plaatje af:</li>
+</ol>
+<pre><code><code><div>#=#=#=
+#=#=#=
+#=#=#=
+</div></code></code></pre>
+<ol start="8">
+<li>Hetzelfde als de vorige, maar je krijgt er nu een gratis statement bij  <code>SaxionApp.print(&quot; &quot;)</code>. Druk binnen de beperkingen het volgende plaatje af:</li>
+</ol>
+<pre><code><code><div>   #
+  ##
+ ###
+####
+</div></code></code></pre>
+<ol start="9">
+<li>Maak een programma dat een plaatje (bijvoorbeeld <a href="http://pngimg.com/uploads/minions/minions_PNG71.png">deze minion</a>) over het scherm van links naar rechts laat lopen, over de hele breedte van het SaxionApp canvas. Let er op dat hij niet van het scherm afloopt, maar rechts tegen de zijkant aan blijft staan. Gebruik <code>SaxionApp.sleep</code> om de animatie te vertragen.</li>
+<li>Breid dit programma uit, zodat hij aan het eind van het scherm naar beneden zakt en de volgende &quot;regel&quot; van rechts naar links terug over het scherm loopt, daarna weer de volgende &quot;regel&quot; van links naar rechts, enz. Herhaal dit totdat de minion helemaal onderaan is, maar laat hem niet van het scherm aflopen.</li>
+</ol>
+<h2 id="spiekbrief-lists-2-de-gewone-array">Spiekbrief Lists 2 (de gewone array)</h2>
+<pre><code class="language-java"><div><span class="hljs-comment">// Net als een ArrayList bevat een array een lijst met waarden.</span>
+<span class="hljs-comment">// Een array is sneller dan een ArrayList, maar veel primitiever.</span>
+
+<span class="hljs-comment">// declareren:</span>
+<span class="hljs-comment">// type, met blokhaken erachter om aan te geven dat het een array is</span>
+<span class="hljs-comment">// |  variabelenaam</span>
+<span class="hljs-comment">// |   |</span>
+<span class="hljs-keyword">int</span>[] getallen;
+
+<span class="hljs-comment">// initialiseren:</span>
+<span class="hljs-comment">// variabelenaam</span>
+<span class="hljs-comment">// |    isgelijkteken</span>
+<span class="hljs-comment">// |     |  new</span>
+<span class="hljs-comment">// |     |   |   type </span>
+<span class="hljs-comment">// |     |   |   | blokhaken met de grootte van de array</span>
+<span class="hljs-comment">// |     |   |   |  |</span>
+getallen = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">10</span>];
+
+<span class="hljs-comment">// declareren en intialiseren kan ook tegelijk:</span>
+String[] namen = <span class="hljs-keyword">new</span> String[<span class="hljs-number">10</span>];
+
+<span class="hljs-comment">// waarden in de array zetten. De index gaat van 0 tot Array.length - 1,</span>
+<span class="hljs-comment">// vergelijkbaar met een ArrayList</span>
+getallen[<span class="hljs-number">0</span>] = <span class="hljs-number">10</span>;
+getallen[<span class="hljs-number">1</span>] = <span class="hljs-number">20</span>;
+
+<span class="hljs-comment">// een array declareren, initialiseren en gelijk ook met waarden vullen:</span>
+<span class="hljs-keyword">int</span> jaartallen = {<span class="hljs-number">1980</span>, <span class="hljs-number">1990</span>, <span class="hljs-number">2000</span>, <span class="hljs-number">2010</span>, <span class="hljs-number">2020</span>};
+
+<span class="hljs-comment">// waarden opvragen uit de array</span>
+SaxionApp.printLine(getallen[<span class="hljs-number">0</span>]);
+SaxionApp.printLine(getallen[<span class="hljs-number">1</span>]);
+
+<span class="hljs-comment">// over een array heen lussen</span>
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; namen.length; i++) {
+    SaxionApp.printLine(namen[i]);
+}
+
+<span class="hljs-comment">// of met de enhanced for loop:</span>
+<span class="hljs-keyword">for</span> (String naam : namen) {
+    SaxionApp.printLine(naam);
+}
+
+<span class="hljs-comment">// alle typen kunnen als array gebruikt worden, ook eigen typen:</span>
+<span class="hljs-keyword">double</span>[] waarden = <span class="hljs-keyword">new</span> <span class="hljs-keyword">double</span>[<span class="hljs-number">4</span>];
+waarden[<span class="hljs-number">3</span>] = <span class="hljs-number">3.14</span>;
+
+Circle[] circles = <span class="hljs-keyword">new</span> Circle[<span class="hljs-number">10</span>];
+circle[<span class="hljs-number">0</span>] = <span class="hljs-keyword">new</span> Circle();
+circle[<span class="hljs-number">0</span>].radius = <span class="hljs-number">10</span>;
+</div></code></pre>
+<h2 id="extra-oefeningen-lists-2">Extra oefeningen Lists 2</h2>
+<ol>
+<li>Maak een array van Strings met 5 elementen. Laat de gebruiker deze 5 elementen invullen met verschillende woorden. Druk ze daarna op het scherm af.</li>
+<li>Neem de array van de vorige oefening, en druk nu het eerste en het laatste element af. Als je een foutmelding krijgt, is er iets mis met de index, zie de spiekbrief.</li>
+<li>Neem de lijst van de vorige oefening, maar druk deze nu op lengte af. Dus het kortste woord eerst en het langste woord het laatst. Verzin of zoek een handig sorteeralgoritme, of gebruik de volgende tip: druk eerst alle woorden met lengte 1 af, daarna met lengte 2, enz., tot en met de lengte van het langste woord.</li>
+<li>Maak een nieuwe klasse met de naam <code>Positie</code>, of iets dergelijks, die als eigenschappen een x en een y coördinaat heeft. Maak een array die vier Positie objecten kan bevatten. Vul de vier posities met vier verschillende coördinaten: laat dit eventueel door de gebruiker invullen. Laat het programma vervolgens alle coördinaten op het scherm tonen en met lijnen met elkaar verbinden. Verbind ook de laatste en eerste coördinaat met elkaar, zodat je een vierhoek op het scherm krijgt.</li>
+<li>Maak een array van vier integers en vul ze met een paar waarden. Maak een methode om twee elementen uit de array om te wisselen. Wissel twee elementen om en druk de lijst af om te controleren of het werkt.</li>
+<li>BONUS: Als je een manier hebt om twee elementen van een array van plek te laten wisselen, dan kun je daarmee een array ook sorteren. Vergelijk elk element van de array met het volgende element in de array. Als het element groter is dan het volgende element, wissel de twee elementen dan om. Herhaal dit hele verhaal totdat je niks meer hebt omgewisseld: dan weet je dat de lijst goed is gesorteerd.</li>
+</ol>
+
+    </body>
+    </html>

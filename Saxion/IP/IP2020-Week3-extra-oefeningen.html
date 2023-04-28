@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>IP2020 - Week 3 extra oefeningen (Loops 1 en If statements 2)</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-light">
+        <h1 id="ip2020---week-3-extra-oefeningen-loops-1-en-if-statements-2">IP2020 - Week 3 extra oefeningen (Loops 1 en If statements 2)</h1>
+<p>Voor het doen van extra oefeningen gebruik je het Sandbox project, dat je
+van Blackboard kunt downloaden bij Week 1.1. Dit is een leeg project waar je
+zelf code in kunt schrijven voor de SaxionApp.</p>
+<h2 id="loops-spiekbrief">Loops spiekbrief</h2>
+<pre><code class="language-java"><div>String antwoord = <span class="hljs-string">"ja"</span>;
+<span class="hljs-comment">// while</span>
+<span class="hljs-comment">//    tussen haakjes de conditie</span>
+<span class="hljs-comment">//    (vaak vergelijk je twee waarden, net als bij een if)</span>
+<span class="hljs-comment">//                 In de accolades de body die herhaald moet worden</span>
+<span class="hljs-comment">//                 De body wordt nooit uitgevoerd als de conditie nooit waar is.</span>
+<span class="hljs-keyword">while</span> (antwoord.equals(<span class="hljs-string">"ja"</span>)) {
+    SaxionApp.printLine(<span class="hljs-string">"Doorgaan?"</span>);
+    antwoord = SaxionApp.readString();
+}
+
+<span class="hljs-comment">// do</span>
+<span class="hljs-comment">//   in de accolades de body die herhaald moet worden</span>
+<span class="hljs-comment">//   De body wordt altijd minstens 1x uitgevoerd, </span>
+<span class="hljs-comment">//   omdat de conditie pas op het eind wordt gechecked</span>
+<span class="hljs-comment">// na de accolades: while </span>
+<span class="hljs-comment">//       met tussen haakjes weer de conditie</span>
+<span class="hljs-comment">//                    en puntkomma achter de haakjes!</span>
+String herhalen;
+<span class="hljs-keyword">do</span> {
+    SaxionApp.printLine(<span class="hljs-string">"Nog een keer herhalen?"</span>);
+    herhalen = SaxionApp.readString();
+} <span class="hljs-keyword">while</span> (herhalen = <span class="hljs-string">"ja"</span>);
+
+<span class="hljs-comment">// een while lus met een teller, die van 1 tot 10 telt</span>
+<span class="hljs-keyword">int</span> teller = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">int</span> tellenTotEnMet = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">while</span> (teller &lt;= tellenTotEnMet) {
+    SaxionApp.printLine(teller);
+    teller++;
+}
+
+<span class="hljs-comment">// while lussen kunnen ook weer genest worden</span>
+<span class="hljs-comment">// dit fragmentje print een matrix van 20 keer 10 X-jes.</span>
+<span class="hljs-keyword">int</span> maxAantalRijen = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">int</span> maxAantalKolommen = <span class="hljs-number">20</span>;
+<span class="hljs-keyword">int</span> rij = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">while</span> (rij &lt;= maxAantalRijen) {
+    <span class="hljs-keyword">int</span> kolom = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">while</span> (kolom &lt; maxAantalKolommen) {
+        SaxionApp.print(<span class="hljs-string">" X "</span>);
+        kolom++;
+    }
+    SaxionApp.printLine(<span class="hljs-string">""</span>);
+
+    rij++;
+}
+
+<span class="hljs-comment">// eindeloze lus</span>
+<span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"Dit stopt nooit"</span>);
+}
+
+<span class="hljs-comment">// eindeloze lus die toch een keer stopt</span>
+<span class="hljs-keyword">int</span> getal = <span class="hljs-number">4</span>;
+<span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
+    <span class="hljs-comment">// (doe dingen)</span>
+    <span class="hljs-keyword">if</span> (getal &gt; <span class="hljs-number">10</span>) {
+        <span class="hljs-keyword">break</span>; <span class="hljs-comment">// stopt de lus</span>
+    }
+}
+
+</div></code></pre>
+<h2 id="extra-oefeningen-loops-1">Extra oefeningen Loops 1</h2>
+<ol>
+<li>Vraag de gebruiker om een getal dat tussen 1 en 100 moet liggen. Toon vervolgens alle getallen van 1 t/m dat getal.</li>
+<li>Vraag de gebruiker om een getal. Maak een lus die zo veel keer een hekje achter elkaar print. Bijvoorbeeld:</li>
+</ol>
+<pre><code><code><div>Hoeveel hekjes wilt u? 
+&gt; 10
+##########
+</div></code></code></pre>
+<ol start="3">
+<li>Laat de gebruiker zelf een paar getallen invoeren. Stop als de gebruiker het getal &quot;0&quot; invoert. Laat daarna de som van alle getallen zien en het gemiddelde van alle getallen.</li>
+<li>Vraag de gebruiker om een getal. Teken daarna zo veel keer een cirkel met de SaxionApp, op een willekeurige x en y coördinaat met een willekeurige grootte.</li>
+<li>Geef het SaxionApp scherm een willekeurige hoogte en breedte, door de hoogte en breedte te bepalen met <code>SaxionApp.getRandomValueBetween</code>. Kies daarna nog een random waarde met dezelfde methode en noem die &quot;grootte&quot;. Verdeel het scherm met horizontale en verticale lijnen in grootte x grootte vakjes.</li>
+<li>Bepaal een willekeurig getal uit de reeks 1, 2 of 3. Laat de gebruiker het getal één keer raden, en geef aan of het goed of fout was, en wat het goede antwoord was. Vraag daarna of de gebruiker het spel nog een keer wil spelen. Zorg dat dit spel weer van voren af aan begint als de gebruiker &quot;ja&quot; antwoordt.</li>
+<li>Vraag de gebruiker om een aantal hekjes en een aantal rijen. Maak vervolgens een programma dat het gevraagde aantal hekjes in het gevraagde aantal rijen print. Bijvoorbeeld:</li>
+</ol>
+<pre><code><code><div>Hoeveel hekjes wilt u?
+&gt; 5
+Hoeveel rijen wilt u?
+&gt; 3
+#####
+#####
+#####
+</div></code></code></pre>
+<ol start="8">
+<li>Vraag de gebruiker opnieuw om een aantal hekjes en een aantal rijen. Maak vervolgens een programma dat het gevraagde aantal hekjes in het gevraagde aantal rijen print, maar dan met spaties ertussen die per rij verspringt zodat een schaakbordpatroon ontstaat. Tip: met <code>getal % 2 == 0</code> bepaal je of een getal even is (of oneven). Voorbeeld:</li>
+</ol>
+<pre><code><code><div>Hoeveel hekjes wilt u?
+&gt; 5
+Hoeveel rijen wilt u?
+&gt; 3
+# # # # #
+ # # # # #
+# # # # #
+</div></code></code></pre>
+<ol start="9">
+<li>Maak een simpele animatie met de SaxionApp: zorg ervoor dat er een blokje linksbovenin het scherm begint, en dat stapje voor stapje rechtsonderin het scherm eindigt. Tips: wis elke keer voor het tekenen het scherm met <code>SaxionApp.clear()</code>, en vertraag de animatie als hij te snel gaat met <code>SaxionApp.sleep(0.1)</code>.</li>
+<li>Laat nu het blokje linksbovenin beginnen, helemaal naar rechts schuiven, dan een regel naar beneden springen en weer naar links schuiven, dan weer een regel naar beneden springen en naar rechts schuiven, enz., totdat het blokje helemaal beneden is.</li>
+</ol>
+<h1 id="if-statements-2-spiekbrief">If statements 2 spiekbrief</h1>
+<pre><code class="language-java"><div><span class="hljs-keyword">int</span> leeftijd = <span class="hljs-number">17</span>;
+<span class="hljs-comment">// ken condities toe aan booleans</span>
+<span class="hljs-comment">// boolean</span>
+<span class="hljs-comment">//      variabelenaam</span>
+<span class="hljs-comment">//            isgelijkteken</span>
+<span class="hljs-comment">//                conditie zonder haakjes</span>
+<span class="hljs-comment">//                           puntkomma</span>
+<span class="hljs-keyword">boolean</span> isTeOud = leeftijd &gt; <span class="hljs-number">88</span>;
+<span class="hljs-keyword">boolean</span> isTeJong = leeftijd &lt; <span class="hljs-number">8</span>;
+
+<span class="hljs-comment">// booleans kun je gebruik in if-statements</span>
+<span class="hljs-keyword">if</span> (isTeOud) {
+    SaxionApp.printLine(<span class="hljs-string">"Je bent te oud."</span>);
+}
+<span class="hljs-keyword">if</span> (isTeJong) {
+    SaxionApp.printLine(<span class="hljs-string">"Je bent te jong"</span>);
+}
+
+<span class="hljs-comment">// je kunt booleans en condities combineren met de volgende operators:</span>
+<span class="hljs-comment">// &amp;&amp; = AND, beide condities moeten true zijn </span>
+<span class="hljs-comment">// || = OR, één van beide condities moet true zijn</span>
+<span class="hljs-comment">// ! = NOT, keer de conditie om die erachter staat.</span>
+<span class="hljs-keyword">if</span> (isTeOud || isTeJong) {
+    SaxionApp.printLine(<span class="hljs-string">"Sorry, je mag niet meedoen, je bent te oud of te jong."</span>);
+}
+
+<span class="hljs-comment">// ook String vergelijkingen kun je op die manier gebruiken</span>
+String gerecht = <span class="hljs-string">"Gebraden varkensvlees"</span>;
+SaxionApp.printLine(<span class="hljs-string">"Bent u vegetariër?"</span>);
+String antwoord = SaxionApp.readString();
+<span class="hljs-keyword">boolean</span> isVegetarier = antwoord.equals(<span class="hljs-string">"ja"</span>) || antwoord.equals(<span class="hljs-string">"j"</span>);
+<span class="hljs-keyword">if</span> (isVegetarier &amp;&amp; !gerecht.contains(<span class="hljs-string">"vlees"</span>)) {
+    SaxionApp.printLine(<span class="hljs-string">"Het gerecht voldoet aan uw eisen, er zit geen vlees in"</span>);
+}
+
+<span class="hljs-comment">// je kunt dit alles ook op andere plekken gebruiken</span>
+<span class="hljs-comment">// waar je condities gebruikt:</span>
+<span class="hljs-keyword">while</span> (isTeOud || isTeJong) {
+    <span class="hljs-comment">// enz.</span>
+}
+</div></code></pre>
+<h2 id="extra-oefeningen-if-statements-2">Extra oefeningen If statements 2</h2>
+<ol>
+<li>Probeer opnieuw je huisgenoten en/of familie te identificeren. Vraag een serie persoonlijke vragen aan de gebruiker, die deze met ja of nee mag antwoorden. Sla de antwoorden op in boolean variabelen. Combineer daarna de antwoorden in verschillende condities om te bepalen wie er achter de computer zit.</li>
+<li>Laat de gebruiker twee verschillende zinnetjes invoeren. Controleer of het echte zinnen zijn door
+<ul>
+<li>te checken of er een spatie in staat,</li>
+<li>en door te checken of de lengte groter is dan 10 tekens óf dat er een punt aan het eind van de zin staat. Tip: gebruik <code>String.endsWith()</code>.</li>
+<li>De zinnen mogen niet aan elkaar gelijk zijn.</li>
+</ul>
+</li>
+<li>Laat de gebruiker zijn leeftijd invoeren. Laat het programma daarna twee willekeurige getallen verzinnen die de gebruiker bij elkaar moet optellen. Als de gebruiker jonger is dan 10, dan mag hij drie pogingen doen om het goede antwoord te verzinnen. Als hij jonger is dan 17, dan mag hij twee pogingen doen. Alle anderen mogen maar 1 poging doen.</li>
+<li>Maak een programma dat een vierkantje in het midden van het SaxionApp scherm tekent. We gaan deze weer animeren, maar nu zorgen we ervoor dat je het blokje kunt besturen door <code>W</code>, <code>A</code>, <code>S</code> of <code>D</code> in te drukken. Gebruik <code>SaxionApp.readChar()</code> om te wachten op een toets. Zorg ervoor dat het blokje naar boven gaat als je W indruk, naar links als je A indrukt, naar beneden als je S indrukt, en naar rechts als je D indrukt. Als het blokje de randen raakt, mag hij niet verder naar die kant.</li>
+</ol>
+
+    </body>
+    </html>

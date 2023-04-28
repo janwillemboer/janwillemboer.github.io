@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>IP2020 - Week 4 extra oefeningen (Methoden 3)</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-light">
+        <h1 id="ip2020---week-4-extra-oefeningen-methoden-3">IP2020 - Week 4 extra oefeningen (Methoden 3)</h1>
+<p>Voor het doen van extra oefeningen gebruik je het Sandbox project, dat je
+van Blackboard kunt downloaden bij Week 1.1. Dit is een leeg project waar je
+zelf code in kunt schrijven voor de SaxionApp.</p>
+<h2 id="spiekbrief-methoden-3">Spiekbrief Methoden 3</h2>
+<pre><code class="language-java"><div><span class="hljs-comment">// eigen methode roep je aan zoals je gewend bent</span>
+<span class="hljs-comment">// naam van de methode</span>
+<span class="hljs-comment">//          parameters/argumenten tussen haakjes</span>
+<span class="hljs-comment">//                                          puntkomma</span>
+toonRelatie(<span class="hljs-string">"Hans"</span>, <span class="hljs-string">"Grietje"</span>, <span class="hljs-string">"broer en zus"</span>);
+
+<span class="hljs-comment">// eigen methode declaratie:</span>
+<span class="hljs-comment">// public</span>
+<span class="hljs-comment">//    returnwaarde (of void)</span>
+<span class="hljs-comment">//           methodenaam</span>
+<span class="hljs-comment">//                      tussen haakjes de variabelen waarin</span>
+<span class="hljs-comment">//                      de parameters/argumenten worden opgeslagen</span>
+<span class="hljs-comment">//                      voor deze methode</span>
+<span class="hljs-comment">//                                             accolades voor method body</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">toonRelatie</span><span class="hljs-params">(String naam1, String naam2, String relatie)</span> </span>{
+    SaxionApp.print(naam1);
+    SaxionApp.print(<span class="hljs-string">" en "</span>);
+    SaxionApp.print(naam2);
+    SaxionApp.print(<span class="hljs-string">" zijn "</span>);
+    SaxionApp.print(relatie);
+    SaxionApp.printLine(<span class="hljs-string">" van elkaar."</span>);
+}
+</div></code></pre>
+<pre><code class="language-java"><div><span class="hljs-comment">// een eigen methode kan ook een returnwaarde hebben</span>
+<span class="hljs-keyword">int</span> inhoudKubus = berekenKubusInhoud(<span class="hljs-number">50</span>);
+
+<span class="hljs-comment">// declaratie eigen methode met returnwaarde:</span>
+<span class="hljs-comment">// public</span>
+<span class="hljs-comment">//   returntype</span>
+<span class="hljs-comment">//         naam methode</span>
+<span class="hljs-comment">//                         parameters/argumenten</span>
+<span class="hljs-comment">//                                  methode body tussen accolades</span>
+<span class="hljs-comment">// in de methodbody:</span>
+<span class="hljs-comment">//  return een waarde waarvan het type hetzelfde is als het returntype </span>
+<span class="hljs-comment">//  van de methode.</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">berekenKubusInhoud</span><span class="hljs-params">(<span class="hljs-keyword">int</span> zijde)</span> </span>{
+    <span class="hljs-keyword">int</span> inhoud = zijde * zijde * zijde;
+    <span class="hljs-keyword">return</span> inhoud;
+}
+</div></code></pre>
+<pre><code class="language-java"><div><span class="hljs-comment">// accolades geven variabelen "scope". Buiten de accolades is de </span>
+<span class="hljs-comment">// variabele niet zichtbaar of bruikbaar.</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span> getal = <span class="hljs-number">10</span>;
+    SaxionApp.printLine(getal); <span class="hljs-comment">// getal is binnen de scope, dus kan getoond worden</span>
+    andereMethode();
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">andereMethode</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-comment">// FOUT: dit kan niet, getal is niet binnen de scope van deze methode.</span>
+    getal = <span class="hljs-number">11</span>; 
+}
+</div></code></pre>
+<h2 id="extra-oefeningen-methoden-3">Extra oefeningen Methoden 3</h2>
+<ol>
+<li>Pak een paar van de eerdere oefeningen erbij die je gemaakt hebt. Maak deze programma's leesbaarder door delen van de code in methodes te plaatsen.</li>
+<li>Maak een nieuwe methode die aan de gebruiker vraagt om een naam in te typen. Zorg er daarbij voor dat de gebruiker geen lege naam mag opgeven. Zorg ervoor dat je de naam op het scherm kunt afdrukken door de methode als volgt aan te roepen:</li>
+</ol>
+<pre><code class="language-java"><div>String naam = vraagNaam();
+SaxionApp.printLine(naam);
+</div></code></pre>
+<ol start="3">
+<li>Maak een methode waaraan je een tekst kunt meegeven als parameter. De methode moet de tekst op een willekeurige plek op het Saxion schermpje afdrukken, met verschillende groottes en verschillende kleuren. Roep deze methode met verschillende woorden aan, zodat een wordcloud ontstaat. Maak het eventueel zo dat de gebruiker verschillende woorden kan opgeven.</li>
+<li>Maak binnen de run() methode een eigen variabele met een naam, type en waarde die je zelf verzint. Druk de variabele aan het eind van het programma op het scherm af. Roep nu vlak daarvoor een nieuwe, eigen methode aan. Probeer de methode zo te maken dat je de waarde van je variabele daarmee kunt veranderen. Lukt dat?</li>
+<li>Maak een methode waar je een letter of teken aan kunt doorgeven (bijvoorbeeld een spatie of een hekje), en een getal, en die dat teken vervolgens zo veel keer achter elkaar op het scherm laat zien. Bijvoorbeeld <code>herhaalTeken(&quot;#&quot;, 5);</code> moet als output opleveren</li>
+</ol>
+<pre><code><code><div>#####
+</div></code></code></pre>
+<ol start="6">
+<li>Roep de methode die je in de vorige oefening hebt gemaakt verschillende keren met verschillende argumenten aan om het volgende op het scherm te tekenen:</li>
+</ol>
+<pre><code><code><div>   *
+  ***
+ *****
+*******
+   |
+</div></code></code></pre>
+
+    </body>
+    </html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>IP2020 - Week 1 extra oefeningen (Methoden en variabelen)</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-light">
+        <h1 id="ip2020---week-1-extra-oefeningen-methoden-en-variabelen">IP2020 - Week 1 extra oefeningen (Methoden en variabelen)</h1>
+<p>Voor het doen van extra oefeningen gebruik je het Sandbox project, dat je
+van Blackboard kunt downloaden bij Week 1.1. Dit is een leeg project waar je
+zelf code in kunt schrijven voor de SaxionApp.</p>
+<h2 id="methoden-aanroepen-spiekbrief">Methoden aanroepen spiekbrief</h2>
+<pre><code class="language-java"><div><span class="hljs-comment">//   methodenaam, </span>
+<span class="hljs-comment">//              tussen haakjes de argumenten,</span>
+<span class="hljs-comment">//                         sluit af met puntkomma.</span>
+SaxionApp.printLine(<span class="hljs-string">"Hello world"</span>);
+SaxionApp.drawLine(<span class="hljs-number">100</span>, <span class="hljs-number">100</span>, <span class="hljs-number">300</span>, <span class="hljs-number">100</span>);
+</div></code></pre>
+<h2 id="extra-oefeningen-methoden-aanroepen">Extra oefeningen methoden aanroepen</h2>
+<ol>
+<li>Gebruik SaxionApp.print en SaxionApp.printLine door elkaar om verschillende teksten af te drukken op het scherm. Wat is het verschil?</li>
+<li>Gebruik SaxionApp.printLine om twee teksten op het scherm te laten zien en  tussen twee teksten een lege regel te krijgen.</li>
+<li>Voor oefening 3 heb je <em>alleen maar</em> de volgende statements tot je beschikking: <code>SaxionApp.print(&quot;=&quot;);</code> en <code>SaxionApp.print(&quot;#&quot;);</code> en <code>SaxionApp.printLine(&quot;&quot;);</code>. Je mag elk statement wel meerdere keren gebruiken. Zorg ervoor dat je met deze statements een programmaatje maakt dat het volgende op het scherm laat zien:</li>
+</ol>
+<pre><code><code><div>=#=#=
+=#=#=
+</div></code></code></pre>
+<ol start="4">
+<li>Dezelfde oefening, maar je krijgt er gratis een statement bij, namelijk <code>SaxionApp.print(&quot; &quot;);</code>. Maak nu het volgende plaatje:</li>
+</ol>
+<pre><code><code><div>   #
+  ###
+ #####
+#######
+   =
+   =
+</div></code></code></pre>
+<ol start="5">
+<li>Maak een wordcloud met verschillende woorden in verschillende groottes en kleuren van hoe je je bij het doen van deze oefeningen voelt. Gebruik hiervoor
+<ul>
+<li><code>SaxionApp.turnBorderOff();</code> om de lelijke rand om de tekst kwijt te raken</li>
+<li><code>SaxionApp.setFill(Color.RED);</code> om de kleur van de tekst in te stellen</li>
+<li><code>SaxionApp.drawBorderedText(&quot;Fantastisch&quot;, 100, 200, 20);</code>, waarbij &quot;Fantastisch&quot; een voorbeeld is van de tekst die je wilt laten zien; 100, 200 zijn een voorbeeld van de x- en y-coördinaten van waar de tekst moet verschijnen; 20 is een voorbeeld van de tekstgrootte.</li>
+</ul>
+</li>
+<li>Maak gebruik van alle tekenmogelijkheden die je tot je beschikking hebt in de SaxionApp (cirkels, vierkanten, lijnen e.d.) om een prachtige tekening te maken die de meester ontroert.</li>
+</ol>
+<h2 id="variabelen-declareren-en-intialiseren-spiekbrief">Variabelen declareren en intialiseren spiekbrief</h2>
+<pre><code class="language-java"><div><span class="hljs-comment">// type</span>
+<span class="hljs-comment">//   naam</span>
+<span class="hljs-comment">//      isgelijkteken</span>
+<span class="hljs-comment">//           initiële waarde</span>
+<span class="hljs-comment">//             statement afsluiten met puntkomma</span>
+<span class="hljs-keyword">int</span> getal = <span class="hljs-number">10</span>;         <span class="hljs-comment">// int is een geheel getal (integer)</span>
+<span class="hljs-keyword">double</span> pi = <span class="hljs-number">3.14</span>;    <span class="hljs-comment">// double is een kommagetal</span>
+String tekst = <span class="hljs-string">"Hoi"</span>;   <span class="hljs-comment">// String is een tekst</span>
+<span class="hljs-keyword">boolean</span> isHetZo = <span class="hljs-keyword">true</span>; <span class="hljs-comment">// boolean is true of false</span>
+<span class="hljs-keyword">char</span> letter = <span class="hljs-string">'y'</span>;      <span class="hljs-comment">// char is 1 teken</span>
+
+<span class="hljs-comment">// je mag het declareren en initialiseren splitsen:</span>
+<span class="hljs-keyword">int</span> nummer;  <span class="hljs-comment">// declareren</span>
+nummer = <span class="hljs-number">11</span>; <span class="hljs-comment">// initialiseren</span>
+
+<span class="hljs-comment">// gebruik variabelen om methoden mee aan te roepen</span>
+SaxionApp.printLine(tekst);
+SaxionApp.printLine(getal);
+
+<span class="hljs-comment">// variabelen kun je veranderen in iets anders</span>
+<span class="hljs-comment">// nu niet meer het type ervoor, maar gelijk de naam</span>
+<span class="hljs-comment">//   isgelijkteken</span>
+<span class="hljs-comment">//       nieuwe waarde</span>
+getal = <span class="hljs-number">11</span>;
+tekst = <span class="hljs-string">"Hallo"</span>;
+isHetZo = <span class="hljs-keyword">false</span>;
+
+<span class="hljs-comment">// gebruik variabelen om mee te rekenen</span>
+<span class="hljs-comment">// + is optellen</span>
+<span class="hljs-comment">// - is aftrekken</span>
+<span class="hljs-comment">// * is vermenigvuldigen</span>
+<span class="hljs-comment">// / is delen</span>
+<span class="hljs-comment">// % is modulo, dat is de restwaarde van een deling (10 % 6 = 4)</span>
+<span class="hljs-keyword">int</span> optelling = getal + getal;
+<span class="hljs-keyword">double</span> omtrek = pi * <span class="hljs-number">2</span>;
+<span class="hljs-keyword">double</span> deling = omtrek / <span class="hljs-number">10</span>;
+
+<span class="hljs-comment">// let op dat je bij delen altijd doubles gebruikt.</span>
+<span class="hljs-comment">// als je integers gebruikt, dan wordt er naar beneden afgerond.</span>
+<span class="hljs-comment">// om dit te voorkomen moet je integers "casten" naar double:</span>
+deling = (<span class="hljs-keyword">double</span>)getal / <span class="hljs-number">10</span>;
+
+<span class="hljs-comment">// tel 1 bij een variabele op</span>
+getal = getal + <span class="hljs-number">1</span>; <span class="hljs-comment">// getal wordt nu 1 meer</span>
+<span class="hljs-comment">// omdat dit zo vaak voorkomt, is daar een kortere versie van bedacht:</span>
+getal++;          <span class="hljs-comment">// getal wordt nu 1 meer.</span>
+
+<span class="hljs-comment">// combineer teksten</span>
+String naam = <span class="hljs-string">"Kees"</span>;
+String begroeting = <span class="hljs-string">"Hallo "</span> + naam;
+
+<span class="hljs-comment">// combineer teksten en getallen</span>
+tekst = <span class="hljs-string">"De omtrek is "</span> + omtrek;
+
+<span class="hljs-comment">// mag ook gelijk in de methode-aanroep</span>
+SaxionApp.printLine(<span class="hljs-string">"Hallo "</span> + naam + <span class="hljs-string">", de omtrek is "</span> + omtrek);
+</div></code></pre>
+<h2 id="extra-oefeningen-variabelen">Extra oefeningen variabelen</h2>
+<ol>
+<li>Maak twee variabelen met hele getallen (integers). Zorg ervoor dat je programma de volgende dingen uitrekent en netjes laat zien:
+<ul>
+<li>tel ze bij elkaar op</li>
+<li>trek ze van elkaar af</li>
+</ul>
+</li>
+<li>Maak twee variabelen met hele getallen (integers). Zorg ervoor dat je programma de volgende dingen uitrekent en netjes laat zien:
+<ul>
+<li>vermenigvuldig ze met elkaar</li>
+<li>reken de restwaarde uit van de deling</li>
+</ul>
+</li>
+<li>Maak twee variabelen met getallen met decimalen (doubles). Zorg ervoor dat je programma de volgende dingen uitrekent en netjes laat zien:
+<ul>
+<li>vermenigvuldig ze met elkaar</li>
+<li>deel de getallen door elkaar</li>
+</ul>
+</li>
+<li>Maak twee variabelen met getallen. Zorg ervoor dat je programma het percentage berekent dat het ene getal van het andere is.</li>
+<li>Maak twee integer variabelen, de een met de waarde 2 en de ander met de waarde 3. Zorg ervoor dat je programma de eerste door de tweede deelt en de juiste uitkomst geeft, namelijk iets in de buurt van 0.66666. Als je programma niet de juiste waarde oplevert, kijk dan naar wat &quot;casten&quot; is hierboven.</li>
+<li>Maak een programma waarin je deze variabelen gebruikt: <code>pi</code> en <code>straal</code>. Gebruik voor pi de waarde 3.14159. Zorg er nu voor dat het programma met een nette melding afdrukt wat de omtrek en de oppervlakte van een cirkel met de opgegeven straal is (gebruik voor straal een waarde die je zelf verzint). De berekening voor de omtrek is 2 keer pi keer de straal. De berekening voor de oppervlakte is pi keer straal keer straal.</li>
+<li>Maak een variabele voor een begroeting en een voor een naam. Laat je programma deze achter elkaar op het scherm afdrukken door meerdere keren <code>SaxionApp.print()</code> aan te roepen.</li>
+<li>Hetzelfde als de vorige, maar gebruik nu één keer <code>SaxionApp.printLine()</code> om hetzelfde te bereiken, en combineer in de aanroep de variabelen met elkaar.</li>
+<li>Schrijf een verhaaltje van een paar zinnen over een alledaagse situatie, waarbij een paar woorden in variabelen staan. Toon dit verhaal op het scherm. Verzin nu andere waarden voor de variabelen, waardoor het verhaal in een horrorstory verandert.</li>
+</ol>
+
+    </body>
+    </html>

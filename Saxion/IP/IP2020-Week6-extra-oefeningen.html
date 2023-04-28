@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>IP 2020 - Extra oefeningen week 6 (Variabelen 2)</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-light">
+        <h1 id="ip-2020---extra-oefeningen-week-6-variabelen-2">IP 2020 - Extra oefeningen week 6 (Variabelen 2)</h1>
+<p>Voor het doen van extra oefeningen gebruik je het Sandbox project, dat je
+van Blackboard kunt downloaden bij Week 1.1. Dit is een leeg project waar je
+zelf code in kunt schrijven voor de SaxionApp.</p>
+<h2 id="spiekbrief-variabelen-2-klasses">Spiekbrief variabelen 2 (klasses)</h2>
+<pre><code class="language-java"><div><span class="hljs-comment">// een eigen klasse definiëren:</span>
+<span class="hljs-comment">// public</span>
+<span class="hljs-comment">// |   class</span>
+<span class="hljs-comment">// |    |    naam van de klasse</span>
+<span class="hljs-comment">// |    |      |            eigenschappen </span>
+<span class="hljs-comment">// |    |      |            tussen accolades</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MijnPrachtigeKlasse</span> </span>{
+
+    <span class="hljs-comment">// eigenschappen van de klasse:</span>
+    <span class="hljs-comment">// public</span>
+    <span class="hljs-comment">// |   type</span>
+    <span class="hljs-comment">// |    |     naam</span>
+    <span class="hljs-comment">// |    |       |  puntkomma</span>
+    <span class="hljs-keyword">public</span> String titel;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> getal;
+}
+
+<span class="hljs-comment">// dit moet in een losse java-file staan, die dezelfde naam </span>
+<span class="hljs-comment">// heeft als de naam van de klasse, dus in dit geval </span>
+<span class="hljs-comment">// MijnPrachtigeKlasse.java</span>
+</div></code></pre>
+<pre><code class="language-java"><div><span class="hljs-comment">// eigen klasse als variabele gebruiken:</span>
+<span class="hljs-comment">// type (= naam van de klasse)</span>
+<span class="hljs-comment">//  |          naam v/d variabele</span>
+<span class="hljs-comment">//  |               |   isgelijkteken</span>
+<span class="hljs-comment">//  |               |    |  new + naam van de klasse</span>
+<span class="hljs-comment">//  |               |    |  |      |         lege haakjes</span>
+<span class="hljs-comment">//  |               |    |  |      |               | puntkomma</span>
+MijnPrachtigeKlasse ding = <span class="hljs-keyword">new</span> MijnPrachtigeKlasse();
+
+<span class="hljs-comment">// Dit heet de klasse *instantiëren*, zodat je een *object* </span>
+<span class="hljs-comment">// van die klasse krijgt.</span>
+
+<span class="hljs-comment">// eigenschappen zetten gaat net als variabelen:</span>
+ding.titel = <span class="hljs-string">"Mijn titel"</span>;
+ding.getal = <span class="hljs-number">10</span>;
+
+<span class="hljs-comment">// eigenschappen opvragen ook:</span>
+SaxionApp.printLine(<span class="hljs-string">"De titel is: "</span> + ding.titel);
+<span class="hljs-keyword">int</span> som = ding.getal + <span class="hljs-number">20</span>;
+
+<span class="hljs-comment">// andere objecten van dezelfde klasse hebben hun eigen data</span>
+<span class="hljs-comment">// zonder dat dit de data van eerder gemaakte objecten beïnvloedt</span>
+MijnPrachtigeKlasse anderDing = <span class="hljs-keyword">new</span> MijnPrachtigeKlasse();
+anderDing.title = <span class="hljs-string">"Andere titel"</span>;
+anderDing.getal = <span class="hljs-number">123</span>;
+
+SaxionApp.printLine(anderDing.titel); <span class="hljs-comment">// "Andere titel"</span>
+SaxionApp.printLine(ding.titel); <span class="hljs-comment">// "Mijn titel"</span>
+</div></code></pre>
+<pre><code class="language-java"><div><span class="hljs-comment">// een eigen klasse als parameter van een method gebruiken:</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">drukInfoAf</span><span class="hljs-params">(MijnPrachtigeKlasse x)</span> </span>{
+    SaxionApp.printLine(x.titel + <span class="hljs-string">" = "</span> + x.getal);
+}
+</div></code></pre>
+<pre><code class="language-java"><div><span class="hljs-comment">// een eigen klasse als returnwaarde van een method gebruiken</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> MijnPrachtigeKlasse <span class="hljs-title">maakDing</span><span class="hljs-params">()</span> </span>{
+    MijnPrachtigeKlasse x = <span class="hljs-keyword">new</span> MijnPrachtigeKlasse();
+    x.titel = <span class="hljs-string">"automatisch gegenereerd"</span>;
+    <span class="hljs-keyword">return</span> x;
+}
+
+<span class="hljs-comment">// als een klasse het returntype is, kun je "null" gebruiken</span>
+<span class="hljs-comment">// om aan te geven dat er een lege waarde gereturned wordt:</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> MijnPrachtigeKlasse <span class="hljs-title">leeg</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+}
+</div></code></pre>
+<pre><code class="language-java"><div><span class="hljs-comment">// een eigen klasse in een arraylist gebruiken</span>
+ArrayList&lt;MijnPrachtigeKlasse&gt; lijst = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+MijnPrachtigeKlasse x = <span class="hljs-keyword">new</span> MijnPrachtigeKlasse();
+lijst.add(x);
+</div></code></pre>
+<h2 id="extra-oefeningen-variabelen-2">Extra oefeningen variabelen 2</h2>
+<ol>
+<li>Maak een nieuwe klasse &quot;Cursus&quot;, met een eigenschap &quot;naam&quot; en een eigenschap &quot;waardering&quot;. Maak nu in je programma (minstens) twee verschillende variabelen van het type Cursus om twee verschillende cursussen mee op te slaan. Gebruik dit om de cursussen waar je nu aan deelneemt als titel, en geef bij waardering aan wat je van de cursus vindt. Druk deze gegevens nu een voor een op het scherm af.</li>
+<li>Maak een nieuwe klasse Cirkel, waar je de x-coördinaat, de y-coördinaat en de straal van een cirkel in kunt opslaan. Laat de gebruiker een x-coördinaat, een y-coördinaat en een straal invoeren. Sla deze gegevens op in een nieuw object van de klasse die je zojuist hebt gemaakt. Maak daarna een methode die als parameter een Cirkel meekrijgt, en die de cirkel op het scherm tekent.</li>
+<li>Pas de vorige oefening aan, zodat de gebruiker drie cirkels kan invoeren. Sla de cirkel objecten op in verschillende variabelen. Gebruik je methode uit de vorige oefening om de cirkels op het scherm te tonen.</li>
+<li>Pas de vorige oefening aan, zodat de gebruiker niet één of drie, maar oneindig veel cirkels kan invoeren totdat hij als straal &quot;0&quot; invoert. Sla de cirkel objecten op in een lijst en gebruik deze daarna om alle cirkels op het scherm te tonen.</li>
+<li>Maak een nieuwe klasse Woord, die bedoeld is om een woord in een wordcloud te tonen. De klasse moet de eigenschappen &quot;tekst&quot;, &quot;grootte&quot;, x, y, en &quot;kleur&quot; hebben. Tip: gebruik <code>java.awt.Color</code> als type voor de kleur. Zet hiervoor import <code>java.awt.*;</code> bovenin het bestand bij de andere imports, nu kun je <code>Color</code> gebruiken. Vul een lijst met verschillende van deze woorden. Maak daarna een methode die de lijst afdrukt als wordcloud.</li>
+<li>In Minecraft kun je twee items die versleten zijn combineren tot een nieuw item. Dit gaan we hier simuleren.
+<ul>
+<li>Maak een klasse &quot;MinecraftItem&quot;, die een omschrijving heeft en een eigenschap &quot;health&quot;. Health krijgt straks een waarde van 0 tot 100: 0 is totaal versleten, 100 is nog helemaal goed.</li>
+<li>Maak nu drie objecten in drie verschillende variabelen: twee zwaarden die 80% en 20% health hebben, en een schoffel die op 90% zit.</li>
+<li>Maak een methode &quot;combine&quot;, die twee MinecraftItems als parameters meekrijgt, en die een MinecraftItem als returnwaarde heeft. De methode checkt of de items dezelfde omschrijving hebben en returnt een nieuw item met 100% health als dat zo is. De methode returnt een item met omschrijving &quot;FOUT&quot; met 0% health als dat niet zo is.</li>
+<li>Probeer in je programma de werking van je klasse en methode uit. Druk de items af op het scherm, combineer ze, en druk af wat er terugkomt uit de methode.</li>
+</ul>
+</li>
+</ol>
+
+    </body>
+    </html>
