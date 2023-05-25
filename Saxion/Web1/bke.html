@@ -1,0 +1,79 @@
+<html>
+
+<body>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .rij {
+            border-bottom: 1px solid Silver;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .col {
+            width: 100px;
+            height: 100px;
+            font-size: 50px;
+            text-align: center;
+            border-right: 1px solid Silver;
+        }
+    </style>
+
+    <div class="container">
+        <div class="rij">
+            <div class="col">
+                O
+            </div>
+            <div class="col">
+                O
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+        <div class="rij">
+            <div class="col">
+                X
+            </div>
+            <div class="col">
+                O
+            </div>
+            <div class="col">
+                X
+            </div>
+        </div>
+        <div class="rij">
+            <div class="col">
+
+            </div>
+            <div class="col">
+                X
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
+    </div>
+    <p>Aan de beurt is: <span id="turn">X</span></p>
+
+    <script>
+        const cols = document.getElementsByClassName("col");
+        let turn = "X";
+        for (let i = 0; i < cols.length; i++) {
+            cols[i].addEventListener("click", () => {
+                cols[i].innerText = turn;
+                if (turn === "X") {
+                    turn = "O";
+                } else {
+                    turn = "X";
+                }
+                document.getElementById("turn").innerText = turn;
+            });
+        }
+    </script>
+</body>
+
+</html>
