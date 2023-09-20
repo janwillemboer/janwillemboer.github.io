@@ -355,7 +355,6 @@ code {
 </style>
 
 <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
-
 </head>
 <body>
   <script>
@@ -368,22 +367,20 @@ code {
   </script>
 <h1 id="level-1">Level 1</h1>
 <p>Copy this fragment to the run() method of an exercise in IntelliJ.</p>
-<pre class="hljs fragment"><code><div>SaxionApp.printLine(<span class="hljs-string">"Before the while-loop starts"</span>);
-<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
-<span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">10</span>) {
-    SaxionApp.printLine(<span class="hljs-string">"In the loop."</span>);
-    SaxionApp.sleep(<span class="hljs-number">0.2</span>);
+<pre>
+SaxionApp.printLine("Before the while-loop starts");
+int i = 0;
+while (i < 10) {
+    SaxionApp.printLine("In the loop.");
+    SaxionApp.sleep(0.2);
 
     i++;
 }
 
-SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</span>);
-</div></code></pre>
-<ol>
-<li>Run the code. You should see appearing the texts. How many times does &quot;In the loop&quot; appear?</li>
-<li>Change the code so the message &quot;In the loop&quot; appears 20 times.</li>
-</ol>
-<p>Solution:</p>
+SaxionApp.printLine("The while-loop has finished");
+</pre>
+<p>Run the code. You should see appearing the texts. How many times does &quot;In the loop&quot; appear?
+Change the code so the message &quot;In the loop&quot; appears 20 times.</p>
 <pre class="hljs"><code><div>SaxionApp.printLine(<span class="hljs-string">"Before the while-loop starts"</span>);
 <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
 <span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">20</span>) { <span class="hljs-comment">// 10 was changed to 20 here</span>
@@ -394,10 +391,7 @@ SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</spa
 }
 SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</span>);
 </div></code></pre>
-<ol start="3">
-<li>Change the code so the value of the variable i appears instead of the text &quot;In the loop&quot;.</li>
-</ol>
-<p>Solution:</p>
+<p>Change the code so the value of the variable i appears instead of the text &quot;In the loop&quot;.</p>
 <pre class="hljs"><code><div>SaxionApp.printLine(<span class="hljs-string">"Before the while-loop starts"</span>);
 <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
 <span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">20</span>) {
@@ -408,10 +402,7 @@ SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</spa
 }
 SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</span>);
 </div></code></pre>
-<ol start="4">
-<li>Change the code so i takes steps of two instead of only one at the time.</li>
-</ol>
-<p>Solution:</p>
+<p>Change the code so i takes steps of two instead of only one at the time.</p>
 <pre class="hljs"><code><div>SaxionApp.printLine(<span class="hljs-string">"Before the while-loop starts"</span>);
 <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
 <span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">20</span>) {
@@ -422,10 +413,7 @@ SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</spa
 }
 SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</span>);
 </div></code></pre>
-<ol start="5">
-<li>Change the code so i takes steps of five.</li>
-</ol>
-<p>Solution:</p>
+<p>Change the code so i takes steps of five.</p>
 <pre class="hljs"><code><div>SaxionApp.printLine(<span class="hljs-string">"Before the while-loop starts"</span>);
 <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
 <span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">20</span>) {
@@ -436,10 +424,7 @@ SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</spa
 }
 SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</span>);
 </div></code></pre>
-<ol start="6">
-<li>Change the code so the loop is counting backwards. Do this by subtracting 1 from i instead of adding 5. What happens when you start the program? Why? To stop your program, click the red stop button in IntelliJ.</li>
-</ol>
-<p>Solution:</p>
+<p>Change the code so the loop is counting backwards. Do this by subtracting 1 from i instead of adding 5. What happens when you start the program? Why? To stop your program, click the red stop button in IntelliJ.</p>
 <pre class="hljs"><code><div>SaxionApp.printLine(<span class="hljs-string">"Before the while-loop starts"</span>);
 <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
 <span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">20</span>) {
@@ -453,11 +438,8 @@ SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</spa
 }
 SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</span>);
 </div></code></pre>
-<ol start="7">
-<li>To stop the loop from running, we need to change the condition.
-Change it so the loop runs as long as i is more than -10.</li>
-</ol>
-<p>Solution:</p>
+<p>To stop the loop from running, we need to change the condition.
+Change it so the loop runs as long as i is more than -10.</p>
 <pre class="hljs"><code><div>SaxionApp.printLine(<span class="hljs-string">"Before the while-loop starts"</span>);
 <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
 <span class="hljs-keyword">while</span> (i &gt; -<span class="hljs-number">10</span>) { <span class="hljs-comment">// condition was changed from &lt;20 to &gt;-10.</span>
@@ -469,10 +451,7 @@ Change it so the loop runs as long as i is more than -10.</li>
 SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</span>);
 </div></code></pre>
 <h1 id="level-2">Level 2</h1>
-<ol>
-<li>Now create a new loop that counts from 10 down to 1.</li>
-</ol>
-<p>Solution:</p>
+<p>Now create a new loop that counts from 10 down to 1.</p>
 <pre class="hljs"><code><div><span class="hljs-keyword">int</span> i = <span class="hljs-number">10</span>; <span class="hljs-comment">// loop variable starts at 10</span>
 <span class="hljs-keyword">while</span> (i &gt; <span class="hljs-number">0</span>) { <span class="hljs-comment">// run as long as it is more than 0</span>
     SaxionApp.printLine(i); 
@@ -480,10 +459,7 @@ SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</spa
     i--; <span class="hljs-comment">// decrement loop variable</span>
 }
 </div></code></pre>
-<ol start="2">
-<li>Create a new loop that counts from 0 to 9</li>
-</ol>
-<p>Solution:</p>
+<p>Create a new loop that counts from 0 to 9</p>
 <pre class="hljs"><code><div><span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; <span class="hljs-comment">// loop variable starts at 0</span>
 <span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">10</span>) { <span class="hljs-comment">// run as long as it is less than 10</span>
     SaxionApp.printLine(i); 
@@ -491,10 +467,7 @@ SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</spa
     i++; <span class="hljs-comment">// increment loop variable</span>
 }
 </div></code></pre>
-<ol start="3">
-<li>Change the previous loop so it counts from 1 to 10</li>
-</ol>
-<p>Solution:</p>
+<p>Change the previous loop so it counts from 1 to 10</p>
 <pre class="hljs"><code><div><span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; <span class="hljs-comment">// loop variable starts at 1 this time</span>
 <span class="hljs-keyword">while</span> (i &lt;= <span class="hljs-number">10</span>) { <span class="hljs-comment">// run as long as it is less than or equal to 10</span>
     SaxionApp.printLine(i); 
@@ -502,19 +475,14 @@ SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</spa
     i++; 
 }
 
-<span class="hljs-comment">// Alternative solution:</span>
-
-<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+<span class="hljs-comment">// Alternative int i = 0;</span>
 <span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">10</span>) { 
     SaxionApp.printLine(i + <span class="hljs-number">1</span>); <span class="hljs-comment">// just changing what is printed is also a solution.</span>
 
     i++; 
 }
 </div></code></pre>
-<ol start="4">
-<li>Instead of counting to 10, ask a number from the user, and count from 1 to that number.</li>
-</ol>
-<p>Solution:</p>
+<p>Instead of counting to 10, ask a number from the user, and count from 1 to that number.</p>
 <pre class="hljs"><code><div><span class="hljs-keyword">int</span> number = SaxionApp.readInt();
 
 <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>;
@@ -524,17 +492,14 @@ SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</spa
     i++; 
 }
 </div></code></pre>
-<ol start="5">
-<li>Change the program, so it not only counts to that number, but at the same time also shows a countdown to 1. For example, if the user enters &quot;5&quot;, it should show:</li>
-</ol>
-<pre class="hljs fragment"><code><div>up: 1 down: 5
+<p>Change the program, so it not only counts to that number, but at the same time also shows a countdown to 1. For example, if the user enters &quot;5&quot;, it should show:</p>
+<pre>
+up: 1 down: 5
 up: 2 down: 4
 up: 3 down: 3
 up: 4 down: 2
 up: 5 down: 1
-
-</div></code></pre>
-<p>Solution:</p>
+</pre>
 <pre class="hljs"><code><div><span class="hljs-comment">// there are several ways of doing this. One of the ways is </span>
 <span class="hljs-comment">// to use i for both the up and down counting.</span>
     
@@ -567,17 +532,16 @@ up: 5 down: 1
 </div></code></pre>
 <h1 id="level-3">Level 3</h1>
 <p>Copy this fragment to the run() method of an exercise in IntelliJ. Run it. What happens? To stop your program, click the red stop button in IntelliJ.</p>
-<pre class="hljs fragment"><code><div>SaxionApp.printLine(<span class="hljs-string">"Before the while-loop starts"</span>);
-<span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
-    SaxionApp.printLine(<span class="hljs-string">"In the loop."</span>);
-    SaxionApp.sleep(<span class="hljs-number">0.2</span>);
+<pre>
+SaxionApp.printLine("Before the while-loop starts");
+while (true) {
+    SaxionApp.printLine("In the loop.");
+    SaxionApp.sleep(0.2);
 }
 
-SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</span>);
-</div></code></pre>
-<ol>
-<li>Instead of printing &quot;in the loop&quot; each time, ask a number from the user each time, and print that number on the screen. (You can remove the sleep line)</li>
-</ol>
+SaxionApp.printLine("The while-loop has finished");
+</pre>
+<p>Instead of printing &quot;in the loop&quot; each time, ask a number from the user each time, and print that number on the screen. (You can remove the sleep line)</p>
 <pre class="hljs"><code><div>SaxionApp.printLine(<span class="hljs-string">"Before the while-loop starts"</span>);
 <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
     <span class="hljs-keyword">int</span> number = SaxionApp.readInt();
@@ -601,17 +565,15 @@ SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</spa
 
 SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</span>);
 </div></code></pre>
-<ol start="2">
-<li>Change the code, so the sum variable will increase with the number that the user entered. The output should be something like this:</li>
-</ol>
-<pre class="hljs fragment"><code><div>10
+<p>Change the code, so the sum variable will increase with the number that the user entered. The output should be something like this:</p>
+<pre>
+10
 The total of all numbers is now: 10
 20
 The total of all numbers is now: 30
 5
 The total of all numbers is now: 35
-</div></code></pre>
-<p>Solution:</p>
+</pre>
 <pre class="hljs"><code><div>SaxionApp.printLine(<span class="hljs-string">"Before the while-loop starts"</span>);
 
 <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>; 
@@ -627,12 +589,10 @@ The total of all numbers is now: 35
 
 SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</span>);
 </div></code></pre>
-<ol start="3">
-<li>If the user enters the number 0, we want to stop the loop. Add an if-statement to check if the number is 0. If that is the case, use the &quot;break&quot; statement to stop the loop, like this:</li>
-</ol>
-<pre class="hljs"><code><div><span class="hljs-keyword">break</span>;
-</div></code></pre>
-<p>Solution:</p>
+<p>If the user enters the number 0, we want to stop the loop. Add an if-statement to check if the number is 0. If that is the case, use the &quot;break&quot; statement to stop the loop, like this:</p>
+<pre>
+break;
+</pre>
 <pre class="hljs"><code><div>SaxionApp.printLine(<span class="hljs-string">"Before the while-loop starts"</span>);
 
 <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>; 
@@ -651,10 +611,7 @@ SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</spa
 
 SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</span>);
 </div></code></pre>
-<ol start="4">
-<li>We also want to calculate the average of the total of numbers. The average is calculated by dividing the sum by the count of the numbers entered. So we should keep track of how many numbers the user enters. Add a new variable to the program called &quot;count&quot;. Add 1 to this variable each time a new number is entered. Show the average to the user.</li>
-</ol>
-<p>Solution:</p>
+<p>We also want to calculate the average of the total of numbers. The average is calculated by dividing the sum by the count of the numbers entered. So we should keep track of how many numbers the user enters. Add a new variable to the program called &quot;count&quot;. Add 1 to this variable each time a new number is entered. Show the average to the user.</p>
 <pre class="hljs"><code><div>SaxionApp.printLine(<span class="hljs-string">"Before the while-loop starts"</span>);
 
 <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>; 
@@ -677,13 +634,11 @@ SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</spa
 SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</span>);
 </div></code></pre>
 <h2 id="level-4">Level 4</h2>
-<ol>
-<li>Ask the user for a number once. Then show the character &quot;#&quot; that many times. For example:</li>
-</ol>
-<pre class="hljs fragment"><code><div>How many? 10
+<p>Ask the user for a number once. Then show the character &quot;#&quot; that many times. For example:</p>
+<pre>
+How many? 10
 #########
-</div></code></pre>
-<p>Solution:</p>
+</pre>
 <pre class="hljs"><code><div>
 SaxionApp.print(<span class="hljs-string">"How many? "</span>);
 <span class="hljs-keyword">int</span> number = SaxionApp.readInt();
@@ -695,18 +650,16 @@ SaxionApp.print(<span class="hljs-string">"How many? "</span>);
 } 
 
 </div></code></pre>
-<ol start="2">
-<li>Now change the program. The program should still only once ask for user input, but after that show the row of #'s again and again endlessly with a sleep of 0.2 inbetween. Example</li>
-</ol>
-<pre class="hljs fragment"><code><div>How many? 10
+<p>Now change the program. The program should still only once ask for user input, but after that show the row of #'s again and again endlessly with a sleep of 0.2 inbetween. Example</p>
+<pre>
+How many? 10
 #########
 #########
 #########
 #########
 #########
 ...
-</div></code></pre>
-<p>Solution:</p>
+</pre>
 <pre class="hljs"><code><div>
 SaxionApp.print(<span class="hljs-string">"How many? "</span>);
 <span class="hljs-keyword">int</span> number = SaxionApp.readInt();
@@ -722,9 +675,7 @@ SaxionApp.print(<span class="hljs-string">"How many? "</span>);
     SaxionApp.sleep(<span class="hljs-number">0.2</span>);
 }
 </div></code></pre>
-<ol start="3">
-<li>Also ask the user how many rows he/she wants. Change the endless loop to be a loop that will make that amount of rows.</li>
-</ol>
+<p>Also ask the user how many rows he/she wants. Change the endless loop to be a loop that will make that amount of rows.</p>
 <pre class="hljs"><code><div>
 SaxionApp.print(<span class="hljs-string">"How many #? "</span>);
 <span class="hljs-keyword">int</span> number = SaxionApp.readInt();
@@ -744,9 +695,8 @@ SaxionApp.print(<span class="hljs-string">"How many rows? "</span>);
     rowIndex++; <span class="hljs-comment">// don't forget this</span>
 }
 </div></code></pre>
-
 <script>
-	const solutions = document.querySelectorAll(".hljs:not(.fragment)");
+	const solutions = document.querySelectorAll(".hljs");
 	for (let i = 0; i < solutions.length; i++) {
 		const s = solutions[i];
 		s.style.display = "none";
@@ -754,13 +704,16 @@ SaxionApp.print(<span class="hljs-string">"How many rows? "</span>);
 		revealDiv.innerText = "(Click to reveal solution)";
 		revealDiv.style = "background-color: #eee; padding: 10px;"
 		s.parentNode.insertBefore(revealDiv, s);
+        let isHidden = false;
 		revealDiv.onclick = () => {
-			s.style.display = "block";
-			revealDiv.style.display = "none";
-		};
-		s.onclick = () => {
-			s.style.display = "none";
-			revealDiv.style.display = "block";
+            if (isHidden) {
+                s.style.display = "block";
+                revealDiv.innerText = "Solution:";
+            } else {
+                s.style.display = "none";
+                revealDiv.innerText = "(Click to reveal solution)";
+            }
+            isHidden = !isHidden;
 		};
 	}
 
