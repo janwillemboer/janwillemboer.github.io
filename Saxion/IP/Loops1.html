@@ -475,7 +475,8 @@ SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</spa
     i++; 
 }
 
-<span class="hljs-comment">// Alternative int i = 0;</span>
+<span class="hljs-comment">// Alternative solution:</span>
+<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
 <span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">10</span>) { 
     SaxionApp.printLine(i + <span class="hljs-number">1</span>); <span class="hljs-comment">// just changing what is printed is also a solution.</span>
 
@@ -551,20 +552,21 @@ SaxionApp.printLine("The while-loop has finished");
 SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</span>);
 </div></code></pre>
 <p>If we want to make a small calculator out of this, that adds all numbers together, we have to introduce a &quot;sum&quot; variable that keeps track of the sum during the loop. Use the following snippet to start with.</p>
-<pre class="hljs"><code><div>SaxionApp.printLine(<span class="hljs-string">"Before the while-loop starts"</span>);
+<pre>
+SaxionApp.printLine("Before the while-loop starts");
 
-<span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>; 
+int sum = 0; 
 
-<span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
-    <span class="hljs-keyword">int</span> number = SaxionApp.readInt();
+while (true) {
+    int number = SaxionApp.readInt();
 
-    sum =    <span class="hljs-comment">// change this line</span>
+    sum =    // change this line
 
-    SaxionApp.printLine(<span class="hljs-string">"The total of all numbers is now: "</span> + sum);
+    SaxionApp.printLine("The total of all numbers is now: " + sum);
 }
 
-SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</span>);
-</div></code></pre>
+SaxionApp.printLine("The while-loop has finished");
+</pre>
 <p>Change the code, so the sum variable will increase with the number that the user entered. The output should be something like this:</p>
 <pre>
 10
