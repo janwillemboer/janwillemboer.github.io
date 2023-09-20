@@ -704,7 +704,7 @@ SaxionApp.print(<span class="hljs-string">"How many rows? "</span>);
 		revealDiv.innerText = "(Click to reveal solution)";
 		revealDiv.style = "background-color: #eee; padding: 10px;"
 		s.parentNode.insertBefore(revealDiv, s);
-        let isHidden = false;
+        let isHidden = true;
 		revealDiv.onclick = () => {
             if (isHidden) {
                 s.style.display = "block";
