@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Methods3.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="level-1">Level 1</h1>
+<p>Copy this fragment to an exercise in IntelliJ. Remove the existing run() method first.<br>
+Try to predict what the program will do. Start to program to test it.</p>
+<pre>
+    public void run() {
+
+        showMessageOnScreen("Hello!");
+
+    }
+
+    public void showMessageOnScreen(String msg) {
+        SaxionApp.print("The message is: ");
+        SaxionApp.printLine(msg);
+    }
+</pre>
+<p>Change the program, so there will be two messages shown, for example:</p>
+<pre>
+The message is: Hello!
+The message is: This is amazing!!!!
+</pre>
+<pre class="hljs"><code><div>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+
+        showMessageOnScreen(<span class="hljs-string">"Hello!"</span>);
+        showMessageOnScreen(<span class="hljs-string">"This is amazing!!!!"</span>);
+
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">showMessageOnScreen</span><span class="hljs-params">(String msg)</span> </span>{
+        SaxionApp.print(<span class="hljs-string">"The message is: "</span>);
+        SaxionApp.printLine(msg);
+    }
+</div></code></pre>
+<p>Change the program, so it does not only show the message, but also shows how many characters the message has.</p>
+<pre>
+The message 'Hello!' has 6 characters
+The message 'This is amazing!!!!' has 19 characters 
+</pre>
+<pre class="hljs"><code><div>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+        showMessageOnScreen(<span class="hljs-string">"Hello!"</span>);
+        showMessageOnScreen(<span class="hljs-string">"This is amazing!!!!"</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">showMessageOnScreen</span><span class="hljs-params">(String msg)</span> </span>{
+        SaxionApp.print(<span class="hljs-string">"The message '"</span>);
+        SaxionApp.print(msg);
+        SaxionApp.print(<span class="hljs-string">"' has "</span>);
+        SaxionApp.print(msg.length());
+        SaxionApp.printLine(<span class="hljs-string">" characters"</span>);
+    }
+</div></code></pre>
+<p>Now the name of the method doesn't fit the contents any longer. Change the name of the method to <code>showMessageLength</code>. Does your program still work? Note that you have to change the name on multiple locations.</p>
+<pre class="hljs"><code><div>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+        showMessageLength(<span class="hljs-string">"Hello!"</span>);              <span class="hljs-comment">// where you call the method </span>
+        showMessageLength(<span class="hljs-string">"This is amazing!!!!"</span>); <span class="hljs-comment">// the name should also be changed</span>
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">showMessageLength</span><span class="hljs-params">(String msg)</span> </span>{ <span class="hljs-comment">// this is where you change the name</span>
+        SaxionApp.print(<span class="hljs-string">"The message "</span>);
+        SaxionApp.print(msg);
+        SaxionApp.print(<span class="hljs-string">" has "</span>);
+        SaxionApp.print(msg.length());
+        SaxionApp.printLine(<span class="hljs-string">" characters"</span>);
+    }
+</div></code></pre>
+<p>Now add a new method to the program:</p>
+<pre>
+    public void wait() {
+        SaxionApp.sleep(0.2);
+    }
+</pre>
+<p>Call this method after each call to showMessageLength.</p>
+<pre class="hljs"><code><div>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+        showMessageLength(<span class="hljs-string">"Hello!"</span>);             
+        wait(); <span class="hljs-comment">// the new call goes here</span>
+        showMessageLength(<span class="hljs-string">"This is amazing!!!!"</span>); 
+        wait(); <span class="hljs-comment">// and here</span>
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">showMessageLength</span><span class="hljs-params">(String msg)</span> </span>{ 
+        SaxionApp.print(<span class="hljs-string">"The message "</span>);
+        SaxionApp.print(msg);
+        SaxionApp.print(<span class="hljs-string">" has "</span>);
+        SaxionApp.print(msg.length());
+        SaxionApp.printLine(<span class="hljs-string">" characters"</span>);
+
+        <span class="hljs-comment">// alternative solution would be to call the method here:</span>
+        <span class="hljs-comment">// wait();</span>
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">wait</span><span class="hljs-params">()</span> </span>{ 
+        SaxionApp.sleep(<span class="hljs-number">0.2</span>);
+    }
+
+</div></code></pre>
+<h1 id="level-2">Level 2</h1>
+<p>Say we want to limit the amount of characters that will be shown on screen. For this we need a method that will print only the first 15 characters of the message if the message is too long.</p>
+<p>Copy this example into your project.</p>
+<pre>
+    public void run() {
+        truncateMessage("Hello!");
+        truncateMessage("This is a line that is way too long.");
+    }
+
+    public void your_method_name_here(param_type parameter_name) {
+        
+        // your code here
+        
+    }
+</pre>
+<p>Change your_method_name_here to the correct method name. Change param_type and parameter to the correct type and name.</p>
+<p>After that make sure that a only the first 15 characters of a message are shown on screen. Use the String method <code>substring(0, 15)</code> to get the first 15 characters, but make sure to check the length of the string first.</p>
+<pre class="hljs"><code><div>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+        truncateMessage(<span class="hljs-string">"Hello!"</span>);
+        truncateMessage(<span class="hljs-string">"This is a line that is way too long."</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">truncateMessage</span><span class="hljs-params">(String msg)</span> </span>{ 
+        <span class="hljs-keyword">if</span> (msg.length() &gt; <span class="hljs-number">15</span>) {
+            SaxionApp.printLine(msg.substring(<span class="hljs-number">0</span>, <span class="hljs-number">15</span>));
+        } <span class="hljs-keyword">else</span> {
+            SaxionApp.printLine(msg);
+        }
+    }
+</div></code></pre>
+<p>We don't always want 15 characters. It would be better if that could be configured instead of that it is a fixed amount. Extend the code so that the maximum can be set by the user first.</p>
+<p>Use the following snippet as the contents of the run() method and change the code of your truncateMessage method to use the length as parameter instead of the fixed 15.</p>
+<pre>
+    SaxionApp.print("What is the max amount of characters? ");
+    int maxChars = SaxionApp.readInt();
+    truncateMessage("Hello!", maxChars);
+    truncateMessage("This is a line that is way too long.", maxChars);
+</pre>
+<pre class="hljs"><code><div>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+        SaxionApp.print(<span class="hljs-string">"What is the max amount of characters? "</span>);
+        <span class="hljs-keyword">int</span> maxChars = SaxionApp.readInt();
+        truncateMessage(<span class="hljs-string">"Hello!"</span>, maxChars);
+        truncateMessage(<span class="hljs-string">"This is a line that is way too long."</span>, maxChars);
+    }
+
+                            <span class="hljs-comment">// added a second argument with name "max" and type int</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">truncateMessage</span><span class="hljs-params">(String msg, <span class="hljs-keyword">int</span> max)</span> </span>{ 
+        <span class="hljs-keyword">if</span> (msg.length() &gt; max) {   <span class="hljs-comment">// use it here</span>
+            SaxionApp.printLine(msg.substring(<span class="hljs-number">0</span>, max)); <span class="hljs-comment">// and here</span>
+        } <span class="hljs-keyword">else</span> {
+            SaxionApp.printLine(msg);
+        }
+    }
+</div></code></pre>
+<p>Now add a new method with name <code>showMessage</code>. It should take a message as the first argument and a second with name <code>scream</code> that can be either true or false. If the <code>scream</code> argument is true, print the text as uppercase characters only. Use the string method <code>.toUpperCase()</code> to change the text.</p>
+<p>Try out the method in your run method.</p>
+<pre class="hljs"><code><div>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+        showMessage(<span class="hljs-string">"Now say this in a calm and peaceful manner"</span>, <span class="hljs-keyword">true</span>);
+        showMessage(<span class="hljs-string">"what did I tell you!?!"</span>, <span class="hljs-keyword">true</span>);
+        showMessage(<span class="hljs-string">"okay, sorry"</span>, <span class="hljs-keyword">false</span>);
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">showMessage</span><span class="hljs-params">(String msg, <span class="hljs-keyword">boolean</span> scream)</span> </span>{
+        <span class="hljs-keyword">if</span> (scream) {
+            SaxionApp.printLine(msg.toUpperCase());
+        } <span class="hljs-keyword">else</span> {
+            SaxionApp.printLine(msg);
+        }
+    }
+</div></code></pre>
+<h1 id="level-3">Level 3</h1>
+<p>Copy the following code into your own project. Can you predict what will happen? Run it to see if your expectations will be met.</p>
+<pre>
+    public void run() {
+        int number = 10;
+        SaxionApp.printLine("The original number is: " + number);
+        
+        enlarge(number, 5);
+        SaxionApp.printLine("The number is now: " + number);
+    }
+
+    public void enlarge(int number, int factor) {
+        number = number * factor;
+        
+        SaxionApp.printLine("The enlarged number is: " + number);
+    }
+</pre>
+<p>In the method <code>enlarge</code>, change the name of the argument <code>number</code> to <code>value</code>, without changing the variable <code>number</code> in the <code>run</code> method. Try to run the program. Does it still work?</p>
+<pre class="hljs"><code><div>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">int</span> number = <span class="hljs-number">10</span>; <span class="hljs-comment">// this variablename stays the same</span>
+        SaxionApp.printLine(<span class="hljs-string">"The original number is: "</span> + number);
+
+        enlarge(number, <span class="hljs-number">5</span>); <span class="hljs-comment">// this only sends the *contents* of the </span>
+                            <span class="hljs-comment">// variable to the method. The name doesn't matter.</span>
+        SaxionApp.printLine(<span class="hljs-string">"The number is now: "</span> + number);
+    }
+
+    <span class="hljs-comment">// "number" has been changed to "value" below on 3 lines:</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">enlarge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> value, <span class="hljs-keyword">int</span> factor)</span> </span>{ 
+        value = value * factor;
+
+        SaxionApp.printLine(<span class="hljs-string">"The enlarged number is: "</span> + value);
+    }
+</div></code></pre>
+<p>Create a new method <code>reduce</code> that, <em>reduces</em> the value of a number by a given factor. For example reducing 10 by 5 should give 2 as outcome.</p>
+<pre class="hljs"><code><div>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">int</span> number = <span class="hljs-number">10</span>; 
+        SaxionApp.printLine(<span class="hljs-string">"The original number is: "</span> + number);
+
+        enlarge(number, <span class="hljs-number">5</span>);
+        reduce(number, <span class="hljs-number">5</span>);
+        SaxionApp.printLine(<span class="hljs-string">"The number is now: "</span> + number);
+    }
+
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reduce</span><span class="hljs-params">(<span class="hljs-keyword">int</span> value, <span class="hljs-keyword">int</span> factor)</span> </span>{
+        value = value / factor;
+        SaxionApp.printLine(<span class="hljs-string">"The reduced number is: "</span> + value);
+    }
+    
+    <span class="hljs-comment">// (enlarge method left out here)</span>
+</div></code></pre>
+<h1 id="level-4">Level 4</h1>
+<p>A method can also return something. You have already seen this quite a few times:</p>
+<pre>
+// the SaxionApp method readInt() returns an int, 
+// and we can store it into a variable.
+int number = SaxionApp.readInt();
+</pre>
+<p>Now you will create your own method that returns an int, and we will extend it to be of more use later. Copy the following snippet into an exercise file:</p>
+<pre>
+public void run() {
+    // call our own method and store the result in a new var named someNumber.
+    int someNumber = getNumberFromUser();
+    SaxionApp.printLine("The number is: " + someNumber);
+}
+
+public int getNumberFromUser() {
+    SaxionApp.print("Please enter a number: ");
+    int number = SaxionApp.readInt();
+
+    // this will send the contents of "number" back to the caller of the method.
+    // Again, the name doesn't matter. 
+    return number; 
+}
+</pre>
+<p>Try to predict what the program does, and run it to check if you were correct.</p>
+<p>Now add a new method <code>getTextFromUser</code> that asks &quot;Please enter a text:&quot; and returns a String. Call the method and print the result on screen in the run method.</p>
+<pre class="hljs"><code><div>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-comment">// call our own method and store the result in a new var named someNumber.</span>
+        <span class="hljs-keyword">int</span> someNumber = getNumberFromUser();
+        SaxionApp.printLine(<span class="hljs-string">"The number is: "</span> + someNumber);
+        String someText = getTextFromUser();
+        SaxionApp.printLine(<span class="hljs-string">"The text is: "</span> + someText);
+    }
+
+    <span class="hljs-comment">// the method should return a String</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getTextFromUser</span><span class="hljs-params">()</span> </span>{
+        SaxionApp.print(<span class="hljs-string">"Please enter a text: "</span>);
+        String text = SaxionApp.readString();
+        <span class="hljs-keyword">return</span> text; <span class="hljs-comment">// return the text to the caller</span>
+    }
+
+    <span class="hljs-comment">// (left out method getNumberFromUser here)</span>
+</div></code></pre>
+<p>If we <em>really</em> want a text from the user, we are not satisfied if the user just presses Enter without actually entering a text.</p>
+<p>Extend the method getTextFromUser, so it asks for a text in an endless loop. It should only return the text if the length of the text is greater than 0.</p>
+<pre class="hljs"><code><div>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getTextFromUser</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) { <span class="hljs-comment">// endless loop</span>
+            SaxionApp.print(<span class="hljs-string">"Please enter a text: "</span>);
+            String text = SaxionApp.readString();
+            <span class="hljs-keyword">if</span> (text.length() &gt; <span class="hljs-number">0</span>) {
+                <span class="hljs-keyword">return</span> text; <span class="hljs-comment">// this immediately returns the value </span>
+                             <span class="hljs-comment">// (and breaks the loop)</span>
+            }
+        }
+    }
+</div></code></pre>
+<p>And we also want a maximum amount of characters. Extend the method with a parameter for the maximum amount of characters, and truncate the text if the text is too long.</p>
+<pre class="hljs"><code><div>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getTextFromUser</span><span class="hljs-params">(<span class="hljs-keyword">int</span> max)</span> </span>{
+        <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
+            SaxionApp.print(<span class="hljs-string">"Please enter a text: "</span>);
+            String text = SaxionApp.readString();
+            <span class="hljs-keyword">if</span> (text.length() &gt; <span class="hljs-number">0</span>) {
+                <span class="hljs-comment">// same algorithm as used in the truncateMessage method earlier</span>
+                <span class="hljs-keyword">if</span> (text.length() &gt; max) {
+                    <span class="hljs-keyword">return</span> text.substring(<span class="hljs-number">0</span>, max);
+                } <span class="hljs-keyword">else</span> {
+                    <span class="hljs-keyword">return</span> text;
+                }
+            }
+        }
+    }
+</div></code></pre>
+<p>Now extend the program so the <code>getNumberFromUser</code> method has two parameters: the min and max value. Show a message to the user that they need to enter a number between those values. Only return from the method if the user enters a correct value.</p>
+<pre class="hljs"><code><div>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getNumberFromUser</span><span class="hljs-params">(<span class="hljs-keyword">int</span> min, <span class="hljs-keyword">int</span> max)</span> </span>{
+        <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
+            SaxionApp.print(<span class="hljs-string">"Please enter a number between "</span> + min + <span class="hljs-string">" and "</span> + max + <span class="hljs-string">": "</span>);
+            <span class="hljs-keyword">int</span> number = SaxionApp.readInt();
+            <span class="hljs-keyword">if</span> (number &gt;= min &amp;&amp; number &lt;= max) {
+                <span class="hljs-keyword">return</span> number;
+            }
+        }
+    }
+</div></code></pre>
+<script>
+	const solutions = document.querySelectorAll(".hljs");
+	for (let i = 0; i < solutions.length; i++) {
+		const s = solutions[i];
+		s.style.display = "none";
+		const revealDiv = document.createElement("div");
+		revealDiv.innerText = "(Click to reveal solution)";
+		revealDiv.style = "background-color: #eee; padding: 10px;"
+		s.parentNode.insertBefore(revealDiv, s);
+        let isHidden = true;
+		revealDiv.onclick = () => {
+            if (isHidden) {
+                s.style.display = "block";
+                revealDiv.innerText = "Solution:";
+            } else {
+                s.style.display = "none";
+                revealDiv.innerText = "(Click to reveal solution)";
+            }
+            isHidden = !isHidden;
+		};
+	}
+
+</script>
+</body>
+</html>
