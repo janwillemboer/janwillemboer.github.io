@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lists1.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="level-1">Level 1</h1>
+<p>Copy this fragment to the run() method of an exercise in IntelliJ.<br>
+Try to run it.</p>
+<pre>
+// add this to the imports, otherwise Java won't recognize the ArrayList type.
+// import java.util.ArrayList;
+
+// create a new variable "listOfNames", and assign a new, empty list of strings to this variable
+ArrayList<String> listOfNames = new ArrayList<>();
+
+// add two different names
+listOfNames.add("Alper");
+listOfNames.add("Muhammed");
+
+// show the names
+SaxionApp.printLine("The first name in the list is " + listOfNames.get(0));
+SaxionApp.printLine("The second name is " + listOfNames.get(1));
+</pre>
+<p>Change the code so your own name is also added to the list, and make a second change that your own name is also printed to the screen.</p>
+<pre class="hljs"><code><div>ArrayList&lt;String&gt; listOfNames = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+listOfNames.add(<span class="hljs-string">"Alper"</span>);
+listOfNames.add(<span class="hljs-string">"Muhammed"</span>);
+listOfNames.add(<span class="hljs-string">"Joris"</span>); <span class="hljs-comment">// add another name</span>
+
+SaxionApp.printLine(<span class="hljs-string">"The first name in the list is "</span> + listOfNames.get(<span class="hljs-number">0</span>));
+SaxionApp.printLine(<span class="hljs-string">"The second name is "</span> + listOfNames.get(<span class="hljs-number">1</span>));
+SaxionApp.printLine(<span class="hljs-string">"The third name is "</span> + listOfNames.get(<span class="hljs-number">2</span>)); <span class="hljs-comment">// show the third name with .get(2).</span>
+</div></code></pre>
+<p>It is only possible to get items from the list when they were first added to the list.</p>
+<p>Try to add a printLine statement that gets the 4th name on the list, using .get(3). What happens?</p>
+<pre class="hljs"><code><div>ArrayList&lt;String&gt; listOfNames = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+<span class="hljs-comment">// three names</span>
+listOfNames.add(<span class="hljs-string">"Alper"</span>);
+listOfNames.add(<span class="hljs-string">"Muhammed"</span>);
+listOfNames.add(<span class="hljs-string">"Joris"</span>); 
+
+SaxionApp.printLine(<span class="hljs-string">"The first name in the list is "</span> + listOfNames.get(<span class="hljs-number">0</span>));
+SaxionApp.printLine(<span class="hljs-string">"The second name is "</span> + listOfNames.get(<span class="hljs-number">1</span>));
+SaxionApp.printLine(<span class="hljs-string">"The third name is "</span> + listOfNames.get(<span class="hljs-number">2</span>)); 
+
+<span class="hljs-comment">// the application crashes on listOfNames.get(3) and will not execute the printLine:</span>
+SaxionApp.printLine(<span class="hljs-string">"The fourth name is "</span> + listOfNames.get(<span class="hljs-number">3</span>)); 
+</div></code></pre>
+<p>Remove the crashing line again.</p>
+<p>It is also possible to use a variable to add values to the list. Ask the user to enter their own name and add that name to the list. Also show that name on screen afterwards.</p>
+<pre class="hljs"><code><div>ArrayList&lt;String&gt; listOfNames = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+listOfNames.add(<span class="hljs-string">"Alper"</span>);
+listOfNames.add(<span class="hljs-string">"Muhammed"</span>);
+listOfNames.add(<span class="hljs-string">"Joris"</span>);
+
+<span class="hljs-comment">// ask user for their name and store it in the variable userName</span>
+SaxionApp.print(<span class="hljs-string">"Please enter your name: "</span>);
+String userName = SaxionApp.readString();
+
+listOfNames.add(userName); <span class="hljs-comment">// add the contents of the variable to the list</span>
+
+SaxionApp.printLine(<span class="hljs-string">"The first name in the list is "</span> + listOfNames.get(<span class="hljs-number">0</span>));
+SaxionApp.printLine(<span class="hljs-string">"The second name is "</span> + listOfNames.get(<span class="hljs-number">1</span>));
+SaxionApp.printLine(<span class="hljs-string">"The third name is "</span> + listOfNames.get(<span class="hljs-number">2</span>));
+SaxionApp.printLine(<span class="hljs-string">"Your name is "</span> + listOfNames.get(<span class="hljs-number">3</span>)); <span class="hljs-comment">// show the 4th name on screen </span>
+</div></code></pre>
+<p>This is not very efficient, to show each name separately. We can use a loop to accomplish this. Copy this code into your run method and make it work.</p>
+<pre>
+ArrayList<String> listOfNames = new ArrayList<>();
+
+listOfNames.add("Alper");
+listOfNames.add("Muhammed");
+listOfNames.add("Joris");
+listOfNames.add("Maurice");
+
+int i = 0;
+while (i < 4) {
+    
+    String name = listOfNames.get(  ); // change this line to make it work
+    SaxionApp.printLine("Name no " + i + " is " + name);
+    
+    i++;
+}
+</pre>
+<pre class="hljs"><code><div>ArrayList&lt;String&gt; listOfNames = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+listOfNames.add(<span class="hljs-string">"Alper"</span>);
+listOfNames.add(<span class="hljs-string">"Muhammed"</span>);
+listOfNames.add(<span class="hljs-string">"Joris"</span>);
+listOfNames.add(<span class="hljs-string">"Maurice"</span>);
+
+<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">4</span>) {
+
+    String name = listOfNames.get(i); <span class="hljs-comment">// i is used to get each name </span>
+    SaxionApp.printLine(<span class="hljs-string">"Name no "</span> + i + <span class="hljs-string">" is "</span> + name);
+
+    i++;
+}
+</div></code></pre>
+<p>Now change the program, so there is not a fixed list of names: remove the four lines that add the names. Instead, use an endless while loop to ask for the name and add it to this list.</p>
+<p>Copy the following code into your run method and add code to the if statement that adds the name to the listOfNames list. Try to run it: it will work, but it also crashes if there are less than four names.</p>
+<pre>
+ArrayList<String> listOfNames = new ArrayList<>();
+
+while (true) {
+    SaxionApp.print("Please enter a name (or empty to stop): ");
+    String name = SaxionApp.readString();
+
+    if (name.length() > 0) {
+        //                <--- add your code here.
+    } else {
+        break;
+    }
+}
+
+int i = 0;
+while (i < 4) {
+
+    String name = listOfNames.get(i);
+    SaxionApp.printLine("Name no " + i + " is " + name);
+
+    i++;
+}
+</pre>
+<pre class="hljs"><code><div>ArrayList&lt;String&gt; listOfNames = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+<span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
+    SaxionApp.print(<span class="hljs-string">"Please enter a name (or empty to stop): "</span>);
+    String name = SaxionApp.readString();
+
+    <span class="hljs-keyword">if</span> (name.length() &gt; <span class="hljs-number">0</span>) {
+        listOfNames.add(name); <span class="hljs-comment">// add the name to the list</span>
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">break</span>;
+    }
+}
+
+<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">4</span>) {
+
+    String name = listOfNames.get(i);
+    SaxionApp.printLine(<span class="hljs-string">"Name no "</span> + i + <span class="hljs-string">" is "</span> + name);
+
+    i++;
+}
+</div></code></pre>
+<p>Why does it crash when having less than four names?</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">4</span>) { <span class="hljs-comment">// &lt;--- because the loop always assumes four names here</span>
+
+    <span class="hljs-comment">// ...and here it tries to get an element from this list </span>
+    <span class="hljs-comment">// using .get(i), that may not exist. The app will then crash.</span>
+    String name = listOfNames.get(i);  
+    SaxionApp.printLine(<span class="hljs-string">"Name no "</span> + i + <span class="hljs-string">" is "</span> + name);
+
+    i++;
+}
+</div></code></pre>
+<p>Instead of always assuming four, we should change the application, so it will do the loop as many times as needed.</p>
+<p>With <code>listOfNames.size()</code> we can get the number of items on the list. Change the code so it uses the list size in the loop.</p>
+<pre class="hljs"><code><div>ArrayList&lt;String&gt; listOfNames = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+<span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
+    SaxionApp.print(<span class="hljs-string">"Please enter a name (or empty to stop): "</span>);
+    String name = SaxionApp.readString();
+
+    <span class="hljs-keyword">if</span> (name.length() &gt; <span class="hljs-number">0</span>) {
+        listOfNames.add(name);
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">break</span>;
+    }
+}
+
+<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (i &lt; listOfNames.size()) {
+
+    String name = listOfNames.get(i);
+    SaxionApp.printLine(<span class="hljs-string">"Name no "</span> + i + <span class="hljs-string">" is "</span> + name);
+
+    i++;
+}
+</div></code></pre>
+<h1 id="level-2">Level 2</h1>
+<p>Create a new application that adds a few names to a new list. Show on screen how many items the list contains. Ask the user which item they want to see from the list. Show that item on screen. If the user requests an item that does not exist, show an error and ask again. Example:</p>
+<pre>
+The list with names contains 4 items.
+Which item do you want to see (starting with 0)? 
+> 1
+Item number 1 is: Metesayit
+</pre>
+<pre class="hljs"><code><div>ArrayList&lt;String&gt; listOfNames = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+listOfNames.add(<span class="hljs-string">"Berke"</span>);
+listOfNames.add(<span class="hljs-string">"Metesayit"</span>);
+listOfNames.add(<span class="hljs-string">"Luuk"</span>);
+
+SaxionApp.printLine(<span class="hljs-string">"The list of names contains "</span> + listOfNames.size() + <span class="hljs-string">" items."</span>);
+SaxionApp.printLine(<span class="hljs-string">"Which item do you want to see (starting with 0)?"</span>);
+<span class="hljs-keyword">int</span> chosenItem = SaxionApp.readInt();
+
+String chosenName = listOfNames.get(chosenItem);
+SaxionApp.printLine(<span class="hljs-string">"Item number "</span> + chosenItem + <span class="hljs-string">" is: "</span> + chosenName);
+</div></code></pre>
+<p>Change the code so the user can only choose an item that actually exists, and otherwise gets an error message.</p>
+<pre class="hljs"><code><div>ArrayList&lt;String&gt; listOfNames = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+listOfNames.add(<span class="hljs-string">"Berke"</span>);
+listOfNames.add(<span class="hljs-string">"Metesayit"</span>);
+listOfNames.add(<span class="hljs-string">"Luuk"</span>);
+
+SaxionApp.printLine(<span class="hljs-string">"The list of names contains "</span> + listOfNames.size() + <span class="hljs-string">" items."</span>);
+SaxionApp.printLine(<span class="hljs-string">"Which item do you want to see?"</span>);
+<span class="hljs-keyword">int</span> chosenItem = SaxionApp.readInt();
+
+<span class="hljs-comment">// because ArrayList index starts with 0, the choseItem has to be smaller than </span>
+<span class="hljs-comment">// the total item count (if size() is 3, then only items 0 1 and 2 exist).</span>
+<span class="hljs-keyword">if</span> (chosenItem &gt; <span class="hljs-number">0</span> &amp;&amp; chosenItem &lt; listOfNames.size()) { 
+    String chosenName = listOfNames.get(chosenItem);
+    SaxionApp.printLine(<span class="hljs-string">"Item number "</span> + chosenItem + <span class="hljs-string">" is: "</span> + chosenName);
+} <span class="hljs-keyword">else</span> {
+    SaxionApp.printLine(<span class="hljs-string">"The chosen item is incorrect."</span>);
+}
+</div></code></pre>
+<p>It is possible to remove an name with the <code>.remove()</code> method, for example: <code>listOfNames.remove(&quot;Peter&quot;)</code>.</p>
+<p>Change the code so it removes the chosen item from the list.<br>
+After removing the item, add a loop that shows all items on the list.</p>
+<pre class="hljs"><code><div> ArrayList&lt;String&gt; listOfNames = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+listOfNames.add(<span class="hljs-string">"Lyon"</span>);
+listOfNames.add(<span class="hljs-string">"Melih"</span>);
+listOfNames.add(<span class="hljs-string">"Nigel"</span>);
+
+SaxionApp.printLine(<span class="hljs-string">"The list of names contains "</span> + listOfNames.size() + <span class="hljs-string">" items."</span>);
+SaxionApp.printLine(<span class="hljs-string">"Which item do you want to remove?"</span>);
+<span class="hljs-keyword">int</span> chosenItem = SaxionApp.readInt();
+
+<span class="hljs-keyword">if</span> (chosenItem &gt; <span class="hljs-number">0</span> &amp;&amp; chosenItem &lt; listOfNames.size()) {
+    String chosenName = listOfNames.get(chosenItem);
+    SaxionApp.printLine(<span class="hljs-string">"Item "</span> + chosenName + <span class="hljs-string">" will be removed"</span>); 
+
+    listOfNames.remove(chosenName); <span class="hljs-comment">// here the item is removed from the list</span>
+    <span class="hljs-comment">// or: listOfNames.remove(chosenItem); // this is also correct</span>
+
+} <span class="hljs-keyword">else</span> {
+    SaxionApp.printLine(<span class="hljs-string">"The chosen item is incorrect."</span>);
+}
+
+SaxionApp.printLine();
+SaxionApp.printLine(<span class="hljs-string">"The list is now:"</span>);
+
+<span class="hljs-comment">// a standard loop to show the contents of a list</span>
+<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (i &lt; listOfNames.size()) {
+    SaxionApp.printLine(listOfNames.get(i));
+    i++;
+}
+</div></code></pre>
+<h1 id="level-3">Level 3</h1>
+<p>Create a program that asks numbers in an endless loop until the user enters the number 0. In the loop, add the numbers to a list of numbers. Note: a list of numbers can be created using <code>ArrayList&lt;Integer&gt;</code>.</p>
+<p>Print the numbers afterwards.</p>
+<pre class="hljs"><code><div>ArrayList&lt;Integer&gt; numbers = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+<span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
+    <span class="hljs-keyword">int</span> nr = SaxionApp.readInt();
+    <span class="hljs-keyword">if</span> (nr == <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">break</span>;
+    }
+    numbers.add(nr);
+}
+
+<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (i &lt; numbers.size()) {
+    SaxionApp.printLine(numbers.get(i));
+    i++;
+}
+</div></code></pre>
+<p>Change the code, so instead of printing all the numbers afterwards, the program shows the sum of all the numbers combined.</p>
+<pre class="hljs"><code><div>ArrayList&lt;Integer&gt; numbers = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+<span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
+    <span class="hljs-keyword">int</span> nr = SaxionApp.readInt();
+    <span class="hljs-keyword">if</span> (nr == <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">break</span>;
+    }
+    numbers.add(nr);
+}
+
+<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (i &lt; numbers.size()) {
+    <span class="hljs-keyword">int</span> nr = numbers.get(i);
+    sum = sum + nr;
+    i++;
+}
+
+SaxionApp.print(<span class="hljs-string">"The total is: "</span> + sum);
+</div></code></pre>
+<script>
+	const solutions = document.querySelectorAll(".hljs");
+	for (let i = 0; i < solutions.length; i++) {
+		const s = solutions[i];
+		s.style.display = "none";
+		const revealDiv = document.createElement("div");
+		revealDiv.innerText = "(Click to reveal solution)";
+		revealDiv.style = "background-color: #eee; padding: 10px;"
+		s.parentNode.insertBefore(revealDiv, s);
+        let isHidden = true;
+		revealDiv.onclick = () => {
+            if (isHidden) {
+                s.style.display = "block";
+                revealDiv.innerText = "Solution:";
+            } else {
+                s.style.display = "none";
+                revealDiv.innerText = "(Click to reveal solution)";
+            }
+            isHidden = !isHidden;
+		};
+	}
+
+</script>
+</body>
+</html>
