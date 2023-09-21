@@ -540,7 +540,6 @@ while (true) {
     SaxionApp.sleep(0.2);
 }
 
-SaxionApp.printLine("The while-loop has finished");
 </pre>
 <p>Instead of printing &quot;in the loop&quot; each time, ask a number from the user each time, and print that number on the screen. (You can remove the sleep line)</p>
 <pre class="hljs"><code><div>SaxionApp.printLine(<span class="hljs-string">"Before the while-loop starts"</span>);
@@ -549,7 +548,6 @@ SaxionApp.printLine("The while-loop has finished");
     SaxionApp.printLine(<span class="hljs-string">"The number was: "</span> + number);
 }
 
-SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</span>);
 </div></code></pre>
 <p>If we want to make a small calculator out of this, that adds all numbers together, we have to introduce a &quot;sum&quot; variable that keeps track of the sum during the loop. Use the following snippet to start with.</p>
 <pre>
@@ -565,7 +563,6 @@ while (true) {
     SaxionApp.printLine("The total of all numbers is now: " + sum);
 }
 
-SaxionApp.printLine("The while-loop has finished");
 </pre>
 <p>Change the code, so the sum variable will increase with the number that the user entered. The output should be something like this:</p>
 <pre>
@@ -589,7 +586,6 @@ The total of all numbers is now: 35
     SaxionApp.printLine(<span class="hljs-string">"The total of all numbers is now: "</span> + sum);
 }
 
-SaxionApp.printLine(<span class="hljs-string">"The while-loop has finished"</span>);
 </div></code></pre>
 <p>If the user enters the number 0, we want to stop the loop. Add an if-statement to check if the number is 0. If that is the case, use the &quot;break&quot; statement to stop the loop, like this:</p>
 <pre>
