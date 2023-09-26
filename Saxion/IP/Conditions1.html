@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Conditions1.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="conditions-1">Conditions 1</h1>
+<h2 id="level-1---basics">Level 1 - Basics</h2>
+<p>Copy this fragment to the run() method of an exercise in IntelliJ.<br>
+Try to run it.</p>
+<pre>
+int age = 10;
+if (age < 10) {
+    SaxionApp.printLine("too young");
+}
+SaxionApp.printLine("The end");
+</pre>
+<p>Change the code so the text &quot;too young&quot; only appears when the age is <em>less than 18</em>.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> age = <span class="hljs-number">10</span>;
+<span class="hljs-keyword">if</span> (age &lt; <span class="hljs-number">18</span>) { <span class="hljs-comment">// the number in the condition should change</span>
+    SaxionApp.printLine(<span class="hljs-string">"too young"</span>);
+}
+SaxionApp.printLine(<span class="hljs-string">"The end"</span>);
+</div></code></pre>
+<p>Change it that the text appears when age is <em>less than or equal to 18</em>. Test it with age 10, age 18 and age 20.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> age = <span class="hljs-number">10</span>; <span class="hljs-comment">// change this to 18 or 20 to test the program with other values</span>
+<span class="hljs-keyword">if</span> (age &lt;= <span class="hljs-number">18</span>) { <span class="hljs-comment">// instead of "smaller than", &lt;, it is now "smaller than or equal to", &lt;=</span>
+    SaxionApp.printLine(<span class="hljs-string">"too young"</span>);
+}
+</div></code></pre>
+<p>Make sure to print &quot;too old&quot; when age is more than 80. Test it with age 10, 80 and 85</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> age = <span class="hljs-number">10</span>; <span class="hljs-comment">// change this to 80 or 85 to test the program with other values</span>
+<span class="hljs-keyword">if</span> (age &gt; <span class="hljs-number">80</span>) { <span class="hljs-comment">// the condition is change to "more than", &gt;, and the number is also changed.</span>
+    SaxionApp.printLine(<span class="hljs-string">"too old"</span>); <span class="hljs-comment">// this line should also have been changed</span>
+}
+SaxionApp.printLine(<span class="hljs-string">"The end"</span>);
+
+</div></code></pre>
+<p>Make a new program. Use a variable (int) lengthInCm to store a person's length.
+Set it to 160 and make sure to check this length and print &quot;Person is tall&quot; when
+the length is larger than 190. Test it with length 160 and 200.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> lengthInCm = <span class="hljs-number">160</span>; <span class="hljs-comment">// change to 200 to test the program with other values</span>
+<span class="hljs-keyword">if</span> (lengthInCm &gt; <span class="hljs-number">190</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"Person is tall"</span>);
+}
+SaxionApp.printLine(<span class="hljs-string">"The end"</span>);
+</div></code></pre>
+<h2 id="level-2---else-and-else-if">Level 2 - Else and else if</h2>
+<p>We have seen that if the condition is false, the body of the if-statement is not executed. If that is the case, we can use the <code>else</code> statement to offer an alternative part of the program that will be executed if the first condition is not true.</p>
+<p>Example:</p>
+<pre>
+if (someVariable == 1) {
+    // do things
+} else {
+    // do other things
+}
+</pre>
+<p>Change the program you created in the previous level, to print &quot;Person is tiny&quot; when the if-statement becomes false. Test the program with different values.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">int</span> lengthInCm = <span class="hljs-number">160</span>; <span class="hljs-comment">// change to 200 to test the program with other values</span>
+<span class="hljs-keyword">if</span> (lengthInCm &gt; <span class="hljs-number">190</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"Person is tall"</span>);
+} <span class="hljs-keyword">else</span> { <span class="hljs-comment">// add this else-statement </span>
+    SaxionApp.printLine(<span class="hljs-string">"Person is tiny"</span>);
+}
+SaxionApp.printLine(<span class="hljs-string">"The end"</span>);
+</div></code></pre>
+<p>Now change the program so you ask the user to input their size with <code>readInt()</code>.</p>
+<pre class="hljs"><code><div>SaxionApp.printLine(<span class="hljs-string">"What is your length in cm?"</span>);
+<span class="hljs-keyword">int</span> lengthInCm = SaxionApp.readInt();
+<span class="hljs-keyword">if</span> (lengthInCm &gt; <span class="hljs-number">190</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"Person is tall"</span>);
+} <span class="hljs-keyword">else</span> { <span class="hljs-comment">// add this else-statement </span>
+    SaxionApp.printLine(<span class="hljs-string">"Person is tiny"</span>);
+}
+SaxionApp.printLine(<span class="hljs-string">"The end"</span>);
+</div></code></pre>
+<p>It is also possible to add more conditions to the if-else statement, using <code>else if</code>. Example:</p>
+<pre>
+if (someVariable == 1) {
+    // do something
+} else if (someVariable == 2) {
+    // do something else
+} else {
+    // give up
+}
+</pre>
+<p>Change your program so it prints &quot;Person has an average length&quot; if the person is not taller than 190, but is taller than 170. Add an <code>else if</code> statement for this, look at the example above.</p>
+<pre class="hljs"><code><div>SaxionApp.printLine(<span class="hljs-string">"What is your length in cm?"</span>);
+<span class="hljs-keyword">int</span> lengthInCm = SaxionApp.readInt();
+<span class="hljs-keyword">if</span> (lengthInCm &gt; <span class="hljs-number">190</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"Person is tall"</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (lengthInCm &gt; <span class="hljs-number">170</span>) { <span class="hljs-comment">// add this else if statement </span>
+    SaxionApp.printLine(<span class="hljs-string">"Person has an average length"</span>);
+} <span class="hljs-keyword">else</span> {
+    SaxionApp.printLine(<span class="hljs-string">"Person is tiny"</span>);
+}
+SaxionApp.printLine(<span class="hljs-string">"The end"</span>);
+</div></code></pre>
+<h2 id="level-3---do-it-yourself">Level 3 - Do it yourself</h2>
+<p>Create a new program that asks the user for a number between 1 and 5. After that, use <code>if</code> and multiple <code>else if</code>s to select an inspirational quote to show to the user, based on the number they chose. If they chose a different number, show an insulting quote (using <code>else</code>). Add a small pause to make it look like the program is &quot;thinking&quot; about which quote to show. Example:</p>
+<pre>
+You need inspiration! Choose a number: 
+> 5
+Finding a personalized quote for you ...
+Trying is the first step toward failure.
+</pre>
+<pre class="hljs"><code><div>SaxionApp.print(<span class="hljs-string">"You need inspiration! Please select a number: "</span>);
+<span class="hljs-keyword">int</span> quote = SaxionApp.readInt();
+
+SaxionApp.printLine(<span class="hljs-string">"Finding a personalized quote for you... "</span>);
+SaxionApp.sleep(<span class="hljs-number">2</span>);
+
+<span class="hljs-keyword">if</span> (quote == <span class="hljs-number">1</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"Everything happens for a reason. Sometimes the reason is you're stupid and make bad decisions."</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (quote == <span class="hljs-number">2</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"Success is just failure that hasn't happened yet."</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (quote == <span class="hljs-number">3</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"Eagles may soar, but weasels don't get sucked into jet engines."</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (quote == <span class="hljs-number">4</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"Never underestimate the power of stupid people in large groups."</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (quote == <span class="hljs-number">5</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"Trying is the first step toward failure."</span>);
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-comment">// wrong number was chosen</span>
+    SaxionApp.printLine(<span class="hljs-string">"I'm busy right now, can I ignore you another time?"</span>);
+}
+
+</div></code></pre>
+<p>When the user selects the wrong number, we immediately proceed to insult them. But maybe it was a mistake, and we should give them a second chance. Change the program: instead of printing the insult, ask the user to try again. If the number is too small, show the insult. If it is too large, also show the insult. Otherwise show one of the quotes.</p>
+<pre class="hljs"><code><div>SaxionApp.print(<span class="hljs-string">"You need inspiration! Please select a number: "</span>);
+<span class="hljs-keyword">int</span> quote = SaxionApp.readInt();
+
+SaxionApp.printLine(<span class="hljs-string">"Finding a personalized quote for you... "</span>);
+SaxionApp.sleep(<span class="hljs-number">2</span>);
+
+<span class="hljs-keyword">if</span> (quote == <span class="hljs-number">1</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"Everything happens for a reason. Sometimes the reason is you're stupid and make bad decisions."</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (quote == <span class="hljs-number">2</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"Success is just failure that hasn't happened yet."</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (quote == <span class="hljs-number">3</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"Eagles may soar, but weasels don't get sucked into jet engines."</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (quote == <span class="hljs-number">4</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"Never underestimate the power of stupid people in large groups."</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (quote == <span class="hljs-number">5</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"Trying is the first step toward failure."</span>);
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-comment">// wrong number was chosen</span>
+    <span class="hljs-comment">// let user try again here:</span>
+    SaxionApp.printLine(<span class="hljs-string">"The number was incorrect. Please try again:"</span>);
+    quote = SaxionApp.readInt();
+    <span class="hljs-keyword">if</span> (quote &lt; <span class="hljs-number">1</span>) {
+        <span class="hljs-comment">// too small</span>
+        SaxionApp.printLine(<span class="hljs-string">"I'm busy right now, can I ignore you another time?"</span>);
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (quote &gt; <span class="hljs-number">5</span>) {
+        <span class="hljs-comment">// too large</span>
+        SaxionApp.printLine(<span class="hljs-string">"I'm busy right now, can I ignore you another time?"</span>);
+    } <span class="hljs-keyword">else</span> {
+        SaxionApp.printLine(<span class="hljs-string">"Light travels faster than sound. This is why some people appear bright until you hear them speak."</span>);
+    }
+}
+</div></code></pre>
+<h2 id="level-4---strings-chars-and-the-switch-statement">Level 4 - Strings, chars and the switch statement.</h2>
+<p>Comparing strings is done in a different way than numbers. For comparing string, use <code>.equals(&quot;text to compare&quot;)</code> and <code>.equalsIgnoreCase(&quot;tExT to COMpaRe&quot;)</code>. The last one ignores capitalization when comparing.</p>
+<p>Create a new program that asks the user a question: &quot;what is the capital of the Netherlands?&quot;. Check the answer with <code>.equalsIgnoreCase</code>, and show a message whether the user was correct or not using <code>if</code> and <code>else</code>.</p>
+<pre class="hljs"><code><div>SaxionApp.printLine(<span class="hljs-string">"What is the capital of the Netherlands?"</span>);
+String answer = SaxionApp.readString();
+<span class="hljs-keyword">if</span> (answer.equalsIgnoreCase(<span class="hljs-string">"amsterdam"</span>)) {
+    SaxionApp.printLine(<span class="hljs-string">"Correct"</span>);
+} <span class="hljs-keyword">else</span> {
+    SaxionApp.printLine(<span class="hljs-string">"Incorrect"</span>);
+}
+</div></code></pre>
+<p>What happens if the user answers <strong>aMSterDAm</strong>?<br>
+Try the same but first change the program so <code>.equals()</code> is used instead of <code>.equalsIgnoreCase()</code>. What happens now?</p>
+<p>Sometimes we only want one character from the user, for example &quot;y&quot; or &quot;n&quot; on a question that requires a yes or no answer. Or is you want one of the characters WASD for steering in a game. A single character can be stored in the <code>char</code> type. You can ask a single character input using the <code>.readChar()</code> method in the SaxionApp.<br>
+Confusingly, if you're using the char type, you actually <em>should</em> compare with ==. For example:</p>
+<pre>
+char input = SaxionApp.readChar();
+if (input == 'w') {
+    // go north
+} else if (input == 'a') {
+    // go west (life is peaceful there)
+} // etc
+</pre>
+<p>Create a new program that asks the user to press a key to specificy what we should draw on screen: a line (l), a circle (c) or a rectangle (r). In an if-statement, make sure the correct shape is drawn. If the user selects the wrong character, draw this text in a LARGE FONT on the screen: <code>&quot;\uD83D\uDCA9&quot;</code></p>
+<pre class="hljs"><code><div>SaxionApp.print(<span class="hljs-string">"What to draw? (c)ircle, (l)ine or (r)ectangle &gt; "</span>);
+<span class="hljs-keyword">char</span> answer = SaxionApp.readChar();
+
+<span class="hljs-keyword">if</span> (answer == <span class="hljs-string">'c'</span>) {
+    SaxionApp.drawCircle(<span class="hljs-number">300</span>, <span class="hljs-number">300</span>, <span class="hljs-number">200</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (answer == <span class="hljs-string">'l'</span>) {
+    SaxionApp.drawLine(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">300</span>, <span class="hljs-number">300</span>);
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (answer == <span class="hljs-string">'r'</span>) {
+    SaxionApp.drawRectangle(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">400</span>, <span class="hljs-number">400</span>);
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-comment">// draw the unicode character "Pile of Poo" on screen</span>
+    SaxionApp.drawText(<span class="hljs-string">"\uD83D\uDCA9"</span>, <span class="hljs-number">150</span>, <span class="hljs-number">150</span>, <span class="hljs-number">200</span>);
+}
+</div></code></pre>
+<p>When we are using many <code>if</code> and <code>else if</code> statements, it can often be replaced by the <code>switch</code> statement. Example:</p>
+<pre>
+char input = SaxionApp.readChar();
+switch (input) {
+    case 'w':
+        // go north
+        break;
+
+    case 'a':
+        // go west
+        break;
+    
+    // etc
+
+    default:
+        // do something when none of the case 
+        // statements matches the input
+        break;
+
+}
+</pre>
+<p>Change your program so it uses a switch statement instead of the <code>if else if</code> list.</p>
+<pre class="hljs"><code><div>SaxionApp.print(<span class="hljs-string">"What to draw? (c)ircle, (l)ine or (r)ectangle &gt; "</span>);
+<span class="hljs-keyword">char</span> answer = SaxionApp.readChar();
+
+<span class="hljs-keyword">switch</span> (answer) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'c'</span>:
+        SaxionApp.drawCircle(<span class="hljs-number">300</span>, <span class="hljs-number">300</span>, <span class="hljs-number">200</span>);
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'l'</span>:
+        SaxionApp.drawLine(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">300</span>, <span class="hljs-number">300</span>);
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'r'</span>:
+        SaxionApp.drawRectangle(<span class="hljs-number">10</span>, <span class="hljs-number">10</span>, <span class="hljs-number">400</span>, <span class="hljs-number">400</span>);
+        <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">default</span>:
+        <span class="hljs-comment">// draw the unicode character "Pile of Poo" on screen</span>
+        SaxionApp.drawText(<span class="hljs-string">"\uD83D\uDCA9"</span>, <span class="hljs-number">150</span>, <span class="hljs-number">150</span>, <span class="hljs-number">200</span>);
+        <span class="hljs-keyword">break</span>;
+}
+</div></code></pre>
+<p>Change your program and remove the &quot;break&quot; statements. Now test the program and press &quot;c&quot;. What happens? Can you explain why that is?</p>
+<script>
+	const solutions = document.querySelectorAll(".hljs");
+	for (let i = 0; i < solutions.length; i++) {
+		const s = solutions[i];
+		s.style.display = "none";
+		const revealDiv = document.createElement("div");
+		revealDiv.innerText = "(Click to reveal solution)";
+		revealDiv.style = "background-color: #eee; padding: 10px;"
+		s.parentNode.insertBefore(revealDiv, s);
+        let isHidden = true;
+		revealDiv.onclick = () => {
+            if (isHidden) {
+                s.style.display = "block";
+                revealDiv.innerText = "Solution:";
+            } else {
+                s.style.display = "none";
+                revealDiv.innerText = "(Click to reveal solution)";
+            }
+            isHidden = !isHidden;
+		};
+	}
+
+</script>
+</body>
+</html>
