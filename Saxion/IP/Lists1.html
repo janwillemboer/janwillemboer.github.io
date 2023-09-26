@@ -622,7 +622,7 @@ SaxionApp.printLine(<span class="hljs-string">"The list is now:"</span>);
     i++;
 }
 </div></code></pre>
-<h2 id="level-3---numbers">Level 3 - Numbers</h2>
+<h2 id="level-3---list-of-numbers-week-4-and-the-enhanced-loop-week-5">Level 3 - List of numbers (week 4) and the enhanced loop (week 5)</h2>
 <p>Create a program that asks numbers in an endless loop until the user enters the number 0. In the loop, add the numbers to a list of numbers. Note: a list of numbers can be created using <code>ArrayList&lt;Integer&gt;</code>.</p>
 <p>Print the numbers afterwards.</p>
 <pre class="hljs"><code><div>ArrayList&lt;Integer&gt; numbers = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
@@ -641,6 +641,27 @@ SaxionApp.printLine(<span class="hljs-string">"The list is now:"</span>);
     i++;
 }
 </div></code></pre>
+<p>Iterating over a list to show all items in the list is something that is done very often. Java has an easier way of doing this, the enhanced for-loop. It looks like this for a ArrayList of String values:</p>
+<pre>
+for (String name : listOfNames) {
+    SaxionApp.printLine(name);
+}
+</pre>
+<p>Change your program, so it uses the enhanced for loop instead of the <code>while</code>.</p>
+<pre class="hljs"><code><div>ArrayList&lt;Integer&gt; numbers = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+<span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>) {
+    <span class="hljs-keyword">int</span> nr = SaxionApp.readInt();
+    <span class="hljs-keyword">if</span> (nr == <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">break</span>;
+    }
+    numbers.add(nr);
+}
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> number : numbers) {
+    SaxionApp.printLine(number);
+}
+</div></code></pre>
 <p>Change the code, so instead of printing all the numbers afterwards, the program shows the sum of all the numbers combined.</p>
 <pre class="hljs"><code><div>ArrayList&lt;Integer&gt; numbers = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
 
@@ -652,12 +673,10 @@ SaxionApp.printLine(<span class="hljs-string">"The list is now:"</span>);
     numbers.add(nr);
 }
 
-<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
 <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
-<span class="hljs-keyword">while</span> (i &lt; numbers.size()) {
-    <span class="hljs-keyword">int</span> nr = numbers.get(i);
-    sum = sum + nr;
-    i++;
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> number : numbers) {
+    SaxionApp.printLine(number);
+    sum = sum + number; <span class="hljs-comment">// or sum += number</span>
 }
 
 SaxionApp.print(<span class="hljs-string">"The total is: "</span> + sum);
