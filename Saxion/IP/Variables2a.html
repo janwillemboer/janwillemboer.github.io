@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Variables2a.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="variables-2a-using-classes-and-objects">Variables 2a (using classes and objects)</h1>
+<h2 id="level-1---basics">Level 1 - Basics</h2>
+<p>Copy this fragment to the run() method of an exercise in IntelliJ. Run the program to check if it works. Is the output what you expect?</p>
+<pre>
+// add this to the imports, otherwise Java won't recognize the Point (and other) types.
+// import java.awt.*;
+
+Point p1 = new Point();
+p1.x = 10;
+p1.y = 20;
+
+Point p2 = new Point();
+p2.x = 100;
+p2.y = 120;
+
+SaxionApp.printLine("x of the first point is: " + p1.x);
+SaxionApp.printLine("x of the second point: " + p2.x);
+</pre>
+<p>This program creates two point variables with the name p1 and p2. Both contain different x and y coordinates.</p>
+<p>Change the program to also show the y-coordinates.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// add this to the imports, otherwise Java won't recognize the Point (and other) types.</span>
+<span class="hljs-comment">// import java.awt.*;</span>
+
+Point p1 = <span class="hljs-keyword">new</span> Point();
+p1.x = <span class="hljs-number">10</span>;
+p1.y = <span class="hljs-number">20</span>;
+
+Point p2 = <span class="hljs-keyword">new</span> Point();
+p2.x = <span class="hljs-number">100</span>;
+p2.y = <span class="hljs-number">120</span>;
+
+SaxionApp.printLine(<span class="hljs-string">"x of the first point is: "</span> + p1.x);
+SaxionApp.printLine(<span class="hljs-string">"y of the first point is: "</span> + p1.y); <span class="hljs-comment">// add this</span>
+SaxionApp.printLine(<span class="hljs-string">"x of the second point: "</span> + p2.x);
+SaxionApp.printLine(<span class="hljs-string">"y of the second point: "</span> + p2.y); <span class="hljs-comment">// and this</span>
+</div></code></pre>
+<p>Change the program so that the coordinates are not printed, but let it draw two circles on screen, at the coordinates of p1 and p2, with a diameter of 20. Use the x and y variables of the Point objects for this.</p>
+<pre class="hljs"><code><div>Point p1 = <span class="hljs-keyword">new</span> Point();
+p1.x = <span class="hljs-number">10</span>;
+p1.y = <span class="hljs-number">20</span>;
+
+Point p2 = <span class="hljs-keyword">new</span> Point();
+p2.x = <span class="hljs-number">100</span>;
+p2.y = <span class="hljs-number">120</span>;
+
+SaxionApp.drawCircle(p1.x, p1.y, <span class="hljs-number">20</span>);
+SaxionApp.drawCircle(p2.x, p2.y, <span class="hljs-number">20</span>);
+</div></code></pre>
+<p>Change the program, so that a line is also drawn from the first point to the second point.</p>
+<pre class="hljs"><code><div>Point p1 = <span class="hljs-keyword">new</span> Point();
+p1.x = <span class="hljs-number">10</span>;
+p1.y = <span class="hljs-number">20</span>;
+
+Point p2 = <span class="hljs-keyword">new</span> Point();
+p2.x = <span class="hljs-number">100</span>;
+p2.y = <span class="hljs-number">120</span>;
+
+<span class="hljs-comment">// it's nicer when the circles are drawn</span>
+<span class="hljs-comment">// on top of the line, so draw the line first.</span>
+SaxionApp.drawLine(p1.x, p1.y, p2.x, p2.y);
+
+SaxionApp.drawCircle(p1.x, p1.y, <span class="hljs-number">20</span>);
+SaxionApp.drawCircle(p2.x, p2.y, <span class="hljs-number">20</span>);
+</div></code></pre>
+<h2 id="level-2---creating-new-objects">Level 2 - creating new objects</h2>
+<p>Now create a new program. In this program, you are going to use the <code>Rectangle</code> class. This is an existing class in the Java library which has <code>x</code> and <code>y</code> variables, just like the <code>Point</code> class, but also has a <code>width</code> and <code>height</code>.</p>
+<p>Create a new variable of type Rectangle, and assign a new Rectangle to it. Set the x, y, width and height properties of the object to some values (10, 20, 200, 150 or whatever).</p>
+<pre class="hljs"><code><div>Rectangle r = <span class="hljs-keyword">new</span> Rectangle();
+r.x = <span class="hljs-number">10</span>;
+r.y = <span class="hljs-number">20</span>;
+r.width = <span class="hljs-number">200</span>;
+r.height = <span class="hljs-number">150</span>;
+</div></code></pre>
+<p>Extend the program so it will draw the rectangle on screen.</p>
+<pre class="hljs"><code><div>Rectangle r = <span class="hljs-keyword">new</span> Rectangle();
+r.x = <span class="hljs-number">10</span>;
+r.y = <span class="hljs-number">20</span>;
+r.width = <span class="hljs-number">200</span>;
+r.height = <span class="hljs-number">150</span>;
+
+SaxionApp.drawRectangle(r.x, r.y, r.width, r.height);
+</div></code></pre>
+<p>Create a new program. Ask the user for an x and also ask for a y coordinate. Store the result in a new Point object. Do this two times, so you end up with two Point objects. Afterwards, draw a line from the first point to the second and/or draw circles at the location of the points.</p>
+<pre class="hljs"><code><div>Point firstPoint = <span class="hljs-keyword">new</span> Point();
+Point secondPoint = <span class="hljs-keyword">new</span> Point();
+
+SaxionApp.print(<span class="hljs-string">"Please enter x1: "</span>);
+firstPoint.x = SaxionApp.readInt();
+SaxionApp.print(<span class="hljs-string">"Please enter y1: "</span>);
+firstPoint.y = SaxionApp.readInt();
+
+SaxionApp.print(<span class="hljs-string">"Please enter x2: "</span>);
+secondPoint.x = SaxionApp.readInt();
+SaxionApp.print(<span class="hljs-string">"Please enter y2: "</span>);
+secondPoint.y = SaxionApp.readInt();
+
+<span class="hljs-comment">// draw stuff</span>
+SaxionApp.drawLine(firstPoint.x, firstPoint.y, secondPoint.x, secondPoint.y);
+SaxionApp.drawCircle(firstPoint.x, firstPoint.y, <span class="hljs-number">20</span>);
+SaxionApp.drawCircle(secondPoint.x, secondPoint.y, <span class="hljs-number">20</span>);
+</div></code></pre>
+<h2 id="level-3---using-objects-as-parameters-in-methods">Level 3 - Using objects as parameters in methods</h2>
+<p>It is possible to use objects as arguments for methods. Copy this fragment to IntelliJ, but remove the existing run() method first.</p>
+<pre>
+public void run() {
+
+    Point p1 = new Point();
+    p1.x = 150;
+    p1.y = 100;
+
+    drawCircle(p1, 50);
+}
+
+public void drawCircle(Point p, int r) {
+    // does nothing yet...
+}
+</pre>
+<p>The method drawCircle doesn't do anything. Edit the code so it will draw the circle on screen in the drawCircle method.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+
+    Point p1 = <span class="hljs-keyword">new</span> Point();
+    p1.x = <span class="hljs-number">150</span>;
+    p1.y = <span class="hljs-number">100</span>;
+
+    drawCircle(p1, <span class="hljs-number">50</span>);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">drawCircle</span><span class="hljs-params">(Point p, <span class="hljs-keyword">int</span> r)</span> </span>{
+    <span class="hljs-comment">// use the x and y of p to draw the circle:</span>
+    SaxionApp.drawCircle(p.x, p.y, r);
+}
+</div></code></pre>
+<p>Add another point object with different values, and draw a circle there as well, by again calling our drawCircle method.</p>
+<pre class="hljs"><code><div>Point p1 = <span class="hljs-keyword">new</span> Point();
+p1.x = <span class="hljs-number">150</span>;
+p1.y = <span class="hljs-number">100</span>;
+
+drawCircle(p1, <span class="hljs-number">50</span>);
+
+<span class="hljs-comment">// same code but different variable name (and different x and y values)</span>
+Point p2 = <span class="hljs-keyword">new</span> Point();
+p2.x = <span class="hljs-number">250</span>;
+p2.y = <span class="hljs-number">100</span>;
+
+drawCircle(p2, <span class="hljs-number">100</span>);
+</div></code></pre>
+<p>Create a new program. Ask the user for an x, y, width and height. Store the values in a Rectangle object. Create a method that takes a Rectangle as argument and draws the rectangle on screen.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+
+    Rectangle r1 = <span class="hljs-keyword">new</span> Rectangle();
+    r1.x = SaxionApp.readInt();
+    r1.y = SaxionApp.readInt();
+    r1.width = SaxionApp.readInt();
+    r1.height = SaxionApp.readInt();
+
+    drawRect(r1);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">drawRect</span><span class="hljs-params">(Rectangle r)</span> </span>{
+    SaxionApp.drawRectangle(r.x, r.y, r.width, r.height);
+}
+</div></code></pre>
+<h2 id="level-4---using-objects-as-returnvalue-from-methods">Level 4 - using objects as returnvalue from methods</h2>
+<p>Copy this method into your program:</p>
+<pre>
+public Rectangle createRectangle(Point topLeft, Point bottomRight) {
+    Rectangle r = new Rectangle();
+    r.x = topLeft.x;
+    r.y = topLeft.y;
+    r.width = bottomRight.x - topLeft.x;
+    r.height = bottomRight.y - topLeft.y;
+    return r;
+}
+</pre>
+<p>Extend your program: create two points or ask the user for two points. Use these points and the method createRectangle to convert the points into a rectangle. Draw the rectangle on screen (using the method you created earlier).</p>
+<pre class="hljs"><code><div>SaxionApp.printLine(<span class="hljs-string">"Enter topleft x and y:"</span>);
+Point p1 = <span class="hljs-keyword">new</span> Point();
+p1.x = SaxionApp.readInt();
+p1.y = SaxionApp.readInt();
+SaxionApp.printLine(<span class="hljs-string">"Enter bottomright x and y:"</span>);
+Point p2 = <span class="hljs-keyword">new</span> Point();
+p2.x = SaxionApp.readInt();
+p2.y = SaxionApp.readInt();
+
+Rectangle r = createRectangle(p1, p2);
+drawRect(r);
+
+<span class="hljs-comment">// you can combine these last two lines if you want:</span>
+<span class="hljs-comment">// drawRect(createRectange(p1, p2));</span>
+</div></code></pre>
+<p>Create a new program. Create a new method <code>getRandomPoint</code> that returns a Point with a random x and y (within the boundaries of your canvas). Call this method in a loop and draw a circle at the returned point each time. Run the loop 50 times.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">50</span>) {
+        Point p = getRandomPoint();
+        SaxionApp.drawCircle(p.x, p.y, <span class="hljs-number">20</span>);
+        i++;
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> Point <span class="hljs-title">getRandomPoint</span><span class="hljs-params">()</span> </span>{
+    Point p = <span class="hljs-keyword">new</span> Point();
+
+    <span class="hljs-comment">// use SaxionApp.getWidth and Height for the canvas size</span>
+    <span class="hljs-comment">// (or just enter the values as numbers)</span>
+    p.x = SaxionApp.getRandomValueBetween(<span class="hljs-number">0</span>, SaxionApp.getWidth());
+    p.y = SaxionApp.getRandomValueBetween(<span class="hljs-number">0</span>, SaxionApp.getHeight());
+    <span class="hljs-keyword">return</span> p;
+}
+</div></code></pre>
+<h2 id="level-5---using-objects-in-an-arraylist">Level 5 - using objects in an ArrayList</h2>
+<p>It is possible to use ArrayLists to store objects. Copy the following code to the run method:</p>
+<pre>
+// add this to the imports, otherwise Java won't recognize the ArrayList type.
+// import java.util.ArrayList;
+
+// create a new, empty list and store it in listOfPoints
+ArrayList<Point> listOfPoints = new ArrayList<>();
+
+// create a new point
+Point p1 = new Point();
+p1.x = 10;
+p1.y = 20;
+
+// add it to the list
+listOfPoints.add(p1);
+</pre>
+<p>Extend the code and add a second point to the list. To create the point, use the getRandomPoint() method you created earlier.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// add this to the imports, otherwise Java won't recognize the ArrayList type.</span>
+<span class="hljs-comment">// import java.util.ArrayList;</span>
+
+ArrayList&lt;Point&gt; listOfPoints = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+Point p1 = <span class="hljs-keyword">new</span> Point();
+p1.x = <span class="hljs-number">10</span>;
+p1.y = <span class="hljs-number">20</span>;
+listOfPoints.add(p1);
+
+Point p2 = getRandomPoint();
+listOfPoints.add(p2);
+
+<span class="hljs-comment">// or do it in one line:</span>
+<span class="hljs-comment">// listOfPoints.add(getRandomPoint());</span>
+</div></code></pre>
+<p>This program doesn't do anything yet, it would be nice to draw all points on the screen now. To do this, add an enhanced for-loop that loops over all values of listOfPoints using a variable Point p. Draw each point on screen by calling the drawCircle method you created earlier (or copy it from a solution above).</p>
+<pre class="hljs"><code><div>ArrayList&lt;Point&gt; listOfPoints = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+Point p1 = <span class="hljs-keyword">new</span> Point();
+p1.x = <span class="hljs-number">10</span>;
+p1.y = <span class="hljs-number">20</span>;
+listOfPoints.add(p1);
+
+Point p2 = getRandomPoint();
+listOfPoints.add(p2);
+
+<span class="hljs-keyword">for</span> (Point p : listOfPoints) {
+    drawCircle(p, <span class="hljs-number">20</span>);
+}
+</div></code></pre>
+<p>Change the program so it adds 150 random points to the list (hint: use a loop) and let it draw all the points afterwards.</p>
+<pre class="hljs"><code><div>ArrayList&lt;Point&gt; listOfPoints = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span> (i &lt; <span class="hljs-number">150</span>) {
+    listOfPoints.add(getRandomPoint());
+    i++;
+}
+
+<span class="hljs-keyword">for</span> (Point p : listOfPoints) {
+    drawCircle(p, <span class="hljs-number">20</span>);
+}
+</div></code></pre>
+<h2 id="level-5---do-it-yourself">Level 5 - Do it yourself</h2>
+<p>Create a new program. Add a method <code>askRectangle</code> that ask the user for x, y, width and height and returns a Rectangle. Call this method 3 times and add all rectangles to a list of rectangles. Afterwards, add up the areas of all the rectangles and return the total (area is width x height).</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
+
+    ArrayList&lt;Rectangle&gt; rectangles = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+    <span class="hljs-comment">// instead of using an index variable (i), we can just</span>
+    <span class="hljs-comment">// check the size of the arraylist in the while condition.</span>
+    <span class="hljs-comment">// (But using i &lt; 3 is also okay).</span>
+    <span class="hljs-keyword">while</span> (rectangles.size() &lt; <span class="hljs-number">3</span>) {
+        Rectangle r = askRectangle();
+        rectangles.add(r);
+    }
+
+    <span class="hljs-keyword">int</span> areaSum = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (Rectangle r : rectangles) {
+        <span class="hljs-keyword">int</span> area = r.width * r.height;
+        areaSum = areaSum + area;
+    }
+
+    SaxionApp.printLine(<span class="hljs-string">"The total area is: "</span> + areaSum);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">private</span> Rectangle <span class="hljs-title">askRectangle</span><span class="hljs-params">()</span> </span>{
+    SaxionApp.printLine(<span class="hljs-string">"Give x, y, width and height (on separate lines):"</span>);
+    Rectangle result = <span class="hljs-keyword">new</span> Rectangle();
+    result.x = SaxionApp.readInt();
+    result.y = SaxionApp.readInt();
+    result.width = SaxionApp.readInt();
+    result.height = SaxionApp.readInt();
+    <span class="hljs-keyword">return</span> result;
+}
+</div></code></pre>
+<script>
+	const solutions = document.querySelectorAll(".hljs");
+	for (let i = 0; i < solutions.length; i++) {
+		const s = solutions[i];
+		s.style.display = "none";
+		const revealDiv = document.createElement("div");
+		revealDiv.innerText = "(Click to reveal solution)";
+		revealDiv.style = "background-color: #eee; padding: 10px;"
+		s.parentNode.insertBefore(revealDiv, s);
+        let isHidden = true;
+		revealDiv.onclick = () => {
+            if (isHidden) {
+                s.style.display = "block";
+                revealDiv.innerText = "Solution:";
+            } else {
+                s.style.display = "none";
+                revealDiv.innerText = "(Click to reveal solution)";
+            }
+            isHidden = !isHidden;
+		};
+	}
+
+</script>
+</body>
+</html>
