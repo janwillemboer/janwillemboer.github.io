@@ -367,12 +367,15 @@ code {
   </script>
 <h1 id="variables-2a-using-classes-and-objects">Variables 2a (using classes and objects)</h1>
 <h2 id="level-1---basics">Level 1 - Basics</h2>
+<p>Objects are special places in memory that can hold a set of values that belong together. An example of this is the Point in Java. An object of the class Point has two int values: the x and y value of the point. They always belong together. Classes and objects are the way Java implements this mechanism.</p>
 <p>Copy this fragment to the run() method of an exercise in IntelliJ. Run the program to check if it works. Is the output what you expect?</p>
 <pre>
 // add this to the imports, otherwise Java won't recognize the Point (and other) types.
 // import java.awt.*;
 
-Point p1 = new Point();
+// "new Point" creates a new object of type Point
+// it is assigned to the variable "p1" after it has been created.
+Point p1 = new Point(); 
 p1.x = 10;
 p1.y = 20;
 
@@ -637,7 +640,114 @@ listOfPoints.add(p2);
     drawCircle(p, <span class="hljs-number">20</span>);
 }
 </div></code></pre>
-<h2 id="level-5---do-it-yourself">Level 5 - Do it yourself</h2>
+<h2 id="level-5---pitfalls">Level 5 - Pitfalls</h2>
+<p>Understanding how variables can hold objects and how using the <code>new</code> keyword creates new objects is essential when working with classes and objects.</p>
+<p>Consider the following example:</p>
+<pre>
+Point p = new Point();
+p.x = 10;
+p.y = 20;
+
+// same variable is used
+p = new Point();
+p.x = 30;
+p.y = 40;
+
+SaxionApp.print(p.x); 
+</pre>
+<p>What happens to the first Point object? What will be printed? Try it out.</p>
+<pre class="hljs"><code><div>Point p = <span class="hljs-keyword">new</span> Point();
+p.x = <span class="hljs-number">10</span>;
+p.y = <span class="hljs-number">20</span>;
+
+<span class="hljs-comment">// the first object is lost forever, because here a new Point object </span>
+<span class="hljs-comment">// is created and assigned to the p variable. </span>
+<span class="hljs-comment">// Because there is no way to access the first Point object any longer, it is destroyed by Java</span>
+p = <span class="hljs-keyword">new</span> Point();
+p.x = <span class="hljs-number">30</span>;
+p.y = <span class="hljs-number">40</span>;
+
+SaxionApp.print(p.x); 
+<span class="hljs-comment">// "30" is printed.</span>
+</div></code></pre>
+<p>Consider this example:</p>
+<pre>
+ArrayList<Point> points = new ArrayList<>();
+
+Point p = new Point();
+p.x = 10;
+p.y = 20;
+points.add(p);
+
+// same variable is used
+p = new Point();
+p.x = 30;
+p.y = 40;
+points.add(p);
+
+SaxionApp.print(p.get(0).x);
+</pre>
+<p>What happens to the first Point object now? What is printed? Try it out.</p>
+<pre class="hljs"><code><div>ArrayList&lt;Point&gt; points = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+Point p = <span class="hljs-keyword">new</span> Point();
+p.x = <span class="hljs-number">10</span>;
+p.y = <span class="hljs-number">20</span>;
+
+<span class="hljs-comment">// The first Point object is added to the arraylist here. </span>
+points.add(p);
+
+<span class="hljs-comment">// So even while the p variable is reused for the second Point here,</span>
+<span class="hljs-comment">// the first point is still accessible via the arraylist: points.get(0)</span>
+<span class="hljs-comment">// So both points stay.</span>
+p = <span class="hljs-keyword">new</span> Point();
+p.x = <span class="hljs-number">30</span>;
+p.y = <span class="hljs-number">40</span>;
+points.add(p);
+
+<span class="hljs-comment">// "10" is printed.</span>
+SaxionApp.print(p.get(<span class="hljs-number">0</span>).x);
+</div></code></pre>
+<p>Consider this example:</p>
+<pre>
+ArrayList<Point> points = new ArrayList<>();
+
+Point p = new Point();
+p.x = 10;
+p.y = 20;
+points.add(p);
+
+// reuse same variable
+p.x = 30;
+p.y = 40;
+points.add(p);
+
+SaxionApp.print(p.get(0).x);
+</pre>
+<p>What is the difference with the previous example? What happens now? What is printed? Try it out!</p>
+<pre class="hljs"><code><div>ArrayList&lt;Point&gt; points = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+<span class="hljs-comment">// This is a program with an error: it only creates one Point object. </span>
+Point p = <span class="hljs-keyword">new</span> Point();
+p.x = <span class="hljs-number">10</span>;
+p.y = <span class="hljs-number">20</span>;
+<span class="hljs-comment">// It adds the object to the arraylist here</span>
+points.add(p);
+
+<span class="hljs-comment">// But then it just overwrites the existing values of x and y </span>
+<span class="hljs-comment">// of the first point with other values, without creating a new Point</span>
+p.x = <span class="hljs-number">30</span>;
+p.y = <span class="hljs-number">40</span>;
+
+<span class="hljs-comment">// It now *again* adds the same object to the list. </span>
+<span class="hljs-comment">// That is allowed, but now the list contains 2 references to the same object!</span>
+points.add(p);
+
+<span class="hljs-comment">// Because there is only one object, it doesn't matter if you </span>
+<span class="hljs-comment">// print p.get(0).x or p.get(1).x. Both print "30".</span>
+SaxionApp.print(p.get(<span class="hljs-number">0</span>).x);
+</div></code></pre>
+<h2 id="level-6---do-it-yourself">Level 6 - Do it yourself</h2>
 <p>Create a new program. Add a method <code>askRectangle</code> that ask the user for x, y, width and height and returns a Rectangle. Call this method 3 times and add all rectangles to a list of rectangles. Afterwards, add up the areas of all the rectangles and return the total (area is width x height).</p>
 <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
 
