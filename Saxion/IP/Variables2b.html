@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Variables2b.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="variables-2b-using-your-own-classes-with-data">Variables 2b (using your own classes with data)</h1>
+<h2 id="level-1---basics">Level 1 - Basics</h2>
+<p>We used existing Java classes to create objects until now: Point and Rectangle. But it is also possible to create your own, custom class.</p>
+<p>For example, we want to register a product with its price, we could create a class for this with String productName and int priceInCents, and use that in our code.</p>
+<ul>
+<li>In IntelliJ, in the project structure, right-click on the src directory in your Exercise, select New &gt; Java Class.</li>
+<li>For the name, fill in <code>Product</code>. A new file is created and opened in the editor.</li>
+<li>Copy the following code into the file:</li>
+</ul>
+<pre>
+public class Product {
+
+    String name;
+    int priceInCents;
+
+}
+</pre>
+<p>Now switch back to the Application file and copy this into your <code>run()</code> method:</p>
+<pre>
+Product product = new Product();
+product.name = "Expensive designer lamp";
+product.priceInCents = 12000;
+</pre>
+<p>Extend this code:</p>
+<ul>
+<li>add the product to an ArrayList of Products. Name the arraylist &quot;cart&quot;</li>
+<li>create another product and add that to the list as well.</li>
+</ul>
+<pre class="hljs"><code><div>ArrayList&lt;Product&gt; cart = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+Product product = <span class="hljs-keyword">new</span> Product();
+product.name = <span class="hljs-string">"Expensive designer lamp"</span>;
+product.priceInCents = <span class="hljs-number">12000</span>;
+cart.add(product);
+
+Product anotherProduct = <span class="hljs-keyword">new</span> Product();
+anotherProduct.name = <span class="hljs-string">"Fake turd"</span>;
+anotherProduct.priceInCents = <span class="hljs-number">520</span>;
+cart.add(anotherProduct);
+</div></code></pre>
+<p>Extend the code so it calculates and shows the total price of the items in the cart. Hint:</p>
+<ul>
+<li>start with an int sum,</li>
+<li>create a loop that iterates over all the items</li>
+<li>in the loop, add the price of that item to the sum</li>
+</ul>
+<pre class="hljs"><code><div>ArrayList&lt;Product&gt; cart = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+Product product = <span class="hljs-keyword">new</span> Product();
+product.name = <span class="hljs-string">"Expensive designer lamp"</span>;
+product.priceInCents = <span class="hljs-number">12000</span>;
+cart.add(product);
+
+Product anotherProduct = <span class="hljs-keyword">new</span> Product();
+anotherProduct.name = <span class="hljs-string">"Fake turd"</span>;
+anotherProduct.priceInCents = <span class="hljs-number">520</span>;
+cart.add(anotherProduct);
+
+<span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">for</span> (Product item : cart) {
+    sum = sum + item.priceInCents;
+}
+
+SaxionApp.printLine(<span class="hljs-string">"The total is: €"</span> + ((<span class="hljs-keyword">double</span>)sum / <span class="hljs-number">100</span>));
+</div></code></pre>
+<p>Go back to the file with the Product class. You can see the fields <code>name</code> and <code>priceInCents</code> here. Add a new field <code>shippingCostsInCents</code> with type int.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Product</span> </span>{
+
+    String name;
+    <span class="hljs-keyword">int</span> priceInCents;
+    <span class="hljs-keyword">int</span> shippingCostsInCents;
+
+}
+</div></code></pre>
+<p>Change your program: set the shipping costs to a value for both of the products that you add to the cart. And also calculate the shipping costs total.</p>
+<pre class="hljs"><code><div>ArrayList&lt;Product&gt; cart = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+Product product = <span class="hljs-keyword">new</span> Product();
+product.name = <span class="hljs-string">"Expensive designer lamp"</span>;
+product.priceInCents = <span class="hljs-number">12000</span>;
+product.shippingCostsInCents = <span class="hljs-number">625</span>;
+cart.add(product);
+
+Product anotherProduct = <span class="hljs-keyword">new</span> Product();
+anotherProduct.name = <span class="hljs-string">"Fake turd"</span>;
+anotherProduct.priceInCents = <span class="hljs-number">520</span>;
+anotherProduct.shippingCostsInCents = <span class="hljs-number">325</span>;
+cart.add(anotherProduct);
+
+<span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">int</span> shipping = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">for</span> (Product item : cart) {
+    sum = sum + item.priceInCents;
+    shipping = shipping + item.shippingCostsInCents;
+}
+
+SaxionApp.printLine(<span class="hljs-string">"The total is: €"</span> + ((<span class="hljs-keyword">double</span>)sum / <span class="hljs-number">100</span>));
+SaxionApp.printLine(<span class="hljs-string">" plus shipping: €"</span> + ((<span class="hljs-keyword">double</span>)shipping / <span class="hljs-number">100</span>));
+</div></code></pre>
+<h2 id="level-2---do-it-yourself">Level 2 - Do it yourself</h2>
+<p>Create a new class <code>Circle</code> with these fields, all ints: x, y, radius, red, green, blue.</p>
+<p>In your program, add 150 objects of type Circle to a list. They all should have random values for x, y, radius, red, green and blue. Restrictions:</p>
+<ul>
+<li>Keep the values of x and y within the boundaries of your canvas.</li>
+<li>Keep the radius between 30 and 100.</li>
+<li>Keep the red-green-blue values between 0 and 255.</li>
+</ul>
+<p>Finally draw all the circles in the list to the canvas with the correct position, size and color. Use <code>SaxionApp.createColor()</code> to convert r-g-b values to a color. Use <code>SaxionApp.setFill</code> to set the background color of the circles. Use <code>SaxionApp.turnBorderOff()</code> to remove the ugly green border.</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// the Circle class (in a separate file)</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Circle</span> </span>{
+    <span class="hljs-keyword">int</span> x;
+    <span class="hljs-keyword">int</span> y;
+    <span class="hljs-keyword">int</span> radius;
+    <span class="hljs-keyword">int</span> red;
+    <span class="hljs-keyword">int</span> green;
+    <span class="hljs-keyword">int</span> blue;
+}
+
+<span class="hljs-comment">// in your application run() method:</span>
+ArrayList&lt;Circle&gt; circles = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+<span class="hljs-keyword">while</span> (circles.size() &lt; <span class="hljs-number">150</span>) {
+    Circle c = <span class="hljs-keyword">new</span> Circle();
+    c.x = SaxionApp.getRandomValueBetween(<span class="hljs-number">0</span>, SaxionApp.getWidth());
+    c.y = SaxionApp.getRandomValueBetween(<span class="hljs-number">0</span>, SaxionApp.getHeight());
+    c.radius = SaxionApp.getRandomValueBetween(<span class="hljs-number">30</span>, <span class="hljs-number">100</span>);
+    c.red = SaxionApp.getRandomValueBetween(<span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+    c.green = SaxionApp.getRandomValueBetween(<span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+    c.blue = SaxionApp.getRandomValueBetween(<span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+
+    circles.add(c);
+}
+
+SaxionApp.turnBorderOff();
+<span class="hljs-keyword">for</span> (Circle c : circles) {
+    Color color = SaxionApp.createColor(c.red, c.green, c.blue);
+    SaxionApp.setFill(color);
+    SaxionApp.drawCircle(c.x, c.y, c.radius);
+}
+</div></code></pre>
+<p>Change the program and add three counters. Count the circles that are</p>
+<ul>
+<li>mainly blue (blue value larger than the other two values)</li>
+<li>mainly red (red value larger than the other two values)</li>
+<li>mainly green (you get the idea)</li>
+</ul>
+<p>Show all three results afterwards and decide which color won.</p>
+<pre class="hljs"><code><div>ArrayList&lt;Circle&gt; circles = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+<span class="hljs-keyword">while</span> (circles.size() &lt; <span class="hljs-number">150</span>) {
+    Circle c = <span class="hljs-keyword">new</span> Circle();
+    c.x = SaxionApp.getRandomValueBetween(<span class="hljs-number">0</span>, SaxionApp.getWidth());
+    c.y = SaxionApp.getRandomValueBetween(<span class="hljs-number">0</span>, SaxionApp.getHeight());
+    c.radius = SaxionApp.getRandomValueBetween(<span class="hljs-number">30</span>, <span class="hljs-number">100</span>);
+    c.red = SaxionApp.getRandomValueBetween(<span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+    c.green = SaxionApp.getRandomValueBetween(<span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+    c.blue = SaxionApp.getRandomValueBetween(<span class="hljs-number">0</span>, <span class="hljs-number">255</span>);
+
+    circles.add(c);
+}
+
+<span class="hljs-keyword">int</span> red = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">int</span> green = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">int</span> blue = <span class="hljs-number">0</span>;
+SaxionApp.turnBorderOff();
+<span class="hljs-keyword">for</span> (Circle c : circles) {
+    Color color = SaxionApp.createColor(c.red, c.green, c.blue);
+    SaxionApp.setFill(color);
+    SaxionApp.drawCircle(c.x, c.y, c.radius);
+
+    <span class="hljs-keyword">if</span> (c.red &gt; c.green &amp;&amp; c.red &gt; c.blue) {
+        red++;
+    }
+    <span class="hljs-keyword">if</span> (c.green &gt; c.red &amp;&amp; c.green &gt; c.blue) {
+        green++;
+    }
+    <span class="hljs-keyword">if</span> (c.blue &gt; c.red &amp;&amp; c.blue &gt; c.green) {
+        blue++;
+    }
+}
+
+SaxionApp.print(<span class="hljs-string">"Counted circles mainly red: "</span> + red);
+SaxionApp.print(<span class="hljs-string">", mainly green: "</span> + green);
+SaxionApp.prinLine(<span class="hljs-string">", mainly blue: "</span> + blue);
+
+<span class="hljs-keyword">if</span> (red &gt; green &amp;&amp; red &gt; blue) {
+    SaxionApp.printLine(<span class="hljs-string">"RED WON"</span>, Color.RED);
+}
+<span class="hljs-keyword">if</span> (green &gt; red &amp;&amp; green &gt; blue) {
+    SaxionApp.printLine(<span class="hljs-string">"GREEN WON"</span>, Color.GREEN);
+}
+<span class="hljs-keyword">if</span> (blue &gt; red &amp;&amp; blue &gt; green) {
+    SaxionApp.printLine(<span class="hljs-string">"BLUE WON"</span>, Color.BLUE);
+}
+</div></code></pre>
+<h2 id="level-3---objects-from-data">Level 3 - Objects from data</h2>
+<p>Classes and data go well together. Data are values stored in a file on disk. One of the formats to store data is the CSV-format. It can store one object per line, the fields are separated with a comma (<code>,</code>) or semicolon (<code>;</code>), depending on the program used to create it.</p>
+<p>An example of CSV data for our Circle class:</p>
+<pre>
+x;y;radius;red;green;blue
+350;350;200;200;200;200
+200;200;105;0;0;0
+200;200;100;200;200;200
+200;200;85;0;0;0
+200;200;80;230;200;200
+500;200;105;0;0;0
+500;200;100;200;200;200
+500;200;85;0;0;0
+500;200;80;230;200;200
+350;350;180;200;200;200
+350;340;150;200;0;0
+350;320;150;200;200;200
+270;300;35;0;0;0
+430;300;35;0;0;0
+270;300;30;255;255;255
+430;300;30;255;255;255
+260;290;20;0;0;0
+440;300;20;0;0;0
+260;290;18;60;0;255
+440;300;18;60;0;255
+260;290;8;0;0;0
+440;300;8;0;0;0
+350;350;30;100;100;100
+</pre>
+<p>The first line is the field names, the other lines contain values for the fields. Each row defines one circle.</p>
+<p>Create a new CSV file in your Exercise:</p>
+<ul>
+<li>Copy the CSV data above</li>
+<li>Right-click on the Exercise directory &gt; New &gt; File</li>
+<li>give the new file the name circles.csv</li>
+<li>paste the CSV data into the file</li>
+<li>Save it and go back to your program.</li>
+</ul>
+<p>The SaxionApp has a builtin CSV reader.</p>
+<p>Change your program, so the while loop that creates the circles doesn't use random values, but values from the CSV. Use this example to modify your code:</p>
+<pre>
+// NOTE: instead of "Exercise1", use the correct Exercise directory name here
+// or "Sandbox" if you use the Sandbox project.
+CsvReader reader = new CsvReader("Exercise1/circles.csv"); 
+reader.setSeparator(';'); // fields separated by semicolon
+reader.skipRow(); // skip the header row with field names
+
+while (reader.loadRow()) { // keep looping until there are no more rows
+
+    Circle c = new Circle(); 
+    c.x = reader.getInt(0);
+    c.y = reader.getInt(1);
+    // do the rest of the fields yourself ...
+
+    // add the circle to the arraylist
+}
+</pre>
+<p>If you do it correctly, you should see a painting that is rumoured to have been made by Van Gogh himself. At least it has the same qualities.</p>
+<pre class="hljs"><code><div>ArrayList&lt;Circle&gt; circles = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+CsvReader reader = <span class="hljs-keyword">new</span> CsvReader(<span class="hljs-string">"Exercise15/circles.csv"</span>);
+reader.setSeparator(<span class="hljs-string">';'</span>); <span class="hljs-comment">// fields separated by semicolon</span>
+reader.skipRow(); <span class="hljs-comment">// skip the header row with field names</span>
+<span class="hljs-keyword">while</span> (reader.loadRow()) {
+    Circle c = <span class="hljs-keyword">new</span> Circle();
+    c.x = reader.getInt(<span class="hljs-number">0</span>);
+    c.y = reader.getInt(<span class="hljs-number">1</span>);
+    c.radius = reader.getInt(<span class="hljs-number">2</span>);
+    c.red = reader.getInt(<span class="hljs-number">3</span>);
+    c.green = reader.getInt(<span class="hljs-number">4</span>);
+    c.blue = reader.getInt(<span class="hljs-number">5</span>);
+
+    circles.add(c);
+}
+
+<span class="hljs-comment">// (removed the color counting stuff)</span>
+SaxionApp.turnBorderOff();
+<span class="hljs-keyword">for</span> (Circle c : circles) {
+    Color color = SaxionApp.createColor(c.red, c.green, c.blue);
+    SaxionApp.setFill(color);
+    SaxionApp.drawCircle(c.x, c.y, c.radius);
+}
+</div></code></pre>
+<h2 id="level-4---class-from-data">Level 4 - Class from data</h2>
+<p>Store this data as CSV-file in your exercise, call it temp.csv.</p>
+<p>The data is the average temperature (*10, so 97 means 9.7 degrees) per year in the eastern part of the Netherlands since 1951.</p>
+<pre>
+weatherstation;year;temperature
+Twente;1951;97
+Twente;1952;86
+Twente;1953;98 
+Twente;1954;88
+Twente;1955;86
+Twente;1956;79
+Twente;1957;97
+Twente;1958;93
+Twente;1959;102
+Twente;1960;94
+Twente;1961;97
+Twente;1962;78
+Twente;1963;76
+Twente;1964;89
+Twente;1965;83
+Twente;1966;92
+Twente;1967;97
+Twente;1968;88
+Twente;1969;85
+Twente;1970;85
+Twente;1971;91
+Twente;1972;85
+Twente;1973;90
+Twente;1974;93
+Twente;1975;93
+Twente;1976;92
+Twente;1977;93
+Twente;1978;87
+Twente;1979;78
+Twente;1980;85
+Twente;1981;91
+Twente;1982;97
+Twente;1983;96
+Twente;1984;86
+Twente;1985;78
+Twente;1986;85
+Twente;1987;83
+Twente;1988;99
+Twente;1989;104
+Twente;1990;104
+Twente;1991;91
+Twente;1992;102
+Twente;1993;90
+Twente;1994;101
+Twente;1995;98
+Twente;1996;78
+Twente;1997;97
+Twente;1998;98
+Twente;1999;105
+Twente;2000;105
+Twente;2001;99
+Twente;2002;103
+Twente;2003;99
+Twente;2004;99
+Twente;2005;101
+Twente;2006;108
+Twente;2007;107
+Twente;2008;101
+Twente;2009;100
+Twente;2010;85
+Twente;2011;103
+Twente;2012;98
+Twente;2013;94
+Twente;2014;113
+Twente;2015;105
+Twente;2016;102
+Twente;2017;105
+Twente;2018;111
+Twente;2019;110
+Twente;2020;113
+Twente;2021;101
+Twente;2022;113
+</pre>
+<p>Create a new program.</p>
+<ul>
+<li>Create a class that can hold one object of this temperature CSV-data.</li>
+<li>Let the program read the CSV data into objects of the class and add them to a list.
+Note that this time your are also dealing with a string.</li>
+</ul>
+<p>Use the list afterwards to create a diagram:</p>
+<ul>
+<li>draw a vertical line for the first year on the left of the screen</li>
+<li>let it start at the bottom of the screen</li>
+<li>the height has to be as much pixels as the &quot;temperature&quot; value.</li>
+<li>for the next year, draw a vertical line right to the previous line</li>
+<li>etc.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-comment">// class YearTemperature. You probably chose a better name.</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">YearTemperature</span> </span>{
+    <span class="hljs-comment">// there are three columns in the csv, so three fields here</span>
+    <span class="hljs-comment">// the first is a string, the last contain only numbers, so int.</span>
+    String weatherStation;
+    <span class="hljs-keyword">int</span> year;
+    <span class="hljs-keyword">int</span> temp;
+}
+
+<span class="hljs-comment">// in the run() method of the Application:</span>
+<span class="hljs-comment">// (change YearTemperature to your own classname)</span>
+ArrayList&lt;YearTemperature&gt; yearTemperatures = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+<span class="hljs-comment">// (change to your own path and file name)</span>
+CsvReader reader = <span class="hljs-keyword">new</span> CsvReader(<span class="hljs-string">"Exercise15/temp.csv"</span>);
+reader.setSeparator(<span class="hljs-string">';'</span>); <span class="hljs-comment">// fields separated by semicolon</span>
+reader.skipRow(); <span class="hljs-comment">// skip the header row with field names</span>
+<span class="hljs-keyword">while</span> (reader.loadRow()) {
+    YearTemperature t = <span class="hljs-keyword">new</span> YearTemperature();
+    t.weatherStation = reader.getString(<span class="hljs-number">0</span>);
+    t.year = reader.getInt(<span class="hljs-number">1</span>);
+    t.temp = reader.getInt(<span class="hljs-number">2</span>);
+
+    yearTemperatures.add(t);
+}
+
+<span class="hljs-keyword">int</span> x = <span class="hljs-number">10</span>; <span class="hljs-comment">// little margin on the left</span>
+<span class="hljs-keyword">int</span> scale = <span class="hljs-number">3</span>; <span class="hljs-comment">// to enlarge the graph a bit, otherwise it is such a tiny graph</span>
+
+<span class="hljs-keyword">for</span> (YearTemperature t : yearTemperatures) {
+    <span class="hljs-comment">// draw vertical line </span>
+    SaxionApp.drawLine(x, SaxionApp.getHeight(), x, SaxionApp.getHeight() - t.temp * scale);
+    x = x + scale; <span class="hljs-comment">// move right for the next line</span>
+}
+</div></code></pre>
+<p>Now change the program:</p>
+<ul>
+<li>ask the user for a year after 1950, and before 2023</li>
+<li>show the graph only from that year on.</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-comment">// (change YearTemperature to your own classname)</span>
+ArrayList&lt;YearTemperature&gt; yearTemperatures = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+
+<span class="hljs-comment">// (change to your own path and file name)</span>
+CsvReader reader = <span class="hljs-keyword">new</span> CsvReader(<span class="hljs-string">"Exercise15/temp.csv"</span>);
+reader.setSeparator(<span class="hljs-string">';'</span>); <span class="hljs-comment">// fields separated by semicolon</span>
+reader.skipRow(); <span class="hljs-comment">// skip the header row with field names</span>
+<span class="hljs-keyword">while</span> (reader.loadRow()) {
+    YearTemperature t = <span class="hljs-keyword">new</span> YearTemperature();
+    t.weatherStation = reader.getString(<span class="hljs-number">0</span>);
+    t.year = reader.getInt(<span class="hljs-number">1</span>);
+    t.temp = reader.getInt(<span class="hljs-number">2</span>);
+
+    yearTemperatures.add(t);
+}
+
+<span class="hljs-keyword">int</span> selectedYear = <span class="hljs-number">0</span>;
+<span class="hljs-comment">// keep asking until it is ok</span>
+<span class="hljs-keyword">while</span> (selectedYear &lt; <span class="hljs-number">1951</span> || selectedYear &gt; <span class="hljs-number">2022</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"From which year do you want to see the graph? (1951-2022)"</span>);
+    selectedYear = SaxionApp.readInt();
+}
+
+<span class="hljs-keyword">int</span> x = <span class="hljs-number">10</span>; 
+<span class="hljs-keyword">int</span> scale = <span class="hljs-number">3</span>; 
+
+<span class="hljs-keyword">for</span> (YearTemperature t : yearTemperatures) {
+    <span class="hljs-comment">// only draw if it matches our criterium: year should be &gt;= than the selected year</span>
+    <span class="hljs-keyword">if</span> (t.year &gt;= selectedYear) {
+        SaxionApp.drawLine(x, SaxionApp.getHeight(), x, SaxionApp.getHeight() - t.temp * scale);
+        x = x + scale;
+    }
+}
+</div></code></pre>
+<script>
+	const solutions = document.querySelectorAll(".hljs");
+	for (let i = 0; i < solutions.length; i++) {
+		const s = solutions[i];
+		s.style.display = "none";
+		const revealDiv = document.createElement("div");
+		revealDiv.innerText = "(Click to reveal solution)";
+		revealDiv.style = "background-color: #eee; padding: 10px;"
+		s.parentNode.insertBefore(revealDiv, s);
+        let isHidden = true;
+		revealDiv.onclick = () => {
+            if (isHidden) {
+                s.style.display = "block";
+                revealDiv.innerText = "Solution:";
+            } else {
+                s.style.display = "none";
+                revealDiv.innerText = "(Click to reveal solution)";
+            }
+            isHidden = !isHidden;
+		};
+	}
+
+</script>
+</body>
+</html>
