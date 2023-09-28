@@ -432,16 +432,16 @@ The message 'This is amazing!!!!' has 19 characters
 </div></code></pre>
 <p>Now add a new method to the program:</p>
 <pre>
-public void wait() {
+public void waitOneMoment() {
     SaxionApp.sleep(0.2);
 }
 </pre>
 <p>Call this method after each call to showMessageLength.</p>
 <pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
     showMessageLength(<span class="hljs-string">"Hello!"</span>);             
-    wait(); <span class="hljs-comment">// the new call goes here</span>
+    waitOneMoment(); <span class="hljs-comment">// the new call goes here</span>
     showMessageLength(<span class="hljs-string">"This is amazing!!!!"</span>); 
-    wait(); <span class="hljs-comment">// and here</span>
+    waitOneMoment(); <span class="hljs-comment">// and here</span>
 }
 
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">showMessageLength</span><span class="hljs-params">(String msg)</span> </span>{ 
@@ -452,10 +452,10 @@ public void wait() {
     SaxionApp.printLine(<span class="hljs-string">" characters"</span>);
 
     <span class="hljs-comment">// alternative solution would be to call the method here:</span>
-    <span class="hljs-comment">// wait();</span>
+    <span class="hljs-comment">// waitOneMoment();</span>
 }
 
-<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">wait</span><span class="hljs-params">()</span> </span>{ 
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">waitOneMoment</span><span class="hljs-params">()</span> </span>{ 
     SaxionApp.sleep(<span class="hljs-number">0.2</span>);
 }
 </div></code></pre>
