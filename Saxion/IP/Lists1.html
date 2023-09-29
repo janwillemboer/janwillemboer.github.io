@@ -374,7 +374,7 @@ Try to run it.</p>
 // import java.util.ArrayList;
 
 // create a new variable "listOfNames", and assign a new, empty list of strings to this variable
-ArrayList<String> listOfNames = new ArrayList<>();
+ArrayList&lt;String&gt; listOfNames = new ArrayList&lt;&gt;();
 
 // add two different names
 listOfNames.add("Alper");
@@ -432,7 +432,7 @@ SaxionApp.printLine(<span class="hljs-string">"Your name is "</span> + listOfNam
 </div></code></pre>
 <p>This is not very efficient, to show each name separately. We can use a loop to accomplish this. Copy this code into your run method and make it work.</p>
 <pre>
-ArrayList<String> listOfNames = new ArrayList<>();
+ArrayList&lt;String&gt; listOfNames = new ArrayList&lt;&gt;();
 
 listOfNames.add("Alper");
 listOfNames.add("Muhammed");
@@ -440,7 +440,7 @@ listOfNames.add("Joris");
 listOfNames.add("Maurice");
 
 int i = 0;
-while (i < 4) {
+while (i &lt; 4) {
     
     String name = listOfNames.get(  ); // change this line to make it work
     SaxionApp.printLine("Name no " + i + " is " + name);
@@ -467,21 +467,21 @@ listOfNames.add(<span class="hljs-string">"Maurice"</span>);
 <p>Now change the program, so there is not a fixed list of names: remove the four lines that add the names. Instead, use an endless while loop to ask for the name and add it to this list.</p>
 <p>Copy the following code into your run method and add code to the if statement that adds the name to the listOfNames list. Try to run it: it will work, but it also crashes if there are less than four names.</p>
 <pre>
-ArrayList<String> listOfNames = new ArrayList<>();
+ArrayList&lt;String&gt; listOfNames = new ArrayList&lt;&gt;();
 
 while (true) {
     SaxionApp.print("Please enter a name (or empty to stop): ");
     String name = SaxionApp.readString();
 
-    if (name.length() > 0) {
-        //                <--- add your code here.
+    if (name.length() &gt; 0) {
+        //                &lt;--- add your code here.
     } else {
         break;
     }
 }
 
 int i = 0;
-while (i < 4) {
+while (i &lt; 4) {
 
     String name = listOfNames.get(i);
     SaxionApp.printLine("Name no " + i + " is " + name);
@@ -552,7 +552,7 @@ while (i < 4) {
 <pre>
 The list with names contains 4 items.
 Which item do you want to see (starting with 0)? 
-> 1
+&gt; 1
 Item number 1 is: Metesayit
 </pre>
 <pre class="hljs"><code><div>ArrayList&lt;String&gt; listOfNames = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
