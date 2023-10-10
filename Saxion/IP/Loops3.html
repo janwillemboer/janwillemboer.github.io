@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Loops3.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="loops-3---using-the-for-loop">Loops 3 - Using the for-loop</h1>
+<h2 id="level-1---the-basics">Level 1 - the basics</h2>
+<p>Copy this fragment to the run() method of an exercise in IntelliJ.</p>
+<pre>
+SaxionApp.printLine("Before the for-loop starts");
+for (int i = 0; i &lt; 10; i++) {
+    SaxionApp.printLine("In the loop, the value of i is " + i);
+    SaxionApp.sleep(0.2);
+}
+SaxionApp.printLine("The for-loop has finished");
+</pre>
+<p>Run the code. You should see appearing the texts. How many times does &quot;In the loop...&quot; appear?
+Change the code so the message &quot;In the loop...&quot; appears 20 times.</p>
+<pre class="hljs"><code><div>SaxionApp.printLine(<span class="hljs-string">"Before the for-loop starts"</span>);
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">20</span>; i++) {
+    SaxionApp.printLine(<span class="hljs-string">"In the loop, the value of i is "</span> + i);
+    SaxionApp.sleep(<span class="hljs-number">0.2</span>);
+}
+SaxionApp.printLine(<span class="hljs-string">"The for-loop has finished"</span>);
+</div></code></pre>
+<p>Please note the first and last number of <code>i</code>. Can you explain this based on the code?</p>
+<p>Change the code, so that <code>i</code> takes steps of 2 instead of 1.</p>
+<pre class="hljs"><code><div>SaxionApp.printLine(<span class="hljs-string">"Before the for-loop starts"</span>);
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">20</span>; i=i+<span class="hljs-number">2</span>) {
+    SaxionApp.printLine(<span class="hljs-string">"In the loop, the value of i is "</span> + i);
+    SaxionApp.sleep(<span class="hljs-number">0.2</span>);
+}
+SaxionApp.printLine(<span class="hljs-string">"The for-loop has finished"</span>);
+</div></code></pre>
+<p>What is the last value of <code>i</code> that is printed?</p>
+<p>Now change the code so that the for-loops runs backwards, from 10 to (including) 1.</p>
+<pre class="hljs"><code><div>SaxionApp.printLine(<span class="hljs-string">"Before the for-loop starts"</span>);
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">10</span>; i &gt; <span class="hljs-number">0</span>; i--) {
+    SaxionApp.printLine(<span class="hljs-string">"In the loop, the value of i is "</span> + i);
+    SaxionApp.sleep(<span class="hljs-number">0.2</span>);
+}
+SaxionApp.printLine(<span class="hljs-string">"The for-loop has finished"</span>);
+</div></code></pre>
+<p>Note, the <code>i &gt; 0</code> construction in the solution. This means that this condition is true, for values from <code>1</code> and up.</p>
+<p>Try to write and alternative solution for the above exercise, by only changing the condition in the for loop.</p>
+<pre class="hljs"><code><div>SaxionApp.printLine(<span class="hljs-string">"Before the for-loop starts"</span>);
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">10</span>; i &gt;= <span class="hljs-number">1</span>; i--) {
+    SaxionApp.printLine(<span class="hljs-string">"In the loop, the value of i is "</span> + i);
+    SaxionApp.sleep(<span class="hljs-number">0.2</span>);
+}
+SaxionApp.printLine(<span class="hljs-string">"The for-loop has finished"</span>);
+</div></code></pre>
+<p>Note the <code>i &gt;= 1</code> actually does the same as <code>i &gt; 0</code>.</p>
+<h2 id="level-2---for-loop-and-a-list">Level 2 - For loop and a list</h2>
+<p>Copy the above code in a projects run() method. Run the code, and look at the result.</p>
+<pre>
+ArrayList<String> names = new ArrayList<String>();
+names.add("Lisa");
+names.add("Bart");
+names.add("Marge");
+names.add("Homer");
+names.add("Skinner");
+
+for (int i = 0; i < 5; i++) {
+    String name = names.get(i);
+    SaxionApp.printLine(name);
+}
+</pre>
+<p>Are all names printed? Now add another name to the list, for instance &quot;Mr. Burns&quot;. Run the code again, what do you see?</p>
+<p>Now update code so that all the names are printed.</p>
+<pre class="hljs"><code><div>ArrayList&lt;String&gt; names = <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;();
+names.add(<span class="hljs-string">"Lisa"</span>);
+names.add(<span class="hljs-string">"Bart"</span>);
+names.add(<span class="hljs-string">"Marge"</span>);
+names.add(<span class="hljs-string">"Homer"</span>);
+names.add(<span class="hljs-string">"Skinner"</span>);
+names.add(<span class="hljs-string">"Mr. Burns"</span>);
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">6</span>; i++) {
+    String name = names.get(i);
+    SaxionApp.printLine( name );
+}
+</div></code></pre>
+<p>You might have changed the code, by changing the 5 into a 6 in the for-loop condition. Or you might have changed <code>&lt;</code> into `&lt;=``. Both result in a working solution, but they are not ideal. Preferably you do not want to have to update your code, based on the number of items in a list. Suppose the number of items in the list depends on the input of the user and you don't know the number of items in the list before-hand. The only solution is then to make the loop condition 'dynamic' and based on the actual size of the list.</p>
+<p>Now update the code, so that the for-loop condition will use the size of the list and prints all items.</p>
+<pre class="hljs"><code><div>ArrayList&lt;String&gt; names = <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;();
+names.add(<span class="hljs-string">"Lisa"</span>);
+names.add(<span class="hljs-string">"Bart"</span>);
+names.add(<span class="hljs-string">"Marge"</span>);
+names.add(<span class="hljs-string">"Homer"</span>);
+names.add(<span class="hljs-string">"Skinner"</span>);
+names.add(<span class="hljs-string">"Mr. Burns"</span>);
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; names.size(); i++) {
+    String name = names.get(i);
+    SaxionApp.printLine(name);
+}
+</div></code></pre>
+<p>Are all the names printed? And are all names printed if you add another name to the list?</p>
+<p>Note: With loops in combination with lists, you have common alternatives for looping through all the items in the list.</p>
+<ol>
+<li><code>for (int i = 0; i &lt; names.size(); i++)</code></li>
+<li><code>for (int i = 0; i &lt;= names.size() - 1; i++)</code></li>
+</ol>
+<p>Where the first option is mostly used.</p>
+<h2 id="level-2---calculations">Level 2 - Calculations</h2>
+<p>Now, let's use a list with numbers. Copy this fragment again to the run() method of an exercise in IntelliJ.</p>
+<pre>
+ArrayList<Integer> numbers = new ArrayList<Integer>();
+numbers.add(10);
+numbers.add(20);
+numbers.add(30);
+numbers.add(40);
+numbers.add(50);
+
+for (int i = 0; i < numbers.size(); i++) {
+    int number = numbers.get(i);
+    SaxionApp.printLine(number);
+}
+</pre>
+<p>Are all the numbers printed? Good. Often, you will need to do some calculations on a list with numbers. Change the code so that all the numbers are added together and the sum (should be <code>150</code>) is printed.</p>
+<pre class="hljs"><code><div>ArrayList&lt;Integer&gt; numbers = <span class="hljs-keyword">new</span> ArrayList&lt;Integer&gt;();
+numbers.add(<span class="hljs-number">10</span>);
+numbers.add(<span class="hljs-number">20</span>);
+numbers.add(<span class="hljs-number">30</span>);
+numbers.add(<span class="hljs-number">40</span>);
+numbers.add(<span class="hljs-number">50</span>);
+
+<span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; numbers.size(); i++) {
+    sum = sum + numbers.get(i);
+}
+SaxionApp.printLine(<span class="hljs-string">"The sum is: "</span> + sum);
+</div></code></pre>
+<p>Does this solution still work if a number is added to the list? Can you still explain why this is?
+Note, that <code>numbers.get(i)</code> is not seperately stored in a new variable anymore.</p>
+<p>Change the code so that the average of the numbers is printed.</p>
+<pre class="hljs"><code><div>ArrayList&lt;Integer&gt; numbers = <span class="hljs-keyword">new</span> ArrayList&lt;Integer&gt;();
+numbers.add(<span class="hljs-number">10</span>);
+numbers.add(<span class="hljs-number">20</span>);
+numbers.add(<span class="hljs-number">30</span>);
+numbers.add(<span class="hljs-number">40</span>);
+numbers.add(<span class="hljs-number">50</span>);
+
+<span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; numbers.size(); i++) {
+    sum = sum + numbers.get(i);
+}
+<span class="hljs-keyword">double</span> average = (<span class="hljs-keyword">double</span>)sum / numbers.size();
+SaxionApp.printLine(<span class="hljs-string">"The average is: "</span> + average + <span class="hljs-string">" or directly :"</span> + ((<span class="hljs-keyword">double</span>)sum / numbers.size()));
+</div></code></pre>
+<p>Now add the numbers 1 up to 5 to the list and only print the even numbers. Change the code to achieve this.</p>
+<pre class="hljs"><code><div>ArrayList&lt;Integer&gt; numbers = <span class="hljs-keyword">new</span> ArrayList&lt;Integer&gt;();
+numbers.add(<span class="hljs-number">1</span>);
+numbers.add(<span class="hljs-number">2</span>);
+numbers.add(<span class="hljs-number">3</span>);
+numbers.add(<span class="hljs-number">4</span>);
+numbers.add(<span class="hljs-number">5</span>);
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; numbers.size(); i++) {
+
+    <span class="hljs-keyword">if</span> (numbers.get(i) % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) {
+        SaxionApp.printLine(<span class="hljs-string">"This is an even number:"</span> + numbers.get(i));
+    }
+}
+</div></code></pre>
+<p>Since the combination of for-loops and lists are so often used, you can use a short-hand notation for this. Please copy the code below.</p>
+<pre>
+ArrayList<Integer> numbers = new ArrayList<Integer>();
+numbers.add(1);
+numbers.add(2);
+numbers.add(3);
+numbers.add(4);
+numbers.add(5);
+
+for (Integer number: numbers) {
+    SaxionApp.printLine("Item:" + number);
+}
+</pre>
+<p>This is the syntax for an enhanced for loop.
+<code>for (Integer number: numbers) {...}</code>
+It has the following items:</p>
+<ul>
+<li><code>Integer</code> indicates the type of the items (data-type) in the list and should match the type in the declaration of the list <code>ArrayList&lt;Integer&gt; numbers</code>.</li>
+<li><code>number</code> is the self-chosen variable name. You can use this name inside the for-loop to refer to the actual item.</li>
+<li><code>numbers</code> is the name of the list you want to iterate through.</li>
+</ul>
+<p>Now copy the code below to your run() method.</p>
+<pre>
+ArrayList<String> names = new ArrayList<String>();
+names.add("Lisa");
+names.add("Bart");
+names.add("Marge");
+names.add("Homer");
+names.add("Skinner");
+
+for (int i = 0; i < names.size(); i++) {
+    String name = names.get(i);
+    SaxionApp.printLine( name );
+}
+</pre>
+<p>This code still uses a regular for-loop. Now update the code to use a enhanced for-loop.</p>
+<pre class="hljs"><code><div>ArrayList&lt;String&gt; names = <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;();
+names.add(<span class="hljs-string">"Lisa"</span>);
+names.add(<span class="hljs-string">"Bart"</span>);
+names.add(<span class="hljs-string">"Marge"</span>);
+names.add(<span class="hljs-string">"Homer"</span>);
+names.add(<span class="hljs-string">"Skinner"</span>);
+
+<span class="hljs-keyword">for</span> (String name: names) {
+    SaxionApp.printLine( name );
+}
+</div></code></pre>
+<p>Allthough this code is shorter and cleaner. Can you also think of drawbacks?</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// 1. A drawback could be that in enhanced for-loop you do not have access to the loop counter. </span>
+<span class="hljs-comment">// And a loop counter can for instance be used the print the position of the item in the list</span>
+
+<span class="hljs-comment">// 2. Another drawback is that (by default) the complete list is iterated and you might not want that.</span>
+</div></code></pre>
+<h1 id="level-3---using-a-while-loop-or-a-for-loop">Level 3 - Using a while-loop or a for-loop?</h1>
+<p>Everything you can achieve with a for-loop, you can also achieve with a while-loop and vice-versa. In order to 'prove' this rewrite the while loop example below to make use of a for-loop.</p>
+<pre>
+ArrayList<String> names = new ArrayList<String>();
+names.add("Lisa");
+names.add("Bart");
+names.add("Marge");
+names.add("Homer");
+names.add("Skinner");
+
+int counter = 0;
+while (counter &lt; names.size()) {
+    String name = names.get(counter);
+    SaxionApp.printLine(name + " is on list position:" + counter);
+
+    counter = counter + 2; // Note the +2
+}
+
+</pre>
+<pre class="hljs"><code><div>ArrayList&lt;String&gt; names = <span class="hljs-keyword">new</span> ArrayList&lt;String&gt;();
+names.add(<span class="hljs-string">"Lisa"</span>);
+names.add(<span class="hljs-string">"Bart"</span>);
+names.add(<span class="hljs-string">"Marge"</span>);
+names.add(<span class="hljs-string">"Homer"</span>);
+names.add(<span class="hljs-string">"Skinner"</span>);
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i  &lt; names.size(); i = i + <span class="hljs-number">2</span>) {
+    String name = names.get(i);
+    SaxionApp.printLine(name + <span class="hljs-string">" is on list position:"</span> + i);
+}
+</div></code></pre>
+<p>In the examples above using a for-loop or enhanced for-loop makes perfect sense. The reason for this is that you know how many iterations the for-loop should perform. That is as many iterations as there are items in a list. If you don't know this beforehand, a while loop is a better option. An example in which a while loop is preffered, can be found below.</p>
+<pre>
+SaxionApp.printLine("Make a choice and type 'stop' to stop");
+String userInput = SaxionApp.readString();
+
+while (!userInput.equals("stop")) {
+    // Do something here...
+    
+    SaxionApp.printLine("Make a choice and type 'stop' to stop");
+    userInput = SaxionApp.readString();
+}
+</pre>
+<p>This <em>could</em> be rewritten using a for loop, but this leads to strange code, so using <code>while</code> is the better option.</p>
+<script>
+	const solutions = document.querySelectorAll(".hljs");
+	for (let i = 0; i < solutions.length; i++) {
+		const s = solutions[i];
+		s.style.display = "none";
+		const revealDiv = document.createElement("div");
+		revealDiv.innerText = "(Click to reveal solution)";
+		revealDiv.style = "background-color: #eee; padding: 10px;"
+		s.parentNode.insertBefore(revealDiv, s);
+        let isHidden = true;
+		revealDiv.onclick = () => {
+            if (isHidden) {
+                s.style.display = "block";
+                revealDiv.innerText = "Solution:";
+            } else {
+                s.style.display = "none";
+                revealDiv.innerText = "(Click to reveal solution)";
+            }
+            isHidden = !isHidden;
+		};
+	}
+
+</script>
+
+</body>
+</html>
