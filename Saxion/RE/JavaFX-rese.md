@@ -8,41 +8,29 @@ change css for img, add: 	border: 1px solid Silver;
 <p><iframe style="width: 100%; height: 12000px;" src="https://janwillemboer.github.io/Saxion/RE/JavaFX.html"></iframe></p>
 -->
 
-# Tutorial: first steps in creating a JavaFX project with IntelliJ
+# Tutorial: extending the JavaFX template for Requirements Engineering
 
 ## Initializing the project
 
-In IntelliJ, create a new project. On the New Project wizard, choose "JavaFX". On the page on the right, enter these values:
+Download and extract the template project and open it in IntelliJ. 
 
-- Name: a name for your project
-- Location: the directory where it should be stored
-- Language: leave at Java
-- Build system: leave at Maven
-- Group: `nl.saxion.re`, or your own package
-- Artifact: will be the name of your project
-- JDK: use java 17
+After some time, the project will be ready. You can test the application by starting it from the `SponsorRunApp` class.
 
-![](javafx/1-newproject.jpg)
+The project looks like this:
 
-Press "Next". Select the ControlsFX additional library.
+![](javafx/1-template-in-intellij.jpg)
 
-![](javafx/1b-controls.jpg)
+The Controllers (1) are the code that make all screens work. The fxml files (2) are the Views and contain the user interface definitions (buttons, lists, etc). The two types of files belong together: you'll see a `detail-screen.fxml`, and also a `DetailScreenController`. 
 
-Press "Create".
+The application first loads data from disk on line 15. This is some sample data from a CSV with Dutch politicians and their political parties. 
 
-After some time, the project will be ready. You can test the application by starting it from the `HelloApplication` class.
+On line 18 (3) the "main-menu" view is opened. This will load the UI from `main-menu.fxml` and the code that defines the behavior of the component from the `MainMenuController`. 
 
-## Designing UI components
+## Adding your own UI components
 
-The project starts with one view, the "hello" view. It has two parts, one in the java directory and the other in the resources directory:
+Let's add our own component. Right-click the package name in the `resources` directory and select New &gt; FXML File.
 
-![](javafx/2-projstructure.jpg)
-
-The `fxml`-file in the `resources` directory contains the specification of what the UI should look like. The `Controller` class contains the code that defines the behavior of the component. 
-
-Let's add a second component. Right-click the package name in the `resources` directory and select New &gt; FXML File.
-
-![](javafx/3-new-fxml.jpg)
+![](javafx/2-add-fxml.jpg)
 
 Give it the name "my-own-component":
 
@@ -50,16 +38,20 @@ Give it the name "my-own-component":
 
 Now also create the Controller file. Right-click the package name in the `java` directory and select New &gt; Java Class.
 
-![](javafx/5-new-controller.jpg)
+![](javafx/3-add-controller.jpg)
 
 Give it the name `MyOwnComponent`.  
 (*NOTE: If you gave your `fxml` file another name, then the controller should have the name that you can find in the `fx:controller` attribute in the `fxml`.*)
 
 ![](javafx/6-new-controller-name.jpg)
 
-We don't need the Controller for now, so head back to our `fxml` file: double-click the file `my-own-component.fxml`. When you open an `fxml` file, it opens either as XML or in the UI designer. If it opens as XML, press the "Scene Builder" tab at the bottom to go to the UI designer. 
+We don't need the Controller for now, so head back to our `fxml` file: double-click the file `my-own-component.fxml`. When you open an `fxml` file, it opens either as XML or in the UI designer. We should first have the XML view, because we need to correct the controller name there. Click the "Text" tab if it is not visible, and add "controllers" to the namespace in the MyOwnComponent reference:
 
-![](javafx/7-fxml-switch-scene-builder.jpg)
+![](javafx/4-right-name-in-fxml.jpg)
+
+Now press the "Scene Builder" tab at the bottom to go to the UI designer. 
+
+![](javafx/5-scene-builder.jpg)
 
 Clicking the tab will open the Scene Builder.  
 
@@ -86,47 +78,11 @@ Now we will add two buttons and a canvas to our component (also see the video be
 
 Now we want our new screen to be shown at some point to test it. Let's hijack the sample application to show our own screen. 
 
-Open the `HelloController` class and add the following code to the onHelloButtonClick method:
+Open the `SponsorRunApp` class again and change the line where it opens `main-menu.fxml` to `my-own-component.fxml`.
 
-```java
-String componentToOpen = "my-own-component";
-String windowTitle = "My own component";
-boolean openInNewWindow = true;
-int width = 800;
-int height = 600;
+Now instead of showing the menu, the application will now load our new component when the user clicks the button.
 
-Stage stage;
-if (openInNewWindow) {
-    stage = new Stage();
-} else {
-    stage = (Stage) welcomeText.getScene().getWindow();
-}
-FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(componentToOpen + ".fxml"));
-Scene scene = new Scene(fxmlLoader.load(), width, height);
-stage.setTitle(windowTitle);
-stage.setScene(scene);
-stage.show();
-```
-
-*Note: The `FXMLLoader`, `Scene` and `Stage` classes can't be found by default. Let IntelliJ fix this, or add the following imports to the existing imports on top of the file:*
-```java
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-``` 
-
-*Note: you must handle exceptions thrown by the fxmlLoader.Load() method. Add the following code to the method signature: `throws IOException`.*
-
-Now instead of changing some lame text on a label, the application will load our new component when the user clicks the button.
-
-![](javafx/9-hack.jpg)
-
-Start the application to test your sensational new screen:
-
-<video controls width="800">
-    <source src="javafx/10-test-it.webm" type="video/webm">
-    <source src="javafx/10-test-it.mp4" type="video/mp4">
-</video>
+Start the application to test your sensational new screen.
 
 ## Add functionality
 
@@ -134,7 +90,7 @@ We want our new screen to actually do something whenever the buttons are pressed
 
 Save the images of a [cat](https://service.archief.nl/gaf/api/file/v1/img/2779f6af-a4c4-4774-aab3-f3f615696905?h=300) and a [dog](https://service.archief.nl/gaf/api/file/v1/img/80c487af-3093-4b9d-a25f-676f46e322d8?h=300) (click on the words to download the images) into the resources directory. Rename the files to `cat.jpg` and `dog.jpg`.
 
-![](javafx/c0-AddImages.png)
+![](javafx/c1-add-images.jpg)
 
 The functionality of a screen is programmed into the Controller class, in our case the `MyOwnComponent` class. 
 
@@ -174,7 +130,7 @@ panePicture.getChildren().add(new ImageView(path));
 
 The `MyOwnComponent` class should now look like this:
 
-![](javafx/12-own-component.jpg)
+![](javafx/12-own-component-2.jpg)
 
 Now we should connect the Previous button to the method we just created. Open the Scene Builder again, select the button and in "Code", find the "On Action" property. In its dropdown you can select the method we created:
 
@@ -183,64 +139,6 @@ Now we should connect the Previous button to the method we just created. Open th
 Run the application. When you now click the "Previous" button, the picture of the ancient cat appears: 
 
 ![](javafx/14-cat.jpg)
-
-# Distributing the project
-
-To ensure anybody is able to run your project we will distribute the project as a jar-file. (Note that this is mandatory for your submission).
-
-We have to create a separate runner class that starts our application. Right-click the package name in the `java` directory and select New &gt; Java Class. Give it the name "Runner". 
-
-Add a main method to this class, and call the HelloApplication main method from this new method:
-
-```java
-public static void main(String[] args) {
-    HelloApplication.main(args);
-}
-```
-
-It should look like this.
-
-![](javafx/c1-runner.jpg)
-
-Open your project structure by clicking the gear icon on the top-right corner of IntelliJ and selecting "Project Structure", or by pressing Ctrl+Alt+Shift+S.
-
-![](javafx/c2-project-structure.jpg)
-
-Under Project Settings, go to artifacts. Press the plus sign on top, select "JAR",  and select "from modules with dependencies".
-
-![](javafx/c3-add-artifact-jar1.jpg)
-
-
-Set the main class to be the Runner class, leave the rest to the default settings.
-
-![](javafx/c4-artifact-main-runner.png)
-
-Press OK, and again OK to close the project settings.
-
-You can now create a jar which you can share with the world (your family members for example), with which they can run your application.
-
-From the "Build" menu, select "Build artifacts".
-
-![](javafx/c4-build-artifacts.jpg)
-
-A small window appears in the center of your screen. Just press "Enter" to confirm, or click the "Build" action. 
-
-![](javafx/c5-build-artifact2.jpg)
-
-A .jar file should be generated in the directory /out/artifacts/MyJavaFxApplication. 
-
-If you change the application, the jar won't be changed automatically. You have to Build the jar again to create a new one.
-
-You can test the jar as follows:
-
-- Open a commandprompt by running cmd.exe
-- Go to the directory where the jar was created
-- use the command `java -jar MyJavaApplication.jar` to start the application.
-- your application will now appear.
-
-![](javafx/c6-run-jar.jpg)
-
-(Note that the warning can be ignored)
 
 # Do it yourself
 
@@ -278,7 +176,7 @@ This tutorial is [CC BY-NC-SA licensed](https://creativecommons.org/licenses/by-
 Author: [Jan Willem B](mailto:j.w.boer@saxion.nl) @ [Saxion University of Applied Sciences](https://www.saxion.edu).   
 Dog and cat from [Dutch National Archives](https://www.nationaalarchief.nl/onderzoeken/zoeken?activeTab=photos&rm=gallery).  
 Random image search by [unsplash](https://unsplash.com/)   
-Last updated: 2022-11-29.  
+Last updated: 2024-02-02.  
 
 
 

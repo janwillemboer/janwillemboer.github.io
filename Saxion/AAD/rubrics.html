@@ -22,11 +22,16 @@
 			text-align: center;
 		}
 
+		tr {
+			break-inside: avoid-page;
+		}
+		
 		td,
 		th {
 			text-align: left;
 			vertical-align: top;
 			padding: 10px;
+			border-bottom: 1px solid Black;
 		}
 
 		thead th {
@@ -45,8 +50,16 @@
 			background-color: LightBlue;
 			font-weight: bold;
 		}
+		
+		@media print
+		{    
+			.noprint, .noprint *
+			{
+				display: none !important;
+			}
+		}
 	</style>
-	<h1>Advanced Application Development Project (concept)</h1>
+	<h1 class="noprint">Rubric Advanced Application Development Project</h1>
 	<table>
 		<thead>
 			<tr>
@@ -198,9 +211,12 @@
 			</tr>
 		</tbody>
 	</table>
+	
+	<div class="noprint">
 	<p>Total score: <strong></strong><span id="score">0</span></strong></p>
 	<p>Permalink naar ingevulde rubric: <a href="#" id="code">link</a></p>
-
+	</div>
+	
 	<script>
 		const tbody = document.getElementById("rubricTable");
 		const trows = tbody.getElementsByTagName("tr");

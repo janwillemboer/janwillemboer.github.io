@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tutorial: extending the JavaFX template for Requirements Engineering</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+	border: 1px solid Silver;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<!-- 
+manual changes: add title in title tag  
+change css for img, add: 	border: 1px solid Silver;
+-->
+<!-- in blackboard: 
+<p><a href="https://janwillemboer.github.io/Saxion/RE/JavaFX.html" target="_blank" rel="noopener">Open in new tab</a></p>
+<p><iframe style="width: 100%; height: 12000px;" src="https://janwillemboer.github.io/Saxion/RE/JavaFX.html"></iframe></p>
+-->
+<h1 id="tutorial-extending-the-javafx-template-for-requirements-engineering">Tutorial: extending the JavaFX template for Requirements Engineering</h1>
+<h2 id="initializing-the-project">Initializing the project</h2>
+<p>Download and extract the template project and open it in IntelliJ.</p>
+<p>After some time, the project will be ready. You can test the application by starting it from the <code>SponsorRunApp</code> class.</p>
+<p>The project looks like this:</p>
+<p><img src="javafx/1-template-in-intellij.jpg" alt=""></p>
+<p>The Controllers (1) are the code that make all screens work. The fxml files (2) are the Views and contain the user interface definitions (buttons, lists, etc). The two types of files belong together: you'll see a <code>detail-screen.fxml</code>, and also a <code>DetailScreenController</code>.</p>
+<p>The application first loads data from disk on line 15. This is some sample data from a CSV with Dutch politicians and their political parties.</p>
+<p>On line 18 (3) the &quot;main-menu&quot; view is opened. This will load the UI from <code>main-menu.fxml</code> and the code that defines the behavior of the component from the <code>MainMenuController</code>.</p>
+<h2 id="adding-your-own-ui-components">Adding your own UI components</h2>
+<p>Let's add our own component. Right-click the package name in the <code>resources</code> directory and select New &gt; FXML File.</p>
+<p><img src="javafx/2-add-fxml.jpg" alt=""></p>
+<p>Give it the name &quot;my-own-component&quot;:</p>
+<p><img src="javafx/4-new-fxml-name.jpg" alt=""></p>
+<p>Now also create the Controller file. Right-click the package name in the <code>java</code> directory and select New &gt; Java Class.</p>
+<p><img src="javafx/3-add-controller.jpg" alt=""></p>
+<p>Give it the name <code>MyOwnComponent</code>.<br>
+(<em>NOTE: If you gave your <code>fxml</code> file another name, then the controller should have the name that you can find in the <code>fx:controller</code> attribute in the <code>fxml</code>.</em>)</p>
+<p><img src="javafx/6-new-controller-name.jpg" alt=""></p>
+<p>We don't need the Controller for now, so head back to our <code>fxml</code> file: double-click the file <code>my-own-component.fxml</code>. When you open an <code>fxml</code> file, it opens either as XML or in the UI designer. We should first have the XML view, because we need to correct the controller name there. Click the &quot;Text&quot; tab if it is not visible, and add &quot;controllers&quot; to the namespace in the MyOwnComponent reference:</p>
+<p><img src="javafx/4-right-name-in-fxml.jpg" alt=""></p>
+<p>Now press the &quot;Scene Builder&quot; tab at the bottom to go to the UI designer.</p>
+<p><img src="javafx/5-scene-builder.jpg" alt=""></p>
+<p>Clicking the tab will open the Scene Builder.</p>
+<p><em>NOTE: You may have to install two additional libraries when you try to use the scene builder for the first time. Click the message on top of the window (twice, for two libraries), and have some patience.</em></p>
+<p><img src="javafx/7b-fxml-scene-builder-error.jpg" alt=""></p>
+<p>Now we will add two buttons and a canvas to our component (also see the video below):</p>
+<ul>
+<li>drag a GridPane onto the component.</li>
+<li>select &quot;Layout&quot; on the right and make all Anchor constraints <code>0</code> (or <code>5</code> if you like some margin).</li>
+<li>delete the first row</li>
+<li>drag two buttons from the Controls on the left onto the grid, one in the bottom left cell and the other in the bottom right cell.</li>
+<li>select &quot;Properties&quot; on the right and change the text on the buttons to &quot;Previous&quot; and &quot;Next&quot;.</li>
+<li>from &quot;Containers&quot; on the left, drag a Pane to the top left cell of the grid.</li>
+<li>on the right, on &quot;Layout&quot; make the Pane span two columns (set <code>Column Span</code> to <code>2</code>).</li>
+</ul>
+<video controls width="1000">
+    <source src="javafx/8-add-controls.mp4" type="video/mp4">
+</video>
+<h2 id="show-our-screen">Show our screen</h2>
+<p>Now we want our new screen to be shown at some point to test it. Let's hijack the sample application to show our own screen.</p>
+<p>Open the <code>SponsorRunApp</code> class again and change the line where it opens <code>main-menu.fxml</code> to <code>my-own-component.fxml</code>.</p>
+<p>Now instead of showing the menu, the application will now load our new component when the user clicks the button.</p>
+<p>Start the application to test your sensational new screen.</p>
+<h2 id="add-functionality">Add functionality</h2>
+<p>We want our new screen to actually do something whenever the buttons are pressed. If the left button is pressed, we want to show a picture of a cat from 1947 and if the right button is pressed a dog from 1965. Because why not.</p>
+<p>Save the images of a <a href="https://service.archief.nl/gaf/api/file/v1/img/2779f6af-a4c4-4774-aab3-f3f615696905?h=300">cat</a> and a <a href="https://service.archief.nl/gaf/api/file/v1/img/80c487af-3093-4b9d-a25f-676f46e322d8?h=300">dog</a> (click on the words to download the images) into the resources directory. Rename the files to <code>cat.jpg</code> and <code>dog.jpg</code>.</p>
+<p><img src="javafx/c1-add-images.jpg" alt=""></p>
+<p>The functionality of a screen is programmed into the Controller class, in our case the <code>MyOwnComponent</code> class.</p>
+<p>First, we need to make sure we can add an image to the <code>Pane</code> we added in the first row. For this, the <code>Pane</code> should have a name, so we can reference it from code. Open the <code>my-own-component.fxml</code> file in the Scene Builder, click on the <code>Pane</code> in the tree on the left, or on the <code>Pane</code> itself. On the right, in &quot;Code&quot; on the <code>fx:id</code> property, give the panel the id <code>panePicture</code>.</p>
+<p><img src="javafx/11-pnl-id.jpg" alt=""></p>
+<p>Open the <code>MyOwnComponent</code> class and add a new field of type <code>Pane</code> with the id you just added to the pane.<br>
+The <code>Pane</code> class should be imported from the <code>javafx.scene.layout</code> package. The field should be &quot;annotated&quot; with the <code>@FXML</code> annotation from the <code>javafx.fxml</code> package:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">@FXML</span>
+<span class="hljs-keyword">private</span> Pane panePicture;
+</div></code></pre>
+<p>Now also add a method we can call whenever the Previous button is pressed. This method should also be annotated in the same way:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">@FXML</span>
+<span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onPreviousButtonPressed</span><span class="hljs-params">()</span> </span>{
+
+}
+</div></code></pre>
+<p>In the method we can add a picture to the <code>Pane</code>, like this:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// 1947 cat from the dutch national archive</span>
+String path = <span class="hljs-string">"/cat.jpg"</span>;
+
+<span class="hljs-comment">// remove previous pictures (if any)</span>
+panePicture.getChildren().clear();
+
+<span class="hljs-comment">// add the picture from the url</span>
+panePicture.getChildren().add(<span class="hljs-keyword">new</span> ImageView(path));
+</div></code></pre>
+<p>The <code>MyOwnComponent</code> class should now look like this:</p>
+<p><img src="javafx/12-own-component-2.jpg" alt=""></p>
+<p>Now we should connect the Previous button to the method we just created. Open the Scene Builder again, select the button and in &quot;Code&quot;, find the &quot;On Action&quot; property. In its dropdown you can select the method we created:</p>
+<p><img src="javafx/13-prev-button.jpg" alt=""></p>
+<p>Run the application. When you now click the &quot;Previous&quot; button, the picture of the ancient cat appears:</p>
+<p><img src="javafx/14-cat.jpg" alt=""></p>
+<h1 id="do-it-yourself">Do it yourself</h1>
+<h2 id="assignment-1-the-%22next%22-button">Assignment 1: the &quot;Next&quot; button</h2>
+<p>You can now go ahead and implement the &quot;Next&quot; button yourself, to show the
+<a href="https://service.archief.nl/gaf/api/file/v1/img/80c487af-3093-4b9d-a25f-676f46e322d8?h=300">dog</a>.</p>
+<h2 id="assignment-2-getting-and-setting-text-in-controls">Assignment 2: getting and setting text in controls</h2>
+<ul>
+<li>Add a new screen with its own <code>fxml</code> and controller class.</li>
+<li>Add a label, a textfield and a button.</li>
+<li>Give the label the id <code>labelGreeting</code> by setting the <code>fx:id</code></li>
+<li>Give the textfield the id <code>textName</code></li>
+<li>Add code to the controller to get the name from the user from <code>textName</code> (HINT: use <code>getText()</code> on the textField) and display a greeting in the label. (HINT: use <code>setText()</code> on the label)</li>
+<li>Show the new screen when starting the application</li>
+</ul>
+<h2 id="assignment-3-show-a-random-image-based-on-a-query">Assignment 3: Show a random image, based on a query</h2>
+<p>Create a screen in which the user can enter a text. When a button is pressed, the application shows a random picture based on the text. You can use the Unsplash API for this by using this url: <a href="https://source.unsplash.com/random/300x200/?dog">https://source.unsplash.com/random/300x200/?dog</a><br>
+Everything after the question mark is the search query. In this example it will show a random image of a dog. You can copy the code for showing the image of the cat, and use the unsplash url instead of the /cat.jpg path.</p>
+<h1 id="closing-remarks">Closing remarks</h1>
+<p>When you completed this tutorial, you know some of the very basics of JavaFX. But it's a large framework, capable of doing many nice things. There are lots of tutorials and references online, for example <a href="https://www.youtube.com/playlist?list=PL6gx4Cwl9DGBzfXLWLSYVy8EbTdpGbUIG">this playlist on YouTube</a>.</p>
+<h1 id="attribution">Attribution</h1>
+<p>This tutorial is <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA licensed</a>. This means that when sharing it: BY – credit must be given to the creator, NC – only noncommercial uses of the work are permitted and, SA – adaptations must be shared under the same terms.</p>
+<img src="javafx/0-saxion.jpg" width="200" style="float: right">
+<p>Author: <a href="mailto:j.w.boer@saxion.nl">Jan Willem B</a> @ <a href="https://www.saxion.edu">Saxion University of Applied Sciences</a>.<br>
+Dog and cat from <a href="https://www.nationaalarchief.nl/onderzoeken/zoeken?activeTab=photos&amp;rm=gallery">Dutch National Archives</a>.<br>
+Random image search by <a href="https://unsplash.com/">unsplash</a><br>
+Last updated: 2024-02-02.</p>
+
+</body>
+</html>
