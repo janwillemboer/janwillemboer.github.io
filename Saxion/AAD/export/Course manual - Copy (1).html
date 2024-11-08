@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html><head></head><body style="color: rgb(32, 33, 34); font-family: Verdana; font-size: 16pt;"><p><iframe width="100%" height="1200" frameborder="0" id="courseManualFrame" src="https://saxionact.github.io/Modulehandleidingen/@courseID@_project/index.html"></iframe></p>
+<p><script>
+  function getOrgInfo() {
+    const mainHtml = window.parent.document.documentElement;
+    const rawInfo = mainHtml.getAttribute("data-he-context");
+    const courseInfo = JSON.parse(rawInfo);
+    const orgUnitInfo = /\/(\d+)\-([^/]+)\/$/.exec(courseInfo.orgUnitPath);
+    return {orgUnitId: orgUnitInfo[1], orgUnitCode: orgUnitInfo[2]};
+  }
+  function setCourseManualPath() {
+    const orgInfo = getOrgInfo();
+    const iframe = document.getElementById("courseManualFrame");
+    iframe.src = iframe.src.replace(/@courseID@/, orgInfo.orgUnitCode);
+  }
+  setCourseManualPath();
+</script></p></body></html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html><head><link rel="stylesheet" href="https://s.brightspace.com/lib/fonts/0.6.1/fonts.css"><link rel="stylesheet" href="bs-style.css"></head><body><h2>3. Quality Management &amp; Deployability</h2>
+<p>This track is about quality management, testing, and CI/CD.</p>
+<p>Companies often have processes to ensure quality and to enforce that releases are tested before going to production. In this track you build a pipeline around your product that has rigid quality management. This includes a DTAP-environment (or at least an AP-environment).</p>
+<ul>
+<li>There is a linter in place (or other static code analysis tool)</li>
+<li>Unit tests cover all code</li>
+<li>git commits can never go directly to the master branch. Changes can only be merged from separate branches. Merges can only be done if they have been reviewed, if there are no linter errors, if the product builds, and if all unittests succeed</li>
+<li>After a build, the changes from the master branch are automatically deployed to an acceptance environment.</li>
+<li>After deployment, all API and/or UI-tests are done automatically. Note that for this to work, tests have to be idempotent, meaning they are independent and can always be repeated with the same result.</li>
+<li>After success and after manual approval (triggered by some signal to the admin) the deployment is done on the next environment.</li>
+<li>Each environment has a totally separate stack.</li>
+<li>Database changes and dataconversion are also done automatically.</li>
+<li>Documentation. All measures taken, and all features in your advanced track should be described in detail in the technical design, including, of course, all configuration details. A manual should provide information to admins on the CI/CD system. A show-and-tell document proves that the system works.</li>
+</ul>
+<p><b>Basic requirements for grading</b></p>
+<ul>
+<li>There is a working automatic deployment using GitLab CI.</li>
+<li>There is a show-and-tell document to prove the system works.</li>
+</ul></body></html>

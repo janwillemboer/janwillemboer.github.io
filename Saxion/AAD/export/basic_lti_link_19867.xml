@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cartridge_basiclti_link xmlns="http://www.imsglobal.org/xsd/imslticc_v1p0" xmlns:lticm="http://www.imsglobal.org/xsd/imslticc_v1p0" xmlns:lticp="http://www.imsglobal.org/xsd/imslticp_v1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:blti="http://www.imsglobal.org/xsd/imsbasiclti_v1p0" xmlns:li="http://www.imsglobal.org/xsd/lti-ags" xsi:schemaLocation="xmlns http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticc_v1p0p1.xsd http://www.imsglobal.org/xsd/imslticp_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticp_v1p0.xsd  http://www.imsglobal.org/xsd/imslticm_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imslticm_v1p0.xsd http://www.imsglobal.org/xsd/imsbasiclti_v1p0 http://www.imsglobal.org/xsd/lti/ltiv1p0/imsbasiclti_v1p0p1.xsd http://www.imsglobal.org/xsd/lti-ags https://purl.imsglobal.org/spec/lti-ags/v2p0/schema/xsd/lineitem_v1p0.xsd">
+  <blti:title>S08 presentation skills - Linking words Presentations-Part-1</blti:title>
+  <blti:description />
+  <blti:custom />
+  <blti:extensions>
+    <lticm:property name="d2l_visibility">true</lticm:property>
+    <lticm:property name="d2l_linktype">basic-lti-launch-request</lticm:property>
+  </blti:extensions>
+  <blti:launch_url>https://kafproductionbs.saxion.nl/browseandembed/index/media/entryid/1_lwfsuerz/showDescription/false/showTitle/false/showTags/false/showDuration/false/showOwner/false/showUploadDate/false/playerSize/608x402/playerSkin/52267962/</blti:launch_url>
+  <blti:vendor>
+    <lticp:code />
+    <lticp:name />
+    <lticp:description />
+    <lticp:url />
+    <lticp:contact>
+      <lticp:email />
+    </lticp:contact>
+  </blti:vendor>
+</cartridge_basiclti_link>
